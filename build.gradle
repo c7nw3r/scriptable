@@ -1,0 +1,16 @@
+apply plugin: "antlr"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    antlr "org.antlr:antlr4:4.9.2"
+}
+
+task generateGrammarSourcePython(type: AntlrTask) {
+    source = project.sourceSets.main.antlr
+    outputDirectory = file("${projectDir}/scriptable/antlr")
+    arguments += ["-visitor", "-Dlanguage=Python3"]
+}
+generateGrammarSource.dependsOn generateGrammarSourcePython
