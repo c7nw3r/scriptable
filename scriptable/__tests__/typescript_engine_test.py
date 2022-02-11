@@ -30,6 +30,7 @@ class TypescriptEngineTest(unittest.TestCase):
         self.assertAlmostEqual(TypescriptEngine.parse("(1 + 2) * (3 - 1) / 2").execute(), 3)
 
     def test_logic_expression(self):
+        # boolean expression
         self.assertEqual(TypescriptEngine.parse("true && true").execute(), True)
         self.assertEqual(TypescriptEngine.parse("true && false").execute(), False)
         self.assertEqual(TypescriptEngine.parse("false && true").execute(), False)
@@ -38,3 +39,51 @@ class TypescriptEngineTest(unittest.TestCase):
         self.assertEqual(TypescriptEngine.parse("true || false").execute(), True)
         self.assertEqual(TypescriptEngine.parse("false || true").execute(), True)
         self.assertEqual(TypescriptEngine.parse("false || false").execute(), False)
+        self.assertEqual(TypescriptEngine.parse("true && true || false").execute(), True)
+        self.assertEqual(TypescriptEngine.parse("true && false || false").execute(), False)
+        self.assertEqual(TypescriptEngine.parse("true == true").execute(), True)
+        self.assertEqual(TypescriptEngine.parse("true === true").execute(), True)
+        self.assertEqual(TypescriptEngine.parse("true == false").execute(), False)
+        self.assertEqual(TypescriptEngine.parse("true === false").execute(), False)
+
+        # number expression
+        self.assertEqual(TypescriptEngine.parse("1 == 1").execute(), True)
+        self.assertEqual(TypescriptEngine.parse("1 != 1").execute(), False)
+        self.assertEqual(TypescriptEngine.parse("1 > 1").execute(), False)
+        self.assertEqual(TypescriptEngine.parse("1 >= 1").execute(), True)
+        self.assertEqual(TypescriptEngine.parse("1 < 1").execute(), False)
+        self.assertEqual(TypescriptEngine.parse("1 <= 1").execute(), True)
+
+        # string expression
+        self.assertEqual(TypescriptEngine.parse("'test' == 'test'").execute(), True)
+        self.assertEqual(TypescriptEngine.parse("'test' != 'test'").execute(), False)
+
+    def test_parenthesizes(self):
+        self.assertAlmostEqual(TypescriptEngine.parse("(((1 + 2)))").execute(), 3)
+        self.assertAlmostEqual(TypescriptEngine.parse("(((true && true)))").execute(), True)
+        self.assertAlmostEqual(TypescriptEngine.parse("false && (false || true)").execute(), False)
+
+    def test_property_access(self):
+        self.assertAlmostEqual(TypescriptEngine.parse("'test'.length").execute(), 4)
+        self.assertEqual(TypescriptEngine.parse("'abcd'[1]").execute(), "b")
+
+    def test_function_access(self):
+        self.assertEqual(TypescriptEngine.parse("'abc'.slice(-1)").execute(), "c")
+        self.assertEqual(TypescriptEngine.parse("'abc'.substring(1)").execute(), "bc")
+        self.assertEqual(TypescriptEngine.parse("'abc'.substring(1, 2)").execute(), "b")
+        self.assertEqual(TypescriptEngine.parse("'abcdefg'.substr(2, 3)").execute(), "cde")
+        self.assertEqual(TypescriptEngine.parse("'abcdefg'.replace('cde', '')").execute(), "abfg")
+        self.assertEqual(TypescriptEngine.parse("'abc'.concat('defg')").execute(), "abcdefg")
+        self.assertEqual(TypescriptEngine.parse("'  abc  '.trim()").execute(), "abc")
+        self.assertEqual(TypescriptEngine.parse("'abc'.padStart(5, 0)").execute(), "00abc")
+        self.assertEqual(TypescriptEngine.parse("'abc'.padEnd(5, 0)").execute(), "abc00")
+        self.assertEqual(TypescriptEngine.parse("'abc'.charAt(1)").execute(), "b")
+        self.assertEqual(TypescriptEngine.parse("'abcd'.charCodeAt(3)").execute(), 100)
+        self.assertEqual(TypescriptEngine.parse("'a,b,c'.split(',')").execute(), ["a", "b", "c"])
+
+    def test_if_control(self):
+        self.assertEqual(TypescriptEngine.parse("if (true) { return 1 } return 0").execute(), 1)
+        self.assertEqual(TypescriptEngine.parse("if (false) { return 1 } return 0").execute(), 0)
+
+    def test_console(self):
+        TypescriptEngine.parse("console.assert('a')").execute()

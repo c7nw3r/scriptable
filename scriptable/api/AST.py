@@ -1,11 +1,15 @@
 from abc import ABC, abstractmethod
-from dataclasses import dataclass
-from typing import TypeVar, Generic
+from dataclasses import dataclass, field
+from typing import TypeVar, Generic, Any, Dict
 
 
 @dataclass
 class ASTBinding:
-    pass
+    properties: Dict[str, Any] = field(default_factory=lambda: {})
+
+    def add_property(self, name: str, value: Any):
+        self.properties[name] = value
+
 
 T = TypeVar("T")
 
@@ -21,3 +25,9 @@ class AST(ABC, Generic[T]):
 class FunctionSpec:
     params: [str]
     result: str
+
+
+class BindingAware:
+
+    def bind(self, binding: ASTBinding):
+        pass

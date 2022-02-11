@@ -22,6 +22,18 @@ class LogicExpression(AST[bool]):
                 operand_stack.insert(i, value1 and value2)
             if operator == "or":
                 operand_stack.insert(i, value1 or value2)
+            if operator == "==":
+                operand_stack.insert(i, value1 == value2)
+            if operator == "!=":
+                operand_stack.insert(i, value1 != value2)
+            if operator == ">":
+                operand_stack.insert(i, value1 > value2)
+            if operator == ">=":
+                operand_stack.insert(i, value1 >= value2)
+            if operator == "<":
+                operand_stack.insert(i, value1 < value2)
+            if operator == "<=":
+                operand_stack.insert(i, value1 <= value2)
 
         return operand_stack.pop()
 

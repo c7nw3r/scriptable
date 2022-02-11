@@ -48,3 +48,39 @@ class Power(AST[str]):
 
     def execute(self, binding: ASTBinding) -> str:
         return "**"
+
+
+class Equals(AST[str]):
+
+    def execute(self, binding: ASTBinding) -> str:
+        return "=="
+
+
+class NotEquals(AST[str]):
+
+    def execute(self, binding: ASTBinding) -> str:
+        return "!="
+
+
+class LowerThan(AST[str]):
+
+    def execute(self, binding: ASTBinding) -> str:
+        return "<"
+
+
+class LowerEquals(AST[str]):
+
+    def execute(self, binding: ASTBinding) -> str:
+        return "<="
+
+
+class GreaterThan(AST[str]):
+
+    def execute(self, binding: ASTBinding) -> str:
+        return ">"
+
+
+class GreaterEquals(AST[str]):
+
+    def execute(self, binding: ASTBinding) -> str:
+        return ">="

@@ -7,6 +7,8 @@ from scriptable.antlr.TypescriptLexer import TypescriptLexer
 from scriptable.antlr.TypescriptParser import TypescriptParser
 from scriptable.api import AST
 from scriptable.api.AST import ASTBinding
+from scriptable.api.exit_value import ExitValue
+from scriptable.runtime.buildin.typescript.console import Console
 from scriptable.typescript_visitor import TypescriptVisitorImpl
 
 
@@ -27,7 +29,19 @@ class TypescriptEngine:
         self.tree = tree
 
     def execute(self):
-        return self.tree[0].execute(ASTBinding())
+        binding = self._create_binding()
+        result = None
+        for branch in self.tree:
+            result = branch.execute(binding)
+            if isinstance(result, ExitValue):
+                return result.value
+
+        return result
+
+    def _create_binding(self):
+        binding = ASTBinding()
+        binding.add_property("console", Console())
+        return binding
 
     @staticmethod
     def stream(obj):
