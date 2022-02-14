@@ -119,12 +119,12 @@ sType              : STRING | NUMBER | BOOLEAN;
 // function definition
 // *******************
 sFunction          : sFunctionHead sFunctionTail;
-sFunctionArg       : sValue;
+sFunctionArg       : sValue | sOverloading;
 sFunctionArgs      : sFunctionArg (COMMA sFunctionArg)*;
 sFunctionArgDef    : sProperty (COLON sType)?;
 sFunctionArgDefs   : sFunctionArgDef (COMMA sFunctionArgDef)*;
 sFunctionHead      : FUNCTION IDENTIFIER ROUND_LEFT sFunctionArgDefs? ROUND_RIGHT (COLON sType)?;
-sFunctionTail      : CURLY_LEFT sReturn? CURLY_RIGHT;
+sFunctionTail      : CURLY_LEFT sBody CURLY_RIGHT;
 sFunctionCall      : IDENTIFIER ROUND_LEFT sFunctionArgs? ROUND_RIGHT;
 
 sProperty          : IDENTIFIER;
@@ -135,7 +135,7 @@ sFunctionAware     : sString | sProperty;
 sFunctionAccess    : sFunctionAware (DOT sFunctionCall)+;
 
 sBody              : (sIf)* sReturn?;
-sReturn            : RETURN (sValue | sExpression | sOverloading);
+sReturn            : RETURN (sValue | sExpression | sOverloading | sProperty);
 
 // if parser rules
 // ***************

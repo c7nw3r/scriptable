@@ -119,3 +119,4 @@ test('te', 'st')
 
     def test_overloading(self):
         self.assertEqual(TypescriptEngine.parse("'a' + 'b' + 'c'").execute(), "abc")
+        self.assertEqual(TypescriptEngine.parse("function test(a) { return a } test('a' + 'b' + 'c')").execute(), "abc")
