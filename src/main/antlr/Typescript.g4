@@ -7,6 +7,7 @@ grammar Typescript;
 TRUE          : 'true';
 FALSE         : 'false';
 DOT           : '.';
+COLON         : ':';
 COMMA         : ',';
 PLUS          : '+';
 MINUS         : '-';
@@ -33,10 +34,15 @@ GE            : '>=';
 IF            : 'if';
 ELSE          : 'else';
 RETURN        : 'return';
+FUNCTION      : 'function';
+STRING        : 'string';
+NUMBER        : 'number';
+BOOLEAN       : 'boolean';
+
 
 IDENTIFIER : Letter LetterOrDigit*;
 CHARS      : ('"' StringCharacter* '"') | ('\'' CharSequence* '\'');
-NUMBER     : Digit+((DOT)Digit+)?;
+DIGITS     : Digit+((DOT)Digit+)?;
 
 fragment Digit           : '-'?[0-9];
 fragment Letter          : [a-zA-Z];
@@ -55,19 +61,14 @@ SEMICOLON    : ';'              -> skip;
 /*
  * Parser Rules
  */
-sAll            : (sExpression | sTerm | sValue | sInvocation | sIf | sReturn)* EOF;
+sAll            : (sExpression | sTerm | sInvocation | sValue | sIf | sReturn | sFunction | sOverloading)* EOF;
 sOperand        : sNumber;
 sOperator       : sPlus | sMinus | sMul | sDiv | sPower;
 sExpression     : sArithmeticExpression | sBooleanExpression | sNumberExpression | sStringExpression;
 sTerm           : sArithmeticTerm | sBooleanTerm;
-sValue          : sNumber | sBoolean | sString;
-sInvocation     : sPropertyAccess | sFunctionAccess;
-
-// value definitions
-// *****************
-sString         : CHARS;
-sNumber         : NUMBER;
-sBoolean        : TRUE | FALSE;
+sValue          : sNumber | sBoolean | sString | sArray | sMap;
+sInvocation     : sPropertyAccess | sFunctionAccess | sFunctionCall;
+sOverloading    : (sValue | sProperty) (PLUS (sValue | sProperty))+;
 
 // operator definitions
 // ********************
@@ -111,11 +112,20 @@ sStringOperand     : sString;
 sStringOperator    : sEquals | sNotEquals;
 sStringExpression  : (sStringOperand | sStringTerm) (sStringOperator (sStringOperand | sStringTerm))+;
 sStringTerm        : ROUND_LEFT ((sStringOperand (sStringOperator sStringOperand)+) | sStringTerm) ROUND_RIGHT;
+sStringOverloading : sString (PLUS sString)+;
+
+sType              : STRING | NUMBER | BOOLEAN;
 
 // function definition
 // *******************
+sFunction          : sFunctionHead sFunctionTail;
 sFunctionArg       : sValue;
-sFunctionCall      : IDENTIFIER ROUND_LEFT (sFunctionArg (COMMA sFunctionArg)*)? ROUND_RIGHT;
+sFunctionArgs      : sFunctionArg (COMMA sFunctionArg)*;
+sFunctionArgDef    : sProperty (COLON sType)?;
+sFunctionArgDefs   : sFunctionArgDef (COMMA sFunctionArgDef)*;
+sFunctionHead      : FUNCTION IDENTIFIER ROUND_LEFT sFunctionArgDefs? ROUND_RIGHT (COLON sType)?;
+sFunctionTail      : CURLY_LEFT sReturn? CURLY_RIGHT;
+sFunctionCall      : IDENTIFIER ROUND_LEFT sFunctionArgs? ROUND_RIGHT;
 
 sProperty          : IDENTIFIER;
 sPropertyAware     : sString | sProperty;
@@ -125,10 +135,18 @@ sFunctionAware     : sString | sProperty;
 sFunctionAccess    : sFunctionAware (DOT sFunctionCall)+;
 
 sBody              : (sIf)* sReturn?;
-sReturn            : RETURN sValue;
+sReturn            : RETURN (sValue | sExpression | sOverloading);
 
 // if parser rules
 // ***************
 sIf      : IF ROUND_LEFT sBooleanExpression ROUND_RIGHT (sReturn | (CURLY_LEFT sBody CURLY_RIGHT)) sElseIf* sElse?;
 sElse    : ELSE (sReturn | (CURLY_LEFT sBody CURLY_RIGHT));
 sElseIf  : ELSE IF ROUND_LEFT sBooleanExpression ROUND_RIGHT (sReturn | (CURLY_LEFT sBody CURLY_RIGHT));
+
+// value definitions
+// *****************
+sString         : CHARS;
+sNumber         : DIGITS;
+sBoolean        : TRUE | FALSE;
+sArray          : BRACKET_LEFT (sValue (COMMA sValue)*)? BRACKET_RIGHT;
+sMap            : CURLY_LEFT (sString COLON sValue (COMMA sString COLON sValue)*)? CURLY_RIGHT;

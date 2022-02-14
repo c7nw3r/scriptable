@@ -7,7 +7,12 @@ from scriptable.antlr.TypescriptLexer import TypescriptLexer
 from scriptable.antlr.TypescriptParser import TypescriptParser
 from scriptable.api import AST
 from scriptable.api.AST import ASTBinding
+from scriptable.api.accessor import Accessor
 from scriptable.api.exit_value import ExitValue
+from scriptable.ast.number import Number
+from scriptable.ast.value.array import Array
+from scriptable.ast.value.map import Map
+from scriptable.ast.value.string import String
 from scriptable.runtime.buildin.typescript.console import Console
 from scriptable.typescript_visitor import TypescriptVisitorImpl
 
@@ -29,14 +34,30 @@ class TypescriptEngine:
         self.tree = tree
 
     def execute(self):
+        def unwrap(obj):
+            if isinstance(obj, List):
+                return list(map(unwrap, obj))
+            if isinstance(obj, Accessor):
+                return unwrap(obj.value)
+            if isinstance(obj, String):
+                return obj.accessor.value
+            if isinstance(obj, Number):
+                return obj.value
+            if isinstance(obj, Array):
+                return unwrap(obj.accessor.value)
+            if isinstance(obj, Map):
+                return unwrap(obj.accessor.value)
+            return obj
+
+
         binding = self._create_binding()
         result = None
         for branch in self.tree:
             result = branch.execute(binding)
             if isinstance(result, ExitValue):
-                return result.value
+                return unwrap(result.value)
 
-        return result
+        return unwrap(result)
 
     def _create_binding(self):
         binding = ASTBinding()

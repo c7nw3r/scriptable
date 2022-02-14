@@ -10,11 +10,20 @@ from scriptable.ast.expression.logic_expression import LogicExpression
 from scriptable.ast.expression.logic_term import LogicTerm
 from scriptable.ast.expression.operator import And, Or, Not, Plus, Minus, Mul, Div, Power, Equals, NotEquals, LowerThan, \
     LowerEquals, GreaterThan, GreaterEquals
+from scriptable.ast.function.function import Function
 from scriptable.ast.function.function_access import FunctionAccess
+from scriptable.ast.function.function_arg import FunctionArg
+from scriptable.ast.function.function_arg_def import FunctionArgDef
 from scriptable.ast.function.function_call import FunctionCall
+from scriptable.ast.function.function_head import FunctionHead
+from scriptable.ast.function.function_tail import FunctionTail
 from scriptable.ast.number import Number
+from scriptable.ast.overloading import Overloading
 from scriptable.ast.property.property import Property
 from scriptable.ast.property.property_access import PropertyAccess
+from scriptable.ast.type import Type
+from scriptable.ast.value.array import Array
+from scriptable.ast.value.map import Map
 from scriptable.ast.value.string import String
 
 
@@ -29,6 +38,12 @@ class TypescriptVisitorImpl(TypescriptVisitor):
 
     def visitSString(self, ctx: TypescriptParser.SStringContext):
         return String.parse(ctx)
+
+    def visitSArray(self, ctx: TypescriptParser.SArrayContext):
+        return Array.parse(super().visitSArray(ctx))
+
+    def visitSMap(self, ctx: TypescriptParser.SMapContext):
+        return Map.parse(super().visitSMap(ctx))
 
     def visitSArithmeticExpression(self, ctx: TypescriptParser.SArithmeticExpressionContext):
         return ArithmeticExpression.parse(super().visitSArithmeticExpression(ctx))
@@ -114,13 +129,34 @@ class TypescriptVisitorImpl(TypescriptVisitor):
     def visitSIf(self, ctx: TypescriptParser.SIfContext):
         return If.parse(super().visitSIf(ctx))
 
-    def aggregateResult(self, aggregate, nextResult):
+    def visitSType(self, ctx: TypescriptParser.STypeContext):
+        return Type.parse(ctx)
+
+    def visitSFunctionArg(self, ctx: TypescriptParser.SFunctionArgContext):
+        return FunctionArg.parse(super().visitSFunctionArg(ctx))
+
+    def visitSFunctionArgDef(self, ctx: TypescriptParser.SFunctionArgDefContext):
+        return FunctionArgDef.parse(super().visitSFunctionArgDef(ctx))
+
+    def visitSFunctionHead(self, ctx: TypescriptParser.SFunctionHeadContext):
+        return FunctionHead.parse(ctx.getChild(1).getText(), super().visitSFunctionHead(ctx))
+
+    def visitSFunctionTail(self, ctx: TypescriptParser.SFunctionTailContext):
+        return FunctionTail.parse(super().visitSFunctionTail(ctx))
+
+    def visitSFunction(self, ctx: TypescriptParser.SFunctionContext):
+        return Function.parse(super().visitSFunction(ctx))
+
+    def visitSOverloading(self, ctx: TypescriptParser.SOverloadingContext):
+        return Overloading.parse(super().visitSOverloading(ctx))
+
+    def aggregateResult(self, aggregate, next_result):
         array = []
         if aggregate is not None:
             array += aggregate
-        if nextResult is not None:
-            if isinstance(nextResult, list):
-                array.extend(nextResult)
+        if next_result is not None:
+            if isinstance(next_result, list):
+                array.extend(next_result)
             else:
-                array += [nextResult]
+                array += [next_result]
         return array

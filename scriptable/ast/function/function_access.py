@@ -1,8 +1,7 @@
 from typing import Any, List
 
 from scriptable.api import AST
-from scriptable.api.AST import ASTBinding
-from scriptable.api.accessor import Accessor
+from scriptable.api.AST import ASTBinding, SourceAwareContext
 
 
 class FunctionAccess(AST[Any]):
@@ -10,13 +9,13 @@ class FunctionAccess(AST[Any]):
         self.branch = branch
 
     def execute(self, binding: ASTBinding) -> Any:
-        branch = list(map(lambda ast: ast.execute(binding), self.branch))
-        source = branch[0]
-        if isinstance(source, Accessor):
-            return branch[0](branch[1][0], branch[1][1])
-        if hasattr(branch[0], branch[1][0]):
-            return getattr(branch[0], branch[1][0])(*branch[1][1])
-        return branch[0].__call__(*branch[1])
+        current = None
+
+        for item in self.branch:
+            _binding = binding if current is None else SourceAwareContext(current, binding)
+            current = item.execute(_binding)
+
+        return current
 
     @staticmethod
     def parse(branch: List[AST]) -> 'FunctionAccess':

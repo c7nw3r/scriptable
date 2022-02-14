@@ -1,7 +1,8 @@
 from typing import Any, List, Tuple
 
 from scriptable.api import AST
-from scriptable.api.AST import ASTBinding
+from scriptable.api.AST import ASTBinding, SourceAwareContext
+from scriptable.api.accessor import Accessor
 
 
 class FunctionCall(AST[Tuple[str, List[Any]]]):
@@ -10,8 +11,21 @@ class FunctionCall(AST[Tuple[str, List[Any]]]):
         self.args = args
 
     def execute(self, binding: ASTBinding) -> Tuple[str, List[Any]]:
-        branch = list(map(lambda ast: ast.execute(binding), self.args))
-        return self.name, branch
+        args = list(map(lambda x: x.execute(binding), self.args))
+
+        if isinstance(binding, SourceAwareContext):
+            source = binding.source
+            if isinstance(source, Accessor):
+                return source(self.name, args)
+            if hasattr(source, self.name):
+                return getattr(source, self.name)(*args)
+            return source.__call__(*args)
+
+        if self.name in binding.functions:
+            function = binding.functions[self.name]
+            return function(args)
+
+        raise ValueError(f"cannot find function {self.name}")
 
     @staticmethod
     def parse(text: str, branch: List[AST]) -> 'FunctionCall':

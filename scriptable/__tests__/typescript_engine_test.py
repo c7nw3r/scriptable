@@ -57,6 +57,7 @@ class TypescriptEngineTest(unittest.TestCase):
         # string expression
         self.assertEqual(TypescriptEngine.parse("'test' == 'test'").execute(), True)
         self.assertEqual(TypescriptEngine.parse("'test' != 'test'").execute(), False)
+        self.assertEqual(TypescriptEngine.parse("'a' + 'b' + 'c'").execute(), "abc")
 
     def test_parenthesizes(self):
         self.assertAlmostEqual(TypescriptEngine.parse("(((1 + 2)))").execute(), 3)
@@ -87,3 +88,34 @@ class TypescriptEngineTest(unittest.TestCase):
 
     def test_console(self):
         TypescriptEngine.parse("console.assert('a')").execute()
+
+    def test_value(self):
+        # array
+        self.assertEqual(TypescriptEngine.parse("['a', 'b', 'c']").execute(), ["a", "b", "c"])
+        self.assertEqual(TypescriptEngine.parse("[1, 2, 3]").execute(), [1, 2, 3])
+        self.assertEqual(TypescriptEngine.parse("[[1, 2, 3]]").execute(), [[1, 2, 3]])
+        # map
+        self.assertEqual(TypescriptEngine.parse("{'a':0, 'b':1, 'c':2}").execute(), {"a": 0, "b": 1, "c": 2})
+        # string
+        self.assertEqual(TypescriptEngine.parse("'abc'").execute(), "abc")
+
+    def test_function_without_args(self):
+        engine = TypescriptEngine.parse("""
+function test() {
+   return "test"
+}
+test()
+        """)
+        self.assertEqual(engine.execute(), "test")
+
+    def test_function_with_args(self):
+        engine = TypescriptEngine.parse("""
+function test(a:string, b:string) {
+   return a + b
+}
+test('te', 'st')
+        """)
+        self.assertEqual(engine.execute(), "test")
+
+    def test_overloading(self):
+        self.assertEqual(TypescriptEngine.parse("'a' + 'b' + 'c'").execute(), "abc")
