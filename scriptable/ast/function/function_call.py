@@ -22,11 +22,22 @@ class FunctionCall(AST[Tuple[str, List[Any]]]):
             return source.__call__(*args)
 
         if self.name in binding.functions:
-            function = binding.functions[self.name]
-            return function(args)
+            from copy import deepcopy
+            _binding = deepcopy(binding)
+
+            # recursion guard
+            # ***************
+            signature = self.name + "(" + ", ".join(map(str, args)) + ")"
+            assert _binding.add_signature(signature) > 1, "recursion loop determined"
+
+            function = _binding.functions[self.name]
+            return function(args, _binding)
 
         raise ValueError(f"cannot find function {self.name}")
 
     @staticmethod
     def parse(text: str, branch: List[AST]) -> 'FunctionCall':
         return FunctionCall(text, branch)
+
+    def __repr__(self):
+        return self.name + "(" + ", ".join(map(str, self.args)) + ")"

@@ -14,3 +14,6 @@ class FunctionArg(AST[Any]):
     @staticmethod
     def parse(branch: List[AST]) -> 'FunctionArg':
         return FunctionArg(branch[0])
+
+    def __repr__(self):
+        return str(self.arg_value)

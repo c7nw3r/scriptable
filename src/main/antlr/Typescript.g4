@@ -62,7 +62,7 @@ SEMICOLON    : ';'              -> skip;
  * Parser Rules
  */
 sAll            : (sExpression | sTerm | sInvocation | sValue | sIf | sReturn | sFunction | sOverloading)* EOF;
-sOperand        : sNumber;
+sOperand        : sNumber | sProperty | sInvocation;
 sOperator       : sPlus | sMinus | sMul | sDiv | sPower;
 sExpression     : sArithmeticExpression | sBooleanExpression | sNumberExpression | sStringExpression;
 sTerm           : sArithmeticTerm | sBooleanTerm;
@@ -94,7 +94,7 @@ sArithmeticTerm       : ROUND_LEFT ((sOperand (sOperator sOperand)+) | sArithmet
 
 // boolean expression
 // ******************
-sBooleanOperand    : sBoolean;
+sBooleanOperand    : sValue | sProperty;
 sBooleanOperator   : sAnd | sOr | sNot | sEquals | sNotEquals;
 sBooleanExpression : (sBooleanOperand | sBooleanTerm) (sBooleanOperator (sBooleanOperand | sBooleanTerm))*;
 sBooleanTerm       : ROUND_LEFT ((sBooleanOperand (sBooleanOperator sBooleanOperand)+) | sBooleanTerm) ROUND_RIGHT;
@@ -119,7 +119,7 @@ sType              : STRING | NUMBER | BOOLEAN;
 // function definition
 // *******************
 sFunction          : sFunctionHead sFunctionTail;
-sFunctionArg       : sValue | sOverloading;
+sFunctionArg       : sValue | sOverloading | sExpression;
 sFunctionArgs      : sFunctionArg (COMMA sFunctionArg)*;
 sFunctionArgDef    : sProperty (COLON sType)?;
 sFunctionArgDefs   : sFunctionArgDef (COMMA sFunctionArgDef)*;
@@ -135,11 +135,11 @@ sFunctionAware     : sString | sProperty;
 sFunctionAccess    : sFunctionAware (DOT sFunctionCall)+;
 
 sBody              : (sIf)* sReturn?;
-sReturn            : RETURN (sValue | sExpression | sOverloading | sProperty);
+sReturn            : RETURN (sValue | sExpression | sOverloading | sProperty | sInvocation);
 
 // if parser rules
 // ***************
-sIf      : IF ROUND_LEFT sBooleanExpression ROUND_RIGHT (sReturn | (CURLY_LEFT sBody CURLY_RIGHT)) sElseIf* sElse?;
+sIf      : IF ROUND_LEFT sExpression ROUND_RIGHT (sReturn | (CURLY_LEFT sBody CURLY_RIGHT)) sElseIf* sElse?;
 sElse    : ELSE (sReturn | (CURLY_LEFT sBody CURLY_RIGHT));
 sElseIf  : ELSE IF ROUND_LEFT sBooleanExpression ROUND_RIGHT (sReturn | (CURLY_LEFT sBody CURLY_RIGHT));
 

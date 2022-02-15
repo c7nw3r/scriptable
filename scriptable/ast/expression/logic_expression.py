@@ -40,3 +40,12 @@ class LogicExpression(AST[bool]):
     @staticmethod
     def parse(branch: List[AST]):
         return LogicExpression(branch)
+
+    def __repr__(self):
+        stack = []
+        for a, b in zip(self.operand_stack, self.operator_stack):
+            stack.append(a)
+            stack.append(b)
+        stack.append(self.operand_stack[-1])
+
+        return " ".join(map(str, stack))

@@ -25,3 +25,6 @@ class Number(AST[DataType]):
             return Number(float(text))
 
         return Number(int(text))
+
+    def __repr__(self):
+        return str(self.value)

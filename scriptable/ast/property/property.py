@@ -17,3 +17,6 @@ class Property(AST[Any]):
     @staticmethod
     def parse(ctx: TypescriptParser.SPropertyContext) -> 'Property':
         return Property(ctx.getText())
+
+    def __repr__(self):
+        return self.value

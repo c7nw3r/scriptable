@@ -120,3 +120,25 @@ test('te', 'st')
     def test_overloading(self):
         self.assertEqual(TypescriptEngine.parse("'a' + 'b' + 'c'").execute(), "abc")
         self.assertEqual(TypescriptEngine.parse("function test(a) { return a } test('a' + 'b' + 'c')").execute(), "abc")
+
+    def test_fibonacci(self):
+        engine = TypescriptEngine.parse("""
+function fibonacci(n:number) {
+   if (n == 0) return 0
+   if (n == 1) return 1
+   if (n == 2) return 1
+   return fibonacci(n - 1) + fibonacci(n - 2)
+}
+fibonacci(8)
+        """)
+        self.assertEqual(engine.execute(), 21)
+
+    def test_recursion_guard(self):
+        with self.assertRaises(AssertionError) as error:
+            engine = TypescriptEngine.parse("""
+    function test(n:number) {
+       return test(n)
+    }
+    test(8)
+            """).execute()
+            self.assertEqual(error.exception.args[0], "recursion loop determined")

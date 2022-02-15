@@ -12,11 +12,12 @@ class Function(AST[None]):
         self.tail = tail
 
     def execute(self, context: ASTBinding) -> None:
-        def execute_function(args):
-            _binding = ASTBinding()
+        def execute_function(args, binding):
+            from copy import deepcopy
+            _binding = deepcopy(binding)
 
             for i, e in enumerate(self.head.args):
-                arg_name = e.arg_name.execute(context)
+                arg_name = e.arg_name.value
                 _binding.add_property(arg_name, args[i])
 
             return self.tail.execute(_binding)
@@ -28,3 +29,6 @@ class Function(AST[None]):
     def parse(branch: List[AST]) -> 'Function':
         # noinspection PyTypeChecker
         return Function(branch[0], branch[1])
+
+    def __repr__(self):
+        return str(self.head) + str(self.tail)

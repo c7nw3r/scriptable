@@ -17,3 +17,6 @@ class FunctionArgDef(AST[Any]):
     @staticmethod
     def parse(branch: List[AST]) -> 'FunctionArgDef':
         return FunctionArgDef(branch[0], None if len(branch) == 1 else branch[1])
+
+    def __repr__(self):
+        return self.arg_name + "(" + str(self.arg_type) + ")"

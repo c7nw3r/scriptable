@@ -5,14 +5,22 @@ from typing import TypeVar, Generic, Any, Dict, Callable, List
 
 @dataclass
 class ASTBinding:
-    functions: Dict[str, Callable[[List[Any]], Any]] = field(default_factory=lambda: {})
+    functions: Dict[str, Callable[[List[Any], 'ASTBinding'], Any]] = field(default_factory=lambda: {})
     properties: Dict[str, Any] = field(default_factory=lambda: {})
+    signatures: Dict[str, int] = field(default_factory=lambda: {})
 
     def add_property(self, name: str, value: Any):
         self.properties[name] = value
 
     def add_function(self, name: str, value: Callable[[List[Any]], Any]):
         self.functions[name] = value
+
+    def add_signature(self, signature: str) -> int:
+        if signature in self.signatures:
+            self.signatures[signature] += 1
+        else:
+            self.signatures[signature] = 1
+        return self.signatures[signature]
 
 
 class SourceAwareContext(ASTBinding):

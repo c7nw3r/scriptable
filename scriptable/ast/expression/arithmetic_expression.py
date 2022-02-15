@@ -12,8 +12,10 @@ class ArithmeticExpression(AST[DataType]):
         self.operator_stack = [branch[x] for x in range(1, len(branch), 2)]
 
     def execute(self, binding: ASTBinding) -> DataType:
-        operand_stack = list(map(lambda ast: ast.execute(binding), self.operand_stack))
-        operator_stack = list(map(lambda ast: ast.execute(binding), self.operator_stack))
+        from copy import deepcopy
+
+        operand_stack = list(map(lambda ast: ast.execute(deepcopy(binding)), self.operand_stack))
+        operator_stack = list(map(lambda ast: ast.execute(deepcopy(binding)), self.operator_stack))
 
         # search for exponent operator
         for i in range(len(operator_stack) - 1, -1, -1):
@@ -54,3 +56,12 @@ class ArithmeticExpression(AST[DataType]):
     @staticmethod
     def parse(branch: List[AST]):
         return ArithmeticExpression(branch)
+
+    def __repr__(self):
+        stack = []
+        for a, b in zip(self.operand_stack, self.operator_stack):
+            stack.append(a)
+            stack.append(b)
+        stack.append(self.operand_stack[-1])
+
+        return " ".join(map(str, stack))
