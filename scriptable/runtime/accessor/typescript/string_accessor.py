@@ -102,5 +102,8 @@ class TypescriptStringAccessor(Accessor[str]):
         assert isinstance(args[0], TypescriptStringAccessor), "argument is not a string"
         return self.value.split(args[0].value)
 
+    def __len__(self):
+        return len(self.value)
+
     def __repr__(self):
         return self.value

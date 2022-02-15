@@ -9,6 +9,7 @@ FALSE         : 'false';
 DOT           : '.';
 COLON         : ':';
 COMMA         : ',';
+SEMICOLON     : ';';
 PLUS          : '+';
 MINUS         : '-';
 MUL           : '*';
@@ -39,6 +40,14 @@ STRING        : 'string';
 NUMBER        : 'number';
 BOOLEAN       : 'boolean';
 ARROW         : '=>';
+WHILE         : 'while';
+FOR           : 'for';
+IN            : 'in';
+OF            : 'of';
+CONST         : 'const';
+VAR           : 'var';
+LET           : 'let';
+EQUAL         : '=';
 
 
 IDENTIFIER : Letter LetterOrDigit*;
@@ -57,12 +66,11 @@ fragment CharSequence    :	~'\'';
 WS           : [ \t\r\n\u000C]+ -> skip;
 LINE_COMMENT : '//' ~[\r\n]*    -> skip;
 WHITESPACE   : ' '              -> skip;
-SEMICOLON    : ';'              -> skip;
 
 /*
  * Parser Rules
  */
-sAll            : (sInvocation | sExpression | sTerm | sValue | sIf | sReturn | sFunction | sOverloading)* EOF;
+sAll            : (sInvocation | sProperty | sExpression | sTerm | sValue | sOverloading | sControl | sReturn | sFunction | sStatement)* EOF;
 sOperand        : sNumber | sProperty | sInvocation;
 sOperator       : sPlus | sMinus | sMul | sDiv | sPower;
 sExpression     : sArithmeticExpression | sBooleanExpression | sNumberExpression | sStringExpression;
@@ -70,6 +78,8 @@ sTerm           : sArithmeticTerm | sBooleanTerm;
 sValue          : sNumber | sBoolean | sString | sArray | sMap;
 sInvocation     : sPropertyAccess | sFunctionAccess | sFunctionCall;
 sOverloading    : (sValue | sProperty) (PLUS (sValue | sProperty))+;
+sControl        : sIf | sWhile | sFor | sForOf | sForIn | sEndlessLoop;
+sStatement       : sMutableVar | sImmutableVar | sAssignment;
 
 // operator definitions
 // ********************
@@ -81,8 +91,8 @@ sPower          : POWER;
 sAnd            : AND;
 sOr             : OR;
 sNot            : NOT;
-sEquals         : EQ || STRICT_EQ;
-sNotEquals      : NEQ || STRICT_NEQ;
+sEquals         : EQ | STRICT_EQ;
+sNotEquals      : NEQ | STRICT_NEQ;
 sLowerThan      : LT;
 sLowerEquals    : LE;
 sGreaterThan    : GT;
@@ -102,7 +112,7 @@ sBooleanTerm       : ROUND_LEFT ((sBooleanOperand (sBooleanOperator sBooleanOper
 
 // number expression
 // *****************
-sNumberOperand     : sNumber;
+sNumberOperand     : sNumber | sProperty;
 sNumberOperator    : sEquals | sNotEquals | sLowerThan | sLowerEquals | sGreaterThan | sGreaterEquals;
 sNumberExpression  : (sNumberOperand | sNumberTerm) (sNumberOperator (sNumberOperand | sNumberTerm))+;
 sNumberTerm        : ROUND_LEFT ((sNumberOperand (sNumberOperator sNumberOperand)+) | sNumberTerm) ROUND_RIGHT;
@@ -136,7 +146,7 @@ sPropertyAccess    : sPropertyAware ((DOT sProperty) | (BRACKET_LEFT sNumber BRA
 sFunctionAware     : sString | sProperty | sArray;
 sFunctionAccess    : sFunctionAware (DOT sFunctionCall)+;
 
-sBody              : (sIf)* sReturn?;
+sBody              : (sIf | sAssignment | sInvocation)* sReturn?;
 sReturn            : RETURN (sValue | sOverloading | sExpression | sProperty | sInvocation);
 
 // if parser rules
@@ -152,3 +162,20 @@ sNumber  : DIGITS;
 sBoolean : TRUE | FALSE;
 sArray   : BRACKET_LEFT (sValue (COMMA sValue)*)? BRACKET_RIGHT;
 sMap     : CURLY_LEFT (sString COLON sValue (COMMA sString COLON sValue)*)? CURLY_RIGHT;
+
+// loop definition
+// ***************
+sEndlessLoop : ((WHILE ROUND_LEFT TRUE ROUND_RIGHT) | (FOR ROUND_LEFT SEMICOLON SEMICOLON ROUND_RIGHT)) sLoopTail;
+sWhile       : WHILE ROUND_LEFT sExpression ROUND_RIGHT sLoopTail;
+sFor         : FOR ROUND_LEFT sStatement SEMICOLON sNumberExpression SEMICOLON (sIncrement | sDecrement) ROUND_RIGHT sLoopTail;
+sForOf       : FOR ROUND_LEFT (VAR | LET) IDENTIFIER OF (sArray | sString) ROUND_RIGHT sLoopTail;
+sForIn       : FOR ROUND_LEFT (VAR | LET) IDENTIFIER IN sArray ROUND_RIGHT sLoopTail;
+sLoopTail    : CURLY_LEFT sBody CURLY_RIGHT;
+
+// variable definition
+// *******************
+sMutableVar   : (VAR | LET) IDENTIFIER EQUAL (sExpression | sValue | sInvocation);
+sImmutableVar : CONST IDENTIFIER EQUAL (sExpression | sValue | sInvocation);
+sAssignment   : IDENTIFIER EQUAL (sOverloading | sExpression | sValue | sInvocation | sProperty);
+sIncrement    : sProperty PLUS PLUS;
+sDecrement    : sProperty MINUS MINUS;

@@ -9,6 +9,7 @@ from scriptable.api import AST
 from scriptable.api.AST import ASTBinding
 from scriptable.api.accessor import Accessor
 from scriptable.api.exit_value import ExitValue
+from scriptable.api.sandbox_settings import SandboxSettings
 from scriptable.ast.number import Number
 from scriptable.ast.value.array import Array
 from scriptable.ast.value.map import Map
@@ -60,7 +61,7 @@ class TypescriptEngine:
         return unwrap(result)
 
     def _create_binding(self):
-        binding = ASTBinding()
+        binding = ASTBinding(sandbox=SandboxSettings())
         binding.add_property("console", Console())
         return binding
 

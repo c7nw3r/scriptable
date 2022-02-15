@@ -14,5 +14,8 @@ class MapAccessor(Accessor[Dict[str, Any]]):
     def __call__(self, name: str, args: List[Any]):
         raise ValueError(f"{name} function value access is not supported")
 
+    def __len__(self):
+        return len(self.value)
+
     def __repr__(self):
         return ", ".join(map(str, self.value))

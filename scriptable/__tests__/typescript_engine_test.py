@@ -145,3 +145,62 @@ fibonacci(8)
 
     def test_lambda(self):
         self.assertEqual(TypescriptEngine.parse("[4, 3, 2, 1].sort((a, b) => a - b)").execute(), [1, 2, 3, 4])
+
+    def test_mutable_variable(self):
+        engine = TypescriptEngine.parse("""
+let test = 5
+test
+        """)
+        self.assertEqual(engine.execute(), 5)
+
+    def test_immutable_variable(self):
+        engine = TypescriptEngine.parse("""
+const test = 5
+test
+        """)
+        self.assertEqual(engine.execute(), 5)
+
+    def test_while(self):
+        engine = TypescriptEngine.parse("""
+let n = 5
+while (n > 0) {
+    n = n - 1
+}
+n
+        """)
+        self.assertEqual(engine.execute(), 0)
+
+    def test_for(self):
+        engine = TypescriptEngine.parse("""
+let a = 5
+for (let n = 5; n > 0; n--) {
+    a = a - 1
+}
+a
+        """)
+        self.assertEqual(engine.execute(), 0)
+
+    def test_for_of(self):
+        engine = TypescriptEngine.parse("""
+let a = ""
+for (let char of "test") {
+    a = a + char
+}
+a
+        """)
+        self.assertEqual(engine.execute(), "test")
+
+    def test_for_in(self):
+        engine = TypescriptEngine.parse("""
+let a = []
+for (let i in [1, 2, 3, 4]) {
+    a.push(i)
+}
+a
+        """)
+        self.assertEqual(engine.execute(), [0, 1, 2, 3])
+
+    def test_loop_guard(self):
+        with self.assertRaises(AssertionError) as error:
+            TypescriptEngine.parse("for (let i = 12; i > 0; i--) {}").execute()
+        self.assertEqual(error.exception.args[0], "max loops exceeded")

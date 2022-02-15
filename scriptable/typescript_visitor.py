@@ -3,6 +3,10 @@ from scriptable.antlr.TypescriptVisitor import TypescriptVisitor
 from scriptable.api.sandbox_settings import SandboxSettings
 from scriptable.ast.Return import Return
 from scriptable.ast.boolean import Boolean
+from scriptable.ast.control.For import For
+from scriptable.ast.control.ForIn import ForIn
+from scriptable.ast.control.ForOf import ForOf
+from scriptable.ast.control.While import While
 from scriptable.ast.control.ifelse import If
 from scriptable.ast.expression.arithmetic_expression import ArithmeticExpression
 from scriptable.ast.expression.arithmetic_term import ArithmeticTerm
@@ -26,6 +30,11 @@ from scriptable.ast.type import Type
 from scriptable.ast.value.array import Array
 from scriptable.ast.value.map import Map
 from scriptable.ast.value.string import String
+from scriptable.ast.variable.assignment import Assignment
+from scriptable.ast.variable.decrement import Decrement
+from scriptable.ast.variable.immutable_var import ImmutableVar
+from scriptable.ast.variable.increment import Increment
+from scriptable.ast.variable.mutable_var import MutableVar
 
 
 class TypescriptVisitorImpl(TypescriptVisitor):
@@ -153,6 +162,36 @@ class TypescriptVisitorImpl(TypescriptVisitor):
 
     def visitSOverloading(self, ctx: TypescriptParser.SOverloadingContext):
         return Overloading.parse(super().visitSOverloading(ctx))
+
+    def visitSWhile(self, ctx: TypescriptParser.SWhileContext):
+        return While.parse(super().visitSWhile(ctx))
+
+    def visitSMutableVar(self, ctx: TypescriptParser.SMutableVarContext):
+        return MutableVar.parse(ctx.getChild(1).getText(), super().visitSMutableVar(ctx)[0])
+
+    def visitSImmutableVar(self, ctx: TypescriptParser.SImmutableVarContext):
+        return ImmutableVar.parse(ctx.getChild(1).getText(), super().visitSImmutableVar(ctx)[0])
+
+    def visitSAssignment(self, ctx: TypescriptParser.SAssignmentContext):
+        return Assignment.parse(ctx.getChild(0).getText(), super().visitSAssignment(ctx)[0])
+
+    def visitSEndlessLoop(self, ctx: TypescriptParser.SEndlessLoopContext):
+        raise ValueError("endless loops are not supported")
+
+    def visitSFor(self, ctx: TypescriptParser.SForContext):
+        return For.parse(super().visitSFor(ctx))
+
+    def visitSForOf(self, ctx: TypescriptParser.SForOfContext):
+        return ForOf.parse(ctx.getChild(3).getText(), super().visitSForOf(ctx))
+
+    def visitSForIn(self, ctx: TypescriptParser.SForInContext):
+        return ForIn.parse(ctx.getChild(3).getText(), super().visitSForIn(ctx))
+
+    def visitSIncrement(self, ctx: TypescriptParser.SIncrementContext):
+        return Increment.parse(ctx.getChild(0).getText())
+
+    def visitSDecrement(self, ctx: TypescriptParser.SDecrementContext):
+        return Decrement.parse(ctx.getChild(0).getText())
 
     def aggregateResult(self, aggregate, next_result):
         array = []

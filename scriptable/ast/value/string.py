@@ -2,7 +2,7 @@ from scriptable.antlr.TypescriptParser import TypescriptParser
 from scriptable.api import AST
 from scriptable.api.AST import ASTBinding
 from scriptable.api.accessor import Accessor
-from scriptable.runtime.accessor.typescript_string_accessor import TypescriptStringAccessor
+from scriptable.runtime.accessor.typescript.string_accessor import TypescriptStringAccessor
 
 
 class String(AST[Accessor[str]]):
