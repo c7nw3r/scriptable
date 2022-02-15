@@ -13,6 +13,7 @@ from scriptable.ast.control.ifelse import If
 from scriptable.ast.control.loop_tail import LoopTail
 from scriptable.ast.expression.arithmetic_expression import ArithmeticExpression
 from scriptable.ast.expression.arithmetic_term import ArithmeticTerm
+from scriptable.ast.expression.concat_expression import ConcatExpression
 from scriptable.ast.expression.logic_expression import LogicExpression
 from scriptable.ast.expression.logic_term import LogicTerm
 from scriptable.ast.expression.operator import And, Or, Not, Plus, Minus, Mul, Div, Power, Equals, NotEquals, LowerThan, \
@@ -26,7 +27,6 @@ from scriptable.ast.function.function_head import FunctionHead
 from scriptable.ast.function.function_lambda import FunctionLambda
 from scriptable.ast.function.function_tail import FunctionTail
 from scriptable.ast.number import Number
-from scriptable.ast.overloading import Overloading
 from scriptable.ast.property.property import Property
 from scriptable.ast.property.property_access import PropertyAccess
 from scriptable.ast.type import Type
@@ -78,6 +78,9 @@ class TypescriptVisitorImpl(TypescriptVisitor):
 
     def visitSStringExpression(self, ctx: TypescriptParser.SStringExpressionContext):
         return LogicExpression.parse(super().visitSStringExpression(ctx))
+
+    def visitSConcatExpression(self, ctx: TypescriptParser.SConcatExpressionContext):
+        return ConcatExpression.parse(super().visitSConcatExpression(ctx))
 
     def visitSStringTerm(self, ctx: TypescriptParser.SStringTermContext):
         return LogicTerm.parse(super().visitSStringTerm(ctx))
@@ -162,9 +165,6 @@ class TypescriptVisitorImpl(TypescriptVisitor):
 
     def visitSFunctionLambda(self, ctx: TypescriptParser.SFunctionLambdaContext):
         return FunctionLambda.parse(super().visitSFunctionLambda(ctx))
-
-    def visitSOverloading(self, ctx: TypescriptParser.SOverloadingContext):
-        return Overloading.parse(super().visitSOverloading(ctx))
 
     def visitSWhile(self, ctx: TypescriptParser.SWhileContext):
         return While.parse(super().visitSWhile(ctx))

@@ -72,15 +72,13 @@ WHITESPACE   : ' '              -> skip;
 /*
  * Parser Rules
  */
-sAll            : (sInvocation | sProperty | sExpression | sTerm | sValue | sOverloading | sControl | sReturn | sFunction | sStatement)* EOF;
+sAll            : (sInvocation | sProperty | sExpression | sTerm | sValue | sControl | sReturn | sFunction | sStatement)* EOF;
 sOperand        : sNumber | sProperty | sInvocation;
 sOperator       : sPlus | sMinus | sMul | sDiv | sPower;
-sExpression     : sArithmeticExpression | sBooleanExpression | sNumberExpression | sStringExpression;
+sExpression     : sConcatExpression | sArithmeticExpression | sBooleanExpression | sNumberExpression | sStringExpression;
 sTerm           : sArithmeticTerm | sBooleanTerm;
 sValue          : sNumber | sBoolean | sString | sArray | sMap;
 sInvocation     : sPropertyAccess | sFunctionAccess | sFunctionCall;
-// FIXME: convert to an expression
-sOverloading    : (sString | sProperty) (PLUS (sString | sProperty))+;
 sControl        : sIf | sWhile | sFor | sForOf | sForIn | sEndlessLoop | sContinue | sBreak;
 sStatement       : sMutableVar | sImmutableVar | sAssignment;
 
@@ -126,14 +124,20 @@ sStringOperand     : sString;
 sStringOperator    : sEquals | sNotEquals;
 sStringExpression  : (sStringOperand | sStringTerm) (sStringOperator (sStringOperand | sStringTerm))+;
 sStringTerm        : ROUND_LEFT ((sStringOperand (sStringOperator sStringOperand)+) | sStringTerm) ROUND_RIGHT;
-sStringOverloading : sString (PLUS sString)+;
+
+// concat expression
+sConcatOperand     : sString;
+sConcatExpression  : sConcatBoth | sConcatLeft | sConcatRight;
+sConcatLeft        : sString sPlus (sValue | sProperty);
+sConcatRight       : (sValue | sProperty) sPlus sString;
+sConcatBoth        : sString (sPlus sString)+;
 
 sType              : STRING | NUMBER | BOOLEAN;
 
 // function definition
 // *******************
 sFunction          : sFunctionHead sFunctionTail;
-sFunctionArg       : sValue | sOverloading | sExpression | sFunctionLambda;
+sFunctionArg       : sValue | sExpression | sFunctionLambda;
 sFunctionArgs      : sFunctionArg (COMMA sFunctionArg)*;
 sFunctionArgDef    : sProperty (COLON sType)?;
 sFunctionArgDefs   : sFunctionArgDef (COMMA sFunctionArgDef)*;
@@ -151,7 +155,7 @@ sFunctionAccess    : sFunctionAware (DOT sFunctionCall)+;
 
 sLine              : sControl | sAssignment | sInvocation | sReturn;
 sBody              : (sControl | sAssignment | sInvocation)* sReturn?;
-sReturn            : RETURN (sValue | sOverloading | sExpression | sProperty | sInvocation);
+sReturn            : RETURN (sValue | sExpression | sProperty | sInvocation);
 
 // if parser rules
 // ***************
@@ -182,6 +186,6 @@ sBreak       : BREAK;
 // *******************
 sMutableVar   : (VAR | LET) IDENTIFIER EQUAL (sExpression | sValue | sInvocation);
 sImmutableVar : CONST IDENTIFIER EQUAL (sExpression | sValue | sInvocation);
-sAssignment   : IDENTIFIER EQUAL (sOverloading | sExpression | sValue | sInvocation | sProperty);
+sAssignment   : IDENTIFIER EQUAL (sExpression | sValue | sInvocation | sProperty);
 sIncrement    : sProperty PLUS PLUS;
 sDecrement    : sProperty MINUS MINUS;

@@ -2,6 +2,7 @@ from typing import Union, List
 
 from scriptable.api import AST
 from scriptable.api.AST import ASTBinding
+from scriptable.api.accessor import Accessor
 
 DataType = Union[int, float]
 
@@ -19,6 +20,11 @@ class ArithmeticExpression(AST[DataType]):
             while isinstance(result, AST):
                 result = result.execute(deepcopy(binding))
             return result
+
+        def unwrap(obj):
+            if isinstance(obj, Accessor):
+                return obj.value
+            return obj
 
         operand_stack = list(map(lambda ast: execute_branch(ast), self.operand_stack))
         operator_stack = list(map(lambda ast: execute_branch(ast), self.operator_stack))
@@ -47,8 +53,8 @@ class ArithmeticExpression(AST[DataType]):
         # search for plus and minus operator
         for i in range(len(operator_stack) - 1, -1, -1):
             if operator_stack[i] == "+":
-                value2 = operand_stack.pop(i + 1)
-                value1 = operand_stack.pop(i)
+                value2 = unwrap(operand_stack.pop(i + 1))
+                value1 = unwrap(operand_stack.pop(i))
                 operand_stack.insert(i, value1 + value2)
                 operator_stack.pop(i)
             elif operator_stack[i] == "-":
