@@ -2,6 +2,7 @@ from typing import List
 
 from scriptable.api import AST
 from scriptable.api.AST import ASTBinding
+from scriptable.api.exit_value import GoTo
 
 
 class ForIn(AST[None]):
@@ -20,7 +21,12 @@ class ForIn(AST[None]):
 
         for i, _ in enumerate(value):
             context.add_property(self.name, i)
-            self.tail.execute(context)
+            result = self.tail.execute(context)
+
+            if isinstance(result, GoTo) and result.value == "break":
+                break
+            if isinstance(result, GoTo) and result.value == "continue":
+                continue
 
         return None
 

@@ -204,3 +204,25 @@ a
         with self.assertRaises(AssertionError) as error:
             TypescriptEngine.parse("for (let i = 12; i > 0; i--) {}").execute()
         self.assertEqual(error.exception.args[0], "max loops exceeded")
+
+    def test_break(self):
+        engine = TypescriptEngine.parse("""
+let a = 0
+for (let n = 5; n > 0; n--) {
+    if (n == 2) break
+    a = a + 1
+}
+a
+            """)
+        self.assertEqual(engine.execute(), 3)
+
+    def test_continue(self):
+        engine = TypescriptEngine.parse("""
+let a = 0
+for (let n = 5; n > 0; n--) {
+    if (n == 2) continue
+    a = a + 1
+}
+a
+            """)
+        self.assertEqual(engine.execute(), 4)

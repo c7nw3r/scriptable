@@ -2,6 +2,7 @@ from typing import List
 
 from scriptable.api import AST
 from scriptable.api.AST import ASTBinding
+from scriptable.api.exit_value import GoTo
 
 
 class ForOf(AST[None]):
@@ -21,11 +22,21 @@ class ForOf(AST[None]):
         if isinstance(value, str):
             for char in value:
                 context.add_property(self.name, char)
-                self.tail.execute(context)
+                result = self.tail.execute(context)
+
+                if isinstance(result, GoTo) and result.value == "break":
+                    break
+                if isinstance(result, GoTo) and result.value == "continue":
+                    continue
         else:
             for item in value:
                 context.add_property(self.name, item)
-                self.tail.execute(context)
+                result = self.tail.execute(context)
+
+                if isinstance(result, GoTo) and result.value == "break":
+                    break
+                if isinstance(result, GoTo) and result.value == "continue":
+                    continue
 
         return None
 

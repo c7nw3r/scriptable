@@ -48,6 +48,8 @@ CONST         : 'const';
 VAR           : 'var';
 LET           : 'let';
 EQUAL         : '=';
+BREAK         : 'break';
+CONTINUE      : 'continue';
 
 
 IDENTIFIER : Letter LetterOrDigit*;
@@ -77,8 +79,9 @@ sExpression     : sArithmeticExpression | sBooleanExpression | sNumberExpression
 sTerm           : sArithmeticTerm | sBooleanTerm;
 sValue          : sNumber | sBoolean | sString | sArray | sMap;
 sInvocation     : sPropertyAccess | sFunctionAccess | sFunctionCall;
-sOverloading    : (sValue | sProperty) (PLUS (sValue | sProperty))+;
-sControl        : sIf | sWhile | sFor | sForOf | sForIn | sEndlessLoop;
+// FIXME: convert to an expression
+sOverloading    : (sString | sProperty) (PLUS (sString | sProperty))+;
+sControl        : sIf | sWhile | sFor | sForOf | sForIn | sEndlessLoop | sContinue | sBreak;
 sStatement       : sMutableVar | sImmutableVar | sAssignment;
 
 // operator definitions
@@ -146,12 +149,13 @@ sPropertyAccess    : sPropertyAware ((DOT sProperty) | (BRACKET_LEFT sNumber BRA
 sFunctionAware     : sString | sProperty | sArray;
 sFunctionAccess    : sFunctionAware (DOT sFunctionCall)+;
 
-sBody              : (sIf | sAssignment | sInvocation)* sReturn?;
+sLine              : sControl | sAssignment | sInvocation | sReturn;
+sBody              : (sControl | sAssignment | sInvocation)* sReturn?;
 sReturn            : RETURN (sValue | sOverloading | sExpression | sProperty | sInvocation);
 
 // if parser rules
 // ***************
-sIf      : IF ROUND_LEFT sExpression ROUND_RIGHT (sReturn | (CURLY_LEFT sBody CURLY_RIGHT)) sElseIf* sElse?;
+sIf      : IF ROUND_LEFT sExpression ROUND_RIGHT (sLine | (CURLY_LEFT sBody CURLY_RIGHT)) sElseIf* sElse?;
 sElse    : ELSE (sReturn | (CURLY_LEFT sBody CURLY_RIGHT));
 sElseIf  : ELSE IF ROUND_LEFT sBooleanExpression ROUND_RIGHT (sReturn | (CURLY_LEFT sBody CURLY_RIGHT));
 
@@ -171,6 +175,8 @@ sFor         : FOR ROUND_LEFT sStatement SEMICOLON sNumberExpression SEMICOLON (
 sForOf       : FOR ROUND_LEFT (VAR | LET) IDENTIFIER OF (sArray | sString) ROUND_RIGHT sLoopTail;
 sForIn       : FOR ROUND_LEFT (VAR | LET) IDENTIFIER IN sArray ROUND_RIGHT sLoopTail;
 sLoopTail    : CURLY_LEFT sBody CURLY_RIGHT;
+sContinue    : CONTINUE;
+sBreak       : BREAK;
 
 // variable definition
 // *******************

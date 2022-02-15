@@ -3,11 +3,14 @@ from scriptable.antlr.TypescriptVisitor import TypescriptVisitor
 from scriptable.api.sandbox_settings import SandboxSettings
 from scriptable.ast.Return import Return
 from scriptable.ast.boolean import Boolean
+from scriptable.ast.control.Break import Break
+from scriptable.ast.control.Continue import Continue
 from scriptable.ast.control.For import For
 from scriptable.ast.control.ForIn import ForIn
 from scriptable.ast.control.ForOf import ForOf
 from scriptable.ast.control.While import While
 from scriptable.ast.control.ifelse import If
+from scriptable.ast.control.loop_tail import LoopTail
 from scriptable.ast.expression.arithmetic_expression import ArithmeticExpression
 from scriptable.ast.expression.arithmetic_term import ArithmeticTerm
 from scriptable.ast.expression.logic_expression import LogicExpression
@@ -192,6 +195,15 @@ class TypescriptVisitorImpl(TypescriptVisitor):
 
     def visitSDecrement(self, ctx: TypescriptParser.SDecrementContext):
         return Decrement.parse(ctx.getChild(0).getText())
+
+    def visitSLoopTail(self, ctx: TypescriptParser.SLoopTailContext):
+        return LoopTail.parse(super().visitSLoopTail(ctx))
+
+    def visitSContinue(self, ctx: TypescriptParser.SContinueContext):
+        return Continue()
+
+    def visitSBreak(self, ctx: TypescriptParser.SBreakContext):
+        return Break()
 
     def aggregateResult(self, aggregate, next_result):
         array = []

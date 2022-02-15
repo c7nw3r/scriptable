@@ -2,6 +2,7 @@ from typing import List
 
 from scriptable.api import AST
 from scriptable.api.AST import ASTBinding, EmptyAST
+from scriptable.api.exit_value import GoTo
 from scriptable.ast.variable.assignment import Assignment
 
 
@@ -23,8 +24,13 @@ class For(AST[None]):
 
         counter = 0
         while self.expression.execute(context):
-            self.tail.execute(context)
+            result = self.tail.execute(context)
             self.statement.execute(context)
+
+            if isinstance(result, GoTo) and result.value == "break":
+                break
+            if isinstance(result, GoTo) and result.value == "continue":
+                continue
 
             assert counter <= context.sandbox.max_loops, "max loops exceeded"
             counter = counter + 1
