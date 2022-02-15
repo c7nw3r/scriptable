@@ -11,7 +11,8 @@ class FunctionArgDef(AST[Any]):
 
     def execute(self, binding: ASTBinding) -> Tuple[str, List[Any]]:
         arg_name = self.arg_name.execute(binding)
-        arg_type = self.arg_type.execute(binding)
+        if self.arg_type is not None:
+            arg_type = self.arg_type.execute(binding)
         return arg_name
 
     @staticmethod
@@ -19,4 +20,4 @@ class FunctionArgDef(AST[Any]):
         return FunctionArgDef(branch[0], None if len(branch) == 1 else branch[1])
 
     def __repr__(self):
-        return self.arg_name + "(" + str(self.arg_type) + ")"
+        return str(self.arg_name) + "(" + str(self.arg_type) + ")"

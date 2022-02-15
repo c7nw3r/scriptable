@@ -28,7 +28,7 @@ class FunctionCall(AST[Tuple[str, List[Any]]]):
             # recursion guard
             # ***************
             signature = self.name + "(" + ", ".join(map(str, args)) + ")"
-            assert _binding.add_signature(signature) > 1, "recursion loop determined"
+            assert _binding.add_signature(signature) < 2, "recursion loop determined"
 
             function = _binding.functions[self.name]
             return function(args, _binding)

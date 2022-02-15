@@ -38,6 +38,7 @@ FUNCTION      : 'function';
 STRING        : 'string';
 NUMBER        : 'number';
 BOOLEAN       : 'boolean';
+ARROW         : '=>';
 
 
 IDENTIFIER : Letter LetterOrDigit*;
@@ -61,7 +62,7 @@ SEMICOLON    : ';'              -> skip;
 /*
  * Parser Rules
  */
-sAll            : (sExpression | sTerm | sInvocation | sValue | sIf | sReturn | sFunction | sOverloading)* EOF;
+sAll            : (sInvocation | sExpression | sTerm | sValue | sIf | sReturn | sFunction | sOverloading)* EOF;
 sOperand        : sNumber | sProperty | sInvocation;
 sOperator       : sPlus | sMinus | sMul | sDiv | sPower;
 sExpression     : sArithmeticExpression | sBooleanExpression | sNumberExpression | sStringExpression;
@@ -119,23 +120,24 @@ sType              : STRING | NUMBER | BOOLEAN;
 // function definition
 // *******************
 sFunction          : sFunctionHead sFunctionTail;
-sFunctionArg       : sValue | sOverloading | sExpression;
+sFunctionArg       : sValue | sOverloading | sExpression | sFunctionLambda;
 sFunctionArgs      : sFunctionArg (COMMA sFunctionArg)*;
 sFunctionArgDef    : sProperty (COLON sType)?;
 sFunctionArgDefs   : sFunctionArgDef (COMMA sFunctionArgDef)*;
 sFunctionHead      : FUNCTION IDENTIFIER ROUND_LEFT sFunctionArgDefs? ROUND_RIGHT (COLON sType)?;
 sFunctionTail      : CURLY_LEFT sBody CURLY_RIGHT;
 sFunctionCall      : IDENTIFIER ROUND_LEFT sFunctionArgs? ROUND_RIGHT;
+sFunctionLambda    : ROUND_LEFT sFunctionArgDefs ROUND_RIGHT ARROW (sExpression | sFunctionTail);
 
 sProperty          : IDENTIFIER;
 sPropertyAware     : sString | sProperty;
 sPropertyAccess    : sPropertyAware ((DOT sProperty) | (BRACKET_LEFT sNumber BRACKET_RIGHT))+;
 
-sFunctionAware     : sString | sProperty;
+sFunctionAware     : sString | sProperty | sArray;
 sFunctionAccess    : sFunctionAware (DOT sFunctionCall)+;
 
 sBody              : (sIf)* sReturn?;
-sReturn            : RETURN (sValue | sExpression | sOverloading | sProperty | sInvocation);
+sReturn            : RETURN (sValue | sOverloading | sExpression | sProperty | sInvocation);
 
 // if parser rules
 // ***************
@@ -145,8 +147,8 @@ sElseIf  : ELSE IF ROUND_LEFT sBooleanExpression ROUND_RIGHT (sReturn | (CURLY_L
 
 // value definitions
 // *****************
-sString         : CHARS;
-sNumber         : DIGITS;
-sBoolean        : TRUE | FALSE;
-sArray          : BRACKET_LEFT (sValue (COMMA sValue)*)? BRACKET_RIGHT;
-sMap            : CURLY_LEFT (sString COLON sValue (COMMA sString COLON sValue)*)? CURLY_RIGHT;
+sString  : CHARS;
+sNumber  : DIGITS;
+sBoolean : TRUE | FALSE;
+sArray   : BRACKET_LEFT (sValue (COMMA sValue)*)? BRACKET_RIGHT;
+sMap     : CURLY_LEFT (sString COLON sValue (COMMA sString COLON sValue)*)? CURLY_RIGHT;

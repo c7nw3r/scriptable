@@ -16,6 +16,7 @@ from scriptable.ast.function.function_arg import FunctionArg
 from scriptable.ast.function.function_arg_def import FunctionArgDef
 from scriptable.ast.function.function_call import FunctionCall
 from scriptable.ast.function.function_head import FunctionHead
+from scriptable.ast.function.function_lambda import FunctionLambda
 from scriptable.ast.function.function_tail import FunctionTail
 from scriptable.ast.number import Number
 from scriptable.ast.overloading import Overloading
@@ -146,6 +147,9 @@ class TypescriptVisitorImpl(TypescriptVisitor):
 
     def visitSFunction(self, ctx: TypescriptParser.SFunctionContext):
         return Function.parse(super().visitSFunction(ctx))
+
+    def visitSFunctionLambda(self, ctx: TypescriptParser.SFunctionLambdaContext):
+        return FunctionLambda.parse(super().visitSFunctionLambda(ctx))
 
     def visitSOverloading(self, ctx: TypescriptParser.SOverloadingContext):
         return Overloading.parse(super().visitSOverloading(ctx))

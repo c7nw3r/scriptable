@@ -14,8 +14,14 @@ class ArithmeticExpression(AST[DataType]):
     def execute(self, binding: ASTBinding) -> DataType:
         from copy import deepcopy
 
-        operand_stack = list(map(lambda ast: ast.execute(deepcopy(binding)), self.operand_stack))
-        operator_stack = list(map(lambda ast: ast.execute(deepcopy(binding)), self.operator_stack))
+        def execute_branch(ast: AST):
+            result = ast
+            while isinstance(result, AST):
+                result = result.execute(deepcopy(binding))
+            return result
+
+        operand_stack = list(map(lambda ast: execute_branch(ast), self.operand_stack))
+        operator_stack = list(map(lambda ast: execute_branch(ast), self.operator_stack))
 
         # search for exponent operator
         for i in range(len(operator_stack) - 1, -1, -1):
