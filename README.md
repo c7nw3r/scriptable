@@ -1,4 +1,4 @@
-Scriptable is a sand-boxed scripting engine which can be used in an embedded environment.
+Scriptable is a sand-boxed scripting engine which can be used safely in an embedded environment.
 
 Its canonical abstract syntax tree model is designed to support various syntax forms.
 At the moment only the typescript syntax is supported.
