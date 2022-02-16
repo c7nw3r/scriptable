@@ -9,7 +9,7 @@ setup(
     author='x-and-y',
     author_email='christian.weber@leftshift.one',
     url='https://github.com/c7nw3r/scriptable',
-    download_url='https://github.com/c7nw3r/scriptable/archive/v_0_1_0.tar.gz',
+    download_url='https://github.com/c7nw3r/scriptable/archive/v0.1.0.tar.gz',
     keywords=['scripting-engine'],
     install_requires=[
         'antlr4-python3-runtime'
