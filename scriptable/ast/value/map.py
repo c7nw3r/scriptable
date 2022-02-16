@@ -1,8 +1,8 @@
 from typing import Any, List, Dict
 
 from scriptable.api import AST
-from scriptable.api.AST import ASTBinding
 from scriptable.api.accessor import Accessor
+from scriptable.api.ast_binding import ASTBinding
 from scriptable.runtime.accessor.typescript.map_accessor import MapAccessor
 
 

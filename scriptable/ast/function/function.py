@@ -1,7 +1,7 @@
 from typing import List
 
 from scriptable.api import AST
-from scriptable.api.AST import ASTBinding
+from scriptable.api.ast_binding import ASTBinding
 from scriptable.ast.function.function_head import FunctionHead
 from scriptable.ast.function.function_tail import FunctionTail
 

@@ -1,6 +1,6 @@
 from scriptable.antlr.TypescriptParser import TypescriptParser
 from scriptable.antlr.TypescriptVisitor import TypescriptVisitor
-from scriptable.api.sandbox_settings import SandboxSettings
+from scriptable.api.ast_restrictions import ASTRestrictions
 from scriptable.ast.Return import Return
 from scriptable.ast.boolean import Boolean
 from scriptable.ast.control.Break import Break
@@ -16,8 +16,8 @@ from scriptable.ast.expression.arithmetic_term import ArithmeticTerm
 from scriptable.ast.expression.concat_expression import ConcatExpression
 from scriptable.ast.expression.logic_expression import LogicExpression
 from scriptable.ast.expression.logic_term import LogicTerm
-from scriptable.ast.expression.operator import And, Or, Not, Plus, Minus, Mul, Div, Power, Equals, NotEquals, LowerThan, \
-    LowerEquals, GreaterThan, GreaterEquals
+from scriptable.ast.expression.operator import And, Or, Not, Plus, Minus, Mul, Div, Power, Equals, NotEquals, LowerThan
+from scriptable.ast.expression.operator import LowerEquals, GreaterThan, GreaterEquals
 from scriptable.ast.function.function import Function
 from scriptable.ast.function.function_access import FunctionAccess
 from scriptable.ast.function.function_arg import FunctionArg
@@ -41,10 +41,12 @@ from scriptable.ast.variable.mutable_var import MutableVar
 
 
 class TypescriptVisitorImpl(TypescriptVisitor):
-    settings: SandboxSettings = SandboxSettings()
+
+    def __init__(self, restrictions: ASTRestrictions):
+        self.restrictions = restrictions
 
     def visitSNumber(self, ctx: TypescriptParser.SNumberContext):
-        return Number.parse(ctx, self.settings)
+        return Number.parse(ctx, self.restrictions)
 
     def visitSBoolean(self, ctx: TypescriptParser.SBooleanContext):
         return Boolean.parse(ctx)

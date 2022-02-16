@@ -1,8 +1,7 @@
-from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
-from typing import TypeVar, Generic, Any, Dict, Callable, List
+from typing import Dict, Callable, List, Any
 
-from scriptable.api.sandbox_settings import SandboxSettings
+from scriptable.api.ast_restrictions import ASTRestrictions
 
 
 @dataclass
@@ -10,7 +9,7 @@ class ASTBinding:
     functions: Dict[str, Callable[[List[Any], 'ASTBinding'], Any]] = field(default_factory=lambda: {})
     properties: Dict[str, Any] = field(default_factory=lambda: {})
     signatures: Dict[str, int] = field(default_factory=lambda: {})
-    sandbox: SandboxSettings = SandboxSettings()
+    restrictions: ASTRestrictions = ASTRestrictions()
 
     def add_property(self, name: str, value: Any):
         self.properties[name] = value
@@ -31,31 +30,3 @@ class SourceAwareContext(ASTBinding):
         self.source = source
         self.functions = context.functions
         self.properties = context.properties
-
-
-T = TypeVar("T")
-
-
-class AST(ABC, Generic[T]):
-
-    @abstractmethod
-    def execute(self, context: ASTBinding) -> T:
-        pass
-
-
-@dataclass
-class FunctionSpec:
-    params: [str]
-    result: str
-
-
-class BindingAware:
-
-    def bind(self, binding: ASTBinding):
-        pass
-
-
-class EmptyAST(AST[None]):
-
-    def execute(self, context: ASTBinding) -> None:
-        return None

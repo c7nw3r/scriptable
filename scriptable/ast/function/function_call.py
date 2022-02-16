@@ -1,8 +1,8 @@
 from typing import Any, List, Tuple
 
 from scriptable.api import AST
-from scriptable.api.AST import ASTBinding, SourceAwareContext
 from scriptable.api.accessor import Accessor
+from scriptable.api.ast_binding import ASTBinding, SourceAwareContext
 
 
 class FunctionCall(AST[Tuple[str, List[Any]]]):

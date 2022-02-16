@@ -1,7 +1,7 @@
 from typing import List
 
 from scriptable.api import AST
-from scriptable.api.AST import ASTBinding
+from scriptable.api.ast_binding import ASTBinding
 from scriptable.api.exit_value import GoTo
 
 
@@ -17,7 +17,7 @@ class ForOf(AST[None]):
             raise ValueError(f"property {self.name} is already defined")
 
         value = self.value.execute(context)
-        assert len(value) <= context.sandbox.max_loops, "max loops exceeded"
+        assert len(value) <= context.restrictions.max_loops, "max loops exceeded"
 
         if isinstance(value, str):
             for char in value:

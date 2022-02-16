@@ -143,18 +143,18 @@ sFunctionArgDef    : sProperty (COLON sType)?;
 sFunctionArgDefs   : sFunctionArgDef (COMMA sFunctionArgDef)*;
 sFunctionHead      : FUNCTION IDENTIFIER ROUND_LEFT sFunctionArgDefs? ROUND_RIGHT (COLON sType)?;
 sFunctionTail      : CURLY_LEFT sBody CURLY_RIGHT;
-sFunctionCall      : IDENTIFIER ROUND_LEFT sFunctionArgs? ROUND_RIGHT;
+sFunctionCall      : IDENTIFIER ROUND_LEFT sFunctionArgs? ROUND_RIGHT SEMICOLON?;
 sFunctionLambda    : ROUND_LEFT sFunctionArgDefs ROUND_RIGHT ARROW (sExpression | sFunctionTail);
 
 sProperty          : IDENTIFIER;
 sPropertyAware     : sString | sProperty;
-sPropertyAccess    : sPropertyAware ((DOT sProperty) | (BRACKET_LEFT sNumber BRACKET_RIGHT))+;
+sPropertyAccess    : sPropertyAware ((DOT sProperty) | (BRACKET_LEFT (sNumber | sString) BRACKET_RIGHT))+;
 
 sFunctionAware     : sString | sProperty | sArray;
 sFunctionAccess    : sFunctionAware (DOT sFunctionCall)+;
 
-sLine              : sControl | sAssignment | sInvocation | sReturn;
-sBody              : (sControl | sAssignment | sInvocation)* sReturn?;
+sLine              : (sControl | sAssignment | sInvocation | sReturn) SEMICOLON?;
+sBody              : (sControl | sAssignment | sInvocation)* sReturn? SEMICOLON?;
 sReturn            : RETURN (sValue | sExpression | sProperty | sInvocation);
 
 // if parser rules
@@ -184,8 +184,8 @@ sBreak       : BREAK;
 
 // variable definition
 // *******************
-sMutableVar   : (VAR | LET) IDENTIFIER EQUAL (sExpression | sValue | sInvocation);
-sImmutableVar : CONST IDENTIFIER EQUAL (sExpression | sValue | sInvocation);
-sAssignment   : IDENTIFIER EQUAL (sExpression | sValue | sInvocation | sProperty);
-sIncrement    : sProperty PLUS PLUS;
-sDecrement    : sProperty MINUS MINUS;
+sMutableVar   : (VAR | LET) IDENTIFIER EQUAL (sExpression | sValue | sInvocation) SEMICOLON?;
+sImmutableVar : CONST IDENTIFIER EQUAL (sExpression | sValue | sInvocation) SEMICOLON?;
+sAssignment   : IDENTIFIER EQUAL (sExpression | sValue | sInvocation | sProperty) SEMICOLON?;
+sIncrement    : sProperty PLUS PLUS SEMICOLON?;
+sDecrement    : sProperty MINUS MINUS SEMICOLON?;

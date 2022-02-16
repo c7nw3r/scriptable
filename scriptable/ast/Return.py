@@ -1,7 +1,7 @@
 from typing import List
 
 from scriptable.api import AST
-from scriptable.api.AST import ASTBinding
+from scriptable.api.ast_binding import ASTBinding
 from scriptable.api.exit_value import ExitValue
 
 

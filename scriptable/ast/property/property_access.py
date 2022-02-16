@@ -1,7 +1,8 @@
 from typing import Any, List
 
 from scriptable.api import AST
-from scriptable.api.AST import ASTBinding
+from scriptable.api.accessor import Accessor
+from scriptable.api.ast_binding import ASTBinding
 
 
 class PropertyAccess(AST[Any]):
@@ -9,10 +10,15 @@ class PropertyAccess(AST[Any]):
         self.branch = branch
 
     def execute(self, binding: ASTBinding) -> bool:
+        def unwrap(obj):
+            if isinstance(obj, Accessor):
+                return obj.value
+            return obj
+
         branch = list(map(lambda ast: ast.execute(binding), self.branch))
         current = branch.pop(0)
         while len(branch) > 0:
-            current = current[branch.pop(0)]
+            current = current[unwrap(branch.pop(0))]
         return current
 
     @staticmethod

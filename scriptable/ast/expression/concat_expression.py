@@ -1,7 +1,7 @@
 from typing import Union, List
 
 from scriptable.api import AST
-from scriptable.api.AST import ASTBinding
+from scriptable.api.ast_binding import ASTBinding
 
 DataType = Union[int, float]
 

@@ -2,8 +2,8 @@ from typing import Union
 
 from scriptable.antlr.TypescriptParser import TypescriptParser
 from scriptable.api import AST
-from scriptable.api.AST import ASTBinding
-from scriptable.api.sandbox_settings import SandboxSettings
+from scriptable.api.ast_binding import ASTBinding
+from scriptable.api.ast_restrictions import ASTRestrictions
 
 DataType = Union[int, float]
 
@@ -16,7 +16,7 @@ class Number(AST[DataType]):
         return self.value
 
     @staticmethod
-    def parse(ctx: TypescriptParser.SNumberContext, settings: SandboxSettings) -> 'Number':
+    def parse(ctx: TypescriptParser.SNumberContext, settings: ASTRestrictions) -> 'Number':
         text = ctx.getText()
         assert len(text) <= settings.max_precision, f"max value precision exceeded"
 

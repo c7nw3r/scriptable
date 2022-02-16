@@ -1,5 +1,5 @@
 from scriptable.api import AST
-from scriptable.api.AST import ASTBinding
+from scriptable.api.ast_binding import ASTBinding
 
 
 class ImmutableVar(AST[None]):

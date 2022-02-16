@@ -1,8 +1,8 @@
 from typing import List, Any
 
 from scriptable.api import AST
-from scriptable.api.AST import ASTBinding
 from scriptable.api.accessor import Accessor
+from scriptable.api.ast_binding import ASTBinding
 
 
 class Overloading(AST[Any]):

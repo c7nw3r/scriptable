@@ -1,7 +1,8 @@
 from typing import List
 
 from scriptable.api import AST
-from scriptable.api.AST import ASTBinding, EmptyAST
+from scriptable.api.ast import EmptyAST
+from scriptable.api.ast_binding import ASTBinding
 from scriptable.api.exit_value import GoTo
 from scriptable.ast.variable.assignment import Assignment
 
@@ -20,7 +21,7 @@ class For(AST[None]):
 
         self.assignment.execute(context)
         value = context.properties[self.assignment.name]
-        assert value <= context.sandbox.max_loops, "max loops exceeded"
+        assert value <= context.restrictions.max_loops, "max loops exceeded"
 
         counter = 0
         while self.expression.execute(context):
@@ -32,7 +33,7 @@ class For(AST[None]):
             if isinstance(result, GoTo) and result.value == "continue":
                 continue
 
-            assert counter <= context.sandbox.max_loops, "max loops exceeded"
+            assert counter <= context.restrictions.max_loops, "max loops exceeded"
             counter = counter + 1
 
         return None

@@ -1,7 +1,7 @@
 from typing import Any, List
 
 from scriptable.api import AST
-from scriptable.api.AST import ASTBinding, SourceAwareContext
+from scriptable.api.ast_binding import ASTBinding, SourceAwareContext
 
 
 class FunctionAccess(AST[Any]):

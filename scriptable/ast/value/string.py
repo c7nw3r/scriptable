@@ -1,7 +1,7 @@
 from scriptable.antlr.TypescriptParser import TypescriptParser
 from scriptable.api import AST
-from scriptable.api.AST import ASTBinding
 from scriptable.api.accessor import Accessor
+from scriptable.api.ast_binding import ASTBinding
 from scriptable.runtime.accessor.typescript.string_accessor import TypescriptStringAccessor
 
 

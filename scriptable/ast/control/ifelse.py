@@ -1,7 +1,7 @@
 from typing import Any, List, Optional
 
 from scriptable.api import AST
-from scriptable.api.AST import ASTBinding
+from scriptable.api.ast_binding import ASTBinding
 
 
 class If(AST[Optional[Any]]):

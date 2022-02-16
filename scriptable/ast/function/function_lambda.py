@@ -1,7 +1,7 @@
 from typing import List, Any
 
 from scriptable.api import AST
-from scriptable.api.AST import ASTBinding, T
+from scriptable.api.ast_binding import ASTBinding
 from scriptable.ast.function.function_arg_def import FunctionArgDef
 
 
@@ -10,7 +10,7 @@ class FunctionLambda(AST[Any]):
         self.head = head
         self.tail = tail
 
-    def execute(self, context: ASTBinding) -> T:
+    def execute(self, context: ASTBinding) -> Any:
         def callback(args):
             from copy import deepcopy
             _binding = deepcopy(context)

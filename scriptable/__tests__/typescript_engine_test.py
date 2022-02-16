@@ -226,3 +226,7 @@ for (let n = 5; n > 0; n--) {
 a
             """)
         self.assertEqual(engine.execute(), 4)
+
+    def test_process_env(self):
+        self.assertEqual(TypescriptEngine.parse("process.env.test").execute({"test": "abc"}), "abc")
+        self.assertEqual(TypescriptEngine.parse("process.env['test']").execute({"test": "abc"}), "abc")

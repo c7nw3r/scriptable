@@ -1,7 +1,7 @@
 from typing import List
 
 from scriptable.api import AST
-from scriptable.api.AST import ASTBinding
+from scriptable.api.ast_binding import ASTBinding
 from scriptable.api.exit_value import GoTo
 
 
@@ -21,7 +21,7 @@ class While(AST[None]):
             if isinstance(result, GoTo) and result.value == "continue":
                 continue
 
-            assert counter <= context.sandbox.max_loops, "max loops exceeded"
+            assert counter <= context.restrictions.max_loops, "max loops exceeded"
             counter += 1
         return None
 

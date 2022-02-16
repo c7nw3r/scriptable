@@ -1,6 +1,6 @@
 from scriptable.antlr.TypescriptParser import TypescriptParser
 from scriptable.api import AST
-from scriptable.api.AST import ASTBinding, T
+from scriptable.api.ast_binding import ASTBinding
 
 
 class Type(AST[str]):
@@ -8,7 +8,7 @@ class Type(AST[str]):
     def __init__(self, value: str):
         self.value = value
 
-    def execute(self, context: ASTBinding) -> T:
+    def execute(self, context: ASTBinding) -> str:
         return self.value
 
     @staticmethod
