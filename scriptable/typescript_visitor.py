@@ -9,7 +9,7 @@ from scriptable.ast.control.For import For
 from scriptable.ast.control.ForIn import ForIn
 from scriptable.ast.control.ForOf import ForOf
 from scriptable.ast.control.While import While
-from scriptable.ast.control.ifelse import If
+from scriptable.ast.control.ifelse import If, Else, ElseIf
 from scriptable.ast.control.loop_tail import LoopTail
 from scriptable.ast.expression.arithmetic_expression import ArithmeticExpression
 from scriptable.ast.expression.arithmetic_term import ArithmeticTerm
@@ -146,6 +146,12 @@ class TypescriptVisitorImpl(TypescriptVisitor):
 
     def visitSIf(self, ctx: TypescriptParser.SIfContext):
         return If.parse(super().visitSIf(ctx))
+
+    def visitSElse(self, ctx: TypescriptParser.SElseContext):
+        return Else.parse(super().visitSElse(ctx))
+
+    def visitSElseIf(self, ctx: TypescriptParser.SElseIfContext):
+        return ElseIf.parse(super().visitSElseIf(ctx))
 
     def visitSType(self, ctx: TypescriptParser.STypeContext):
         return Type.parse(ctx)

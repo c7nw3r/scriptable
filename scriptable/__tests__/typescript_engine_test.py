@@ -85,6 +85,8 @@ class TypescriptEngineTest(unittest.TestCase):
     def test_if_control(self):
         self.assertEqual(TypescriptEngine.parse("if (true) { return 1 } return 0").execute(), 1)
         self.assertEqual(TypescriptEngine.parse("if (false) { return 1 } return 0").execute(), 0)
+        self.assertEqual(TypescriptEngine.parse("if (false) {return 0} else if(true) {return 1} return 2").execute(), 1)
+        self.assertEqual(TypescriptEngine.parse("if (false) {return 0} else {return 1} return 2").execute(), 1)
 
     def test_console(self):
         TypescriptEngine.parse("console.assert('a')").execute()

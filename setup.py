@@ -1,8 +1,8 @@
-from distutils.core import setup
+from setuptools import find_packages, setup
 
 setup(
     name='scriptable',
-    packages=['scriptable'],
+    packages=find_packages(exclude=("__tests__",)),
     version='0.1.0',
     license='APACHE2',
     description='Scriptable is a sand-boxed scripting engine which can be used in an embedded environment.',
