@@ -5,7 +5,7 @@ At the moment only the typescript syntax is supported.
 
 The scripting engine forbids endless loops and has a recursion guard, which detects loops in
 a function call stack. In addition to that scriptable allows to define more detailed AST
-restrictions. At the moment following restrictions are supported
+restrictions. At the moment following restrictions are supported:
 
  * max_precision # The max allowed number of digits in a number. 
  * max_scale     # The max allowed digits to the right of the decimal point in a number.
