@@ -45,6 +45,7 @@ class TypescriptEngineTest(unittest.TestCase):
         self.assertEqual(TypescriptEngine.parse("true === true").execute(), True)
         self.assertEqual(TypescriptEngine.parse("true == false").execute(), False)
         self.assertEqual(TypescriptEngine.parse("true === false").execute(), False)
+        self.assertEqual(TypescriptEngine.parse("process.env.x === true").execute({"x": True}), True)
 
         # number expression
         self.assertEqual(TypescriptEngine.parse("1 == 1").execute(), True)

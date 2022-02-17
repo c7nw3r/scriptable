@@ -1,7 +1,8 @@
 Scriptable is a sand-boxed scripting engine which can be used safely in an embedded environment.
 
 Its canonical abstract syntax tree model is designed to support various syntax forms.
-At the moment only the typescript syntax is supported.
+At the moment the typescript syntax as well as the hypothesis syntax 
+(a typescript syntax subset used for logical reasoning) are supported.
 
 The scripting engine forbids endless loops and has a recursion guard, which detects loops in
 a function call stack. In addition to that scriptable allows to define more detailed AST
@@ -13,6 +14,7 @@ restrictions. At the moment following restrictions are supported:
 
 **Usage**
 
+TypescriptEngine
 ```typescript
 engine = TypescriptEngine.parse("""
    function fibonacci(n:number) {
@@ -26,4 +28,10 @@ engine = TypescriptEngine.parse("""
 """)
     
 engine.execute()
+```
+
+HypothesisEngine
+```typescript
+engine = HypothesisEngine.parse("x > 0")
+engine.execute({"x": 1}) // returns True
 ```
