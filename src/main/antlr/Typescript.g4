@@ -137,7 +137,7 @@ sType              : STRING | NUMBER | BOOLEAN;
 // function definition
 // *******************
 sFunction          : sFunctionHead sFunctionTail;
-sFunctionArg       : sValue | sExpression | sFunctionLambda;
+sFunctionArg       : sValue | sExpression | sFunctionLambda | sInvocation;
 sFunctionArgs      : sFunctionArg (COMMA sFunctionArg)*;
 sFunctionArgDef    : sProperty (COLON sType)?;
 sFunctionArgDefs   : sFunctionArgDef (COMMA sFunctionArgDef)*;

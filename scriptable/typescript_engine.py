@@ -14,6 +14,7 @@ from scriptable.ast.number import Number
 from scriptable.ast.value.array import Array
 from scriptable.ast.value.map import Map
 from scriptable.ast.value.string import String
+from scriptable.listener.error_listener import ScriptableErrorListener
 from scriptable.runtime.buildin.typescript.console import Console
 from scriptable.runtime.buildin.typescript.process import Process
 from scriptable.typescript_visitor import TypescriptVisitorImpl
@@ -27,8 +28,17 @@ class TypescriptEngine:
         stream = CommonTokenStream(lexer)
         parser = TypescriptParser(stream)
 
+        error_listener = ScriptableErrorListener()
+        parser.removeErrorListeners()
+        parser.addErrorListener(error_listener)
+        lexer.removeErrorListeners()
+        lexer.addErrorListener(error_listener)
+
         visitor = TypescriptVisitorImpl(restrictions)
         tree = visitor.visit(parser.sAll())
+
+        if len(error_listener.errors) > 0:
+            raise ValueError(str(error_listener.errors[0]))
 
         return TypescriptEngine(tree, restrictions)
 
@@ -36,7 +46,7 @@ class TypescriptEngine:
         self.tree = tree
         self.restrictions = restrictions
 
-    def execute(self, properties: Optional[Dict[str, Any]] = None):
+    def execute(self, properties: Optional[dict] = None):
         properties = properties if properties is not None else {}
 
         def unwrap(obj):

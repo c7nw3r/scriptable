@@ -131,9 +131,9 @@ function fibonacci(n:number) {
    if (n == 2) return 1
    return fibonacci(n - 1) + fibonacci(n - 2)
 }
-fibonacci(8)
+fibonacci(process.env.n)
         """)
-        self.assertEqual(engine.execute(), 21)
+        self.assertEqual(engine.execute({"n": 8}), 21)
 
     def test_recursion_guard(self):
         with self.assertRaises(AssertionError) as error:
