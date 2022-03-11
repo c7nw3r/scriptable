@@ -2,7 +2,7 @@ Scriptable is a sand-boxed scripting engine which can be used safely in an embed
 
 Its canonical abstract syntax tree model is designed to support various syntax forms.
 At the moment the typescript syntax as well as the hypothesis syntax 
-(a typescript syntax subset used for logical reasoning) are supported.
+(a typescript syntax subset used for logical reasoning) and the mustache syntax are supported.
 
 The scripting engine forbids endless loops and has a recursion guard, which detects loops in
 a function call stack. In addition to that scriptable allows to define more detailed AST
@@ -34,4 +34,10 @@ HypothesisEngine
 ```typescript
 engine = HypothesisEngine.parse("x > 0")
 engine.execute({"x": 1}) // returns True
+```
+
+MustacheEngine
+```typescript
+engine = MustacheEngine.parse("text {{x}} text")
+engine.execute({"x": 1}) // returns "text 1 text"
 ```
