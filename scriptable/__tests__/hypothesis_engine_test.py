@@ -46,6 +46,9 @@ class HypothesisEngineTest(unittest.TestCase):
         self.assertEqual(HypothesisEngine.parse("true == false").execute(), False)
         self.assertEqual(HypothesisEngine.parse("true === false").execute(), False)
         self.assertEqual(HypothesisEngine.parse("x === true").execute({"x": True}), True)
+        with self.assertRaises(ValueError) as error:
+            HypothesisEngine.parse("x === true").execute()
+        self.assertEqual("no property with name x found", error.exception.args[0])
 
         self.assertEqual(HypothesisEngine.parse("1 == 1").execute(), True)
         self.assertEqual(HypothesisEngine.parse("1 != 1").execute(), False)

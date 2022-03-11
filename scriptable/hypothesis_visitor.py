@@ -108,7 +108,7 @@ class HypothesisVisitorImpl(HypothesisVisitor):
         return GreaterEquals()
 
     def visitSProperty(self, ctx: TypescriptParser.SPropertyContext):
-        return Property.parse(ctx)
+        return Property.parse(ctx, True)
 
     def visitSPropertyAccess(self, ctx: TypescriptParser.SPropertyAccessContext):
         return PropertyAccess.parse(super().visitSPropertyAccess(ctx))
