@@ -42,9 +42,7 @@ class MustacheParser ( Parser ):
 
     sharedContextCache = PredictionContextCache()
 
-    literalNames = [ "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                     "<INVALID>", "<INVALID>", "'}}'" ]
+    literalNames = [ "<INVALID>", "<INVALID>", "'{{#'", "'{{/'", "'{{'" ]
 
     symbolicNames = [ "<INVALID>", "TEXT", "OPEN_TAG_START", "OPEN_TAG_END", 
                       "OPEN", "PROPERTY", "CLOSE", "PROPERTY_TAG_START", 

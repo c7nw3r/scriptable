@@ -33,7 +33,7 @@ class FunctionCall(AST[Tuple[str, List[Any]]]):
             function = _binding.functions[self.name]
             return function(args, _binding)
 
-        raise ValueError(f"cannot find function {self.name}")
+        raise ValueError(f"cannot find function '{self.name}'")
 
     @staticmethod
     def parse(text: str, branch: List[AST]) -> 'FunctionCall':

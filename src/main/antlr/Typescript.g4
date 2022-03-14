@@ -50,6 +50,7 @@ LET           : 'let';
 EQUAL         : '=';
 BREAK         : 'break';
 CONTINUE      : 'continue';
+DELETE        : 'delete';
 
 
 IDENTIFIER : Letter LetterOrDigit*;
@@ -78,7 +79,7 @@ sOperator       : sPlus | sMinus | sMul | sDiv | sPower;
 sExpression     : sConcatExpression | sArithmeticExpression | sBooleanExpression | sNumberExpression | sStringExpression;
 sTerm           : sArithmeticTerm | sBooleanTerm;
 sValue          : sNumber | sBoolean | sString | sArray | sMap;
-sInvocation     : sPropertyAccess | sFunctionAccess | sFunctionCall;
+sInvocation     : sPropertyAccess | sFunctionAccess | sFunctionCall | sPropertyDelete;
 sControl        : sIf | sWhile | sFor | sForOf | sForIn | sEndlessLoop | sContinue | sBreak;
 sStatement       : sMutableVar | sImmutableVar | sAssignment;
 
@@ -134,6 +135,8 @@ sConcatBoth        : sString (sPlus sString)+;
 
 sType              : STRING | NUMBER | BOOLEAN;
 
+sPropertyDelete    : DELETE sPropertyAccess;
+
 // function definition
 // *******************
 sFunction          : sFunctionHead sFunctionTail;
@@ -186,6 +189,6 @@ sBreak       : BREAK;
 // *******************
 sMutableVar   : (VAR | LET) IDENTIFIER EQUAL (sExpression | sValue | sInvocation) SEMICOLON?;
 sImmutableVar : CONST IDENTIFIER EQUAL (sExpression | sValue | sInvocation) SEMICOLON?;
-sAssignment   : IDENTIFIER EQUAL (sExpression | sValue | sInvocation | sProperty) SEMICOLON?;
+sAssignment   : (sProperty | sPropertyAccess) EQUAL (sExpression | sValue | sInvocation | sProperty) SEMICOLON?;
 sIncrement    : sProperty PLUS PLUS SEMICOLON?;
 sDecrement    : sProperty MINUS MINUS SEMICOLON?;

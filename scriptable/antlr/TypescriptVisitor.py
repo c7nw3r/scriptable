@@ -224,6 +224,11 @@ class TypescriptVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by TypescriptParser#sPropertyDelete.
+    def visitSPropertyDelete(self, ctx:TypescriptParser.SPropertyDeleteContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by TypescriptParser#sFunction.
     def visitSFunction(self, ctx:TypescriptParser.SFunctionContext):
         return self.visitChildren(ctx)

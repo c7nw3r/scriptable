@@ -29,6 +29,7 @@ from scriptable.ast.function.function_tail import FunctionTail
 from scriptable.ast.number import Number
 from scriptable.ast.property.property import Property
 from scriptable.ast.property.property_access import PropertyAccess
+from scriptable.ast.property.property_delete import PropertyDelete
 from scriptable.ast.type import Type
 from scriptable.ast.value.array import Array
 from scriptable.ast.value.map import Map
@@ -184,7 +185,8 @@ class TypescriptVisitorImpl(TypescriptVisitor):
         return ImmutableVar.parse(ctx.getChild(1).getText(), super().visitSImmutableVar(ctx)[0])
 
     def visitSAssignment(self, ctx: TypescriptParser.SAssignmentContext):
-        return Assignment.parse(ctx.getChild(0).getText(), super().visitSAssignment(ctx)[0])
+        branch = super().visitSAssignment(ctx)
+        return Assignment.parse(branch[0], branch[1])
 
     def visitSEndlessLoop(self, ctx: TypescriptParser.SEndlessLoopContext):
         raise ValueError("endless loops are not supported")
@@ -212,6 +214,9 @@ class TypescriptVisitorImpl(TypescriptVisitor):
 
     def visitSBreak(self, ctx: TypescriptParser.SBreakContext):
         return Break()
+
+    def visitSPropertyDelete(self, ctx: TypescriptParser.SPropertyDeleteContext):
+        return PropertyDelete.parse(super().visitSPropertyDelete(ctx))
 
     def aggregateResult(self, aggregate, next_result):
         array = []

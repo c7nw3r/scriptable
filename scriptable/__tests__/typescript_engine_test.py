@@ -233,3 +233,17 @@ a
     def test_process_env(self):
         self.assertEqual(TypescriptEngine.parse("process.env.test").execute({"test": "abc"}), "abc")
         self.assertEqual(TypescriptEngine.parse("process.env['test']").execute({"test": "abc"}), "abc")
+
+    def test_delete_from_env(self):
+        properties = {"name": "abcd"}
+
+        engine = TypescriptEngine.parse("delete process.env['name']")
+        engine.execute(properties)
+        self.assertEqual(properties, {})
+
+    def test_assign_to_env(self):
+        properties = {"name": "abcd"}
+
+        engine = TypescriptEngine.parse("process.env['name'] = 123")
+        engine.execute(properties)
+        self.assertEqual(properties, {"name": 123})
