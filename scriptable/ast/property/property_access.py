@@ -18,7 +18,10 @@ class PropertyAccess(AST[Any]):
         branch = list(map(lambda ast: ast.execute(binding), self.branch))
         current = branch.pop(0)
         while len(branch) > 0:
-            current = current[unwrap(branch.pop(0))]
+            key = unwrap(branch.pop(0))
+            if key not in current:
+                raise ValueError(f"no property '{key}' found")
+            current = current[key]
         return current
 
     @staticmethod

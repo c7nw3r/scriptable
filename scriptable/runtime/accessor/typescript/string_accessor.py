@@ -107,3 +107,8 @@ class TypescriptStringAccessor(Accessor[str]):
 
     def __repr__(self):
         return self.value
+
+    def __contains__(self, item):
+        if isinstance(item, int):
+            return len(self.value) >= item
+        return item in self.value

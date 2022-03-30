@@ -1,5 +1,7 @@
 import unittest
+from typing import Optional
 
+from scriptable.api.property_resolver import PropertyResolver
 from scriptable.typescript_engine import TypescriptEngine
 
 
@@ -247,3 +249,24 @@ a
         engine = TypescriptEngine.parse("process.env['name'] = 123")
         engine.execute(properties)
         self.assertEqual(properties, {"name": 123})
+
+    def test_property_resolver(self):
+        class CustomPropertyResolver(PropertyResolver):
+            def __init__(self):
+                self.context = {}
+
+            def __getitem__(self, item) -> Optional[str]:
+                return self.context[item]
+
+            def __setitem__(self, key: str, value):
+                self.context[key] = value
+
+            def __contains__(self, item):
+                return item in self.context
+
+        engine = TypescriptEngine.parse("""
+process.env['name'] = 123
+process.env['name']
+        """)
+        result = engine.execute(CustomPropertyResolver())
+        self.assertEqual(result, 123)

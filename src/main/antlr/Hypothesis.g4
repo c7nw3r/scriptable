@@ -73,7 +73,7 @@ WHITESPACE   : ' '              -> skip;
  * Parser Rules
  */
 sAll            : sExpression EOF;
-sOperand        : sNumber | sProperty;
+sOperand        : sNumber | sProperty | sPropertyAccess;
 sOperator       : sPlus | sMinus | sMul | sDiv | sPower;
 sExpression     : sConcatExpression | sArithmeticExpression | sBooleanExpression | sNumberExpression | sStringExpression;
 sTerm           : sArithmeticTerm | sBooleanTerm;
@@ -103,14 +103,14 @@ sArithmeticTerm       : ROUND_LEFT ((sOperand (sOperator sOperand)+) | sArithmet
 
 // boolean expression
 // ******************
-sBooleanOperand    : sValue | sProperty;
+sBooleanOperand    : sValue | sProperty | sPropertyAccess;
 sBooleanOperator   : sAnd | sOr | sNot | sEquals | sNotEquals;
 sBooleanExpression : (sBooleanOperand | sBooleanTerm) (sBooleanOperator (sBooleanOperand | sBooleanTerm))*;
 sBooleanTerm       : ROUND_LEFT ((sBooleanOperand (sBooleanOperator sBooleanOperand)+) | sBooleanTerm) ROUND_RIGHT;
 
 // number expression
 // *****************
-sNumberOperand     : sNumber | sProperty;
+sNumberOperand     : sNumber | sProperty | sPropertyAccess;
 sNumberOperator    : sEquals | sNotEquals | sLowerThan | sLowerEquals | sGreaterThan | sGreaterEquals;
 sNumberExpression  : (sNumberOperand | sNumberTerm) (sNumberOperator (sNumberOperand | sNumberTerm))+;
 sNumberTerm        : ROUND_LEFT ((sNumberOperand (sNumberOperator sNumberOperand)+) | sNumberTerm) ROUND_RIGHT;

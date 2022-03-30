@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import List, Dict, Any, Optional
+from typing import List, Optional
 
 # noinspection PyUnresolvedReferences
 from antlr4 import InputStream, CommonTokenStream
@@ -8,6 +8,7 @@ from scriptable.api import AST
 from scriptable.api.accessor import Accessor
 from scriptable.api.ast_restrictions import ASTRestrictions
 from scriptable.api.exit_value import ExitValue
+from scriptable.api.property_resolver import PropertySource
 from scriptable.ast.number import Number
 from scriptable.ast.value.array import Array
 from scriptable.ast.value.map import Map
@@ -20,7 +21,7 @@ class ScriptableEngine(ABC):
         self.tree = tree
         self.restrictions = restrictions
 
-    def execute(self, properties: Optional[dict] = None):
+    def execute(self, properties: Optional[PropertySource] = None):
         properties = properties if properties is not None else {}
 
         def unwrap(obj):
@@ -38,7 +39,7 @@ class ScriptableEngine(ABC):
                 return unwrap(obj.accessor.value)
             return obj
 
-        binding = self._create_binding(properties, self.restrictions)
+        binding = self._create_binding(properties or {})
         result = None
         for branch in self.tree:
             result = branch.execute(binding)
@@ -48,7 +49,7 @@ class ScriptableEngine(ABC):
         return unwrap(result)
 
     @abstractmethod
-    def _create_binding(self, properties: Dict[str, Any], restrictions: ASTRestrictions):
+    def _create_binding(self, properties: PropertySource):
         pass
 
     @staticmethod

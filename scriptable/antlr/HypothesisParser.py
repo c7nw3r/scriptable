@@ -14,178 +14,180 @@ else:
 def serializedATN():
     with StringIO() as buf:
         buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\66")
-        buf.write("\u0180\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
+        buf.write("\u0183\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
         buf.write("\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4\f\t\f\4\r\t\r\4\16")
         buf.write("\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22\4\23\t\23")
         buf.write("\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31")
         buf.write("\t\31\4\32\t\32\4\33\t\33\4\34\t\34\4\35\t\35\4\36\t\36")
         buf.write("\4\37\t\37\4 \t \4!\t!\4\"\t\"\4#\t#\4$\t$\4%\t%\4&\t")
         buf.write("&\4\'\t\'\4(\t(\4)\t)\4*\t*\4+\t+\4,\t,\4-\t-\4.\t.\4")
-        buf.write("/\t/\4\60\t\60\4\61\t\61\3\2\3\2\3\2\3\3\3\3\5\3h\n\3")
-        buf.write("\3\4\3\4\3\4\3\4\3\4\5\4o\n\4\3\5\3\5\3\5\3\5\3\5\5\5")
-        buf.write("v\n\5\3\6\3\6\5\6z\n\6\3\7\3\7\3\7\3\7\3\7\5\7\u0081\n")
-        buf.write("\7\3\b\3\b\3\t\3\t\3\n\3\n\3\13\3\13\3\f\3\f\3\r\3\r\3")
-        buf.write("\16\3\16\3\17\3\17\3\20\3\20\3\21\3\21\3\22\3\22\3\23")
-        buf.write("\3\23\3\24\3\24\3\25\3\25\3\26\3\26\5\26\u00a1\n\26\3")
-        buf.write("\26\3\26\3\26\5\26\u00a6\n\26\6\26\u00a8\n\26\r\26\16")
-        buf.write("\26\u00a9\3\27\3\27\3\27\3\27\3\27\6\27\u00b1\n\27\r\27")
-        buf.write("\16\27\u00b2\3\27\5\27\u00b6\n\27\3\27\3\27\3\30\3\30")
-        buf.write("\5\30\u00bc\n\30\3\31\3\31\3\31\3\31\3\31\5\31\u00c3\n")
-        buf.write("\31\3\32\3\32\5\32\u00c7\n\32\3\32\3\32\3\32\5\32\u00cc")
-        buf.write("\n\32\7\32\u00ce\n\32\f\32\16\32\u00d1\13\32\3\33\3\33")
-        buf.write("\3\33\3\33\3\33\6\33\u00d8\n\33\r\33\16\33\u00d9\3\33")
-        buf.write("\5\33\u00dd\n\33\3\33\3\33\3\34\3\34\5\34\u00e3\n\34\3")
-        buf.write("\35\3\35\3\35\3\35\3\35\3\35\5\35\u00eb\n\35\3\36\3\36")
-        buf.write("\5\36\u00ef\n\36\3\36\3\36\3\36\5\36\u00f4\n\36\6\36\u00f6")
-        buf.write("\n\36\r\36\16\36\u00f7\3\37\3\37\3\37\3\37\3\37\6\37\u00ff")
-        buf.write("\n\37\r\37\16\37\u0100\3\37\5\37\u0104\n\37\3\37\3\37")
-        buf.write("\3 \3 \3!\3!\5!\u010c\n!\3\"\3\"\5\"\u0110\n\"\3\"\3\"")
-        buf.write("\3\"\5\"\u0115\n\"\6\"\u0117\n\"\r\"\16\"\u0118\3#\3#")
-        buf.write("\3#\3#\3#\6#\u0120\n#\r#\16#\u0121\3#\5#\u0125\n#\3#\3")
-        buf.write("#\3$\3$\3%\3%\3%\5%\u012e\n%\3&\3&\3&\3&\5&\u0134\n&\3")
-        buf.write("\'\3\'\5\'\u0138\n\'\3\'\3\'\3\'\3(\3(\3(\3(\6(\u0141")
-        buf.write("\n(\r(\16(\u0142\3)\3)\3*\3*\3+\3+\5+\u014b\n+\3,\3,\3")
-        buf.write(",\3,\3,\3,\5,\u0153\n,\3,\3,\6,\u0157\n,\r,\16,\u0158")
-        buf.write("\3-\3-\3.\3.\3/\3/\3\60\3\60\3\60\3\60\7\60\u0165\n\60")
-        buf.write("\f\60\16\60\u0168\13\60\5\60\u016a\n\60\3\60\3\60\3\61")
-        buf.write("\3\61\3\61\3\61\3\61\3\61\3\61\3\61\3\61\7\61\u0177\n")
-        buf.write("\61\f\61\16\61\u017a\13\61\5\61\u017c\n\61\3\61\3\61\3")
+        buf.write("/\t/\4\60\t\60\4\61\t\61\3\2\3\2\3\2\3\3\3\3\3\3\5\3i")
+        buf.write("\n\3\3\4\3\4\3\4\3\4\3\4\5\4p\n\4\3\5\3\5\3\5\3\5\3\5")
+        buf.write("\5\5w\n\5\3\6\3\6\5\6{\n\6\3\7\3\7\3\7\3\7\3\7\5\7\u0082")
+        buf.write("\n\7\3\b\3\b\3\t\3\t\3\n\3\n\3\13\3\13\3\f\3\f\3\r\3\r")
+        buf.write("\3\16\3\16\3\17\3\17\3\20\3\20\3\21\3\21\3\22\3\22\3\23")
+        buf.write("\3\23\3\24\3\24\3\25\3\25\3\26\3\26\5\26\u00a2\n\26\3")
+        buf.write("\26\3\26\3\26\5\26\u00a7\n\26\6\26\u00a9\n\26\r\26\16")
+        buf.write("\26\u00aa\3\27\3\27\3\27\3\27\3\27\6\27\u00b2\n\27\r\27")
+        buf.write("\16\27\u00b3\3\27\5\27\u00b7\n\27\3\27\3\27\3\30\3\30")
+        buf.write("\3\30\5\30\u00be\n\30\3\31\3\31\3\31\3\31\3\31\5\31\u00c5")
+        buf.write("\n\31\3\32\3\32\5\32\u00c9\n\32\3\32\3\32\3\32\5\32\u00ce")
+        buf.write("\n\32\7\32\u00d0\n\32\f\32\16\32\u00d3\13\32\3\33\3\33")
+        buf.write("\3\33\3\33\3\33\6\33\u00da\n\33\r\33\16\33\u00db\3\33")
+        buf.write("\5\33\u00df\n\33\3\33\3\33\3\34\3\34\3\34\5\34\u00e6\n")
+        buf.write("\34\3\35\3\35\3\35\3\35\3\35\3\35\5\35\u00ee\n\35\3\36")
+        buf.write("\3\36\5\36\u00f2\n\36\3\36\3\36\3\36\5\36\u00f7\n\36\6")
+        buf.write("\36\u00f9\n\36\r\36\16\36\u00fa\3\37\3\37\3\37\3\37\3")
+        buf.write("\37\6\37\u0102\n\37\r\37\16\37\u0103\3\37\5\37\u0107\n")
+        buf.write("\37\3\37\3\37\3 \3 \3!\3!\5!\u010f\n!\3\"\3\"\5\"\u0113")
+        buf.write("\n\"\3\"\3\"\3\"\5\"\u0118\n\"\6\"\u011a\n\"\r\"\16\"")
+        buf.write("\u011b\3#\3#\3#\3#\3#\6#\u0123\n#\r#\16#\u0124\3#\5#\u0128")
+        buf.write("\n#\3#\3#\3$\3$\3%\3%\3%\5%\u0131\n%\3&\3&\3&\3&\5&\u0137")
+        buf.write("\n&\3\'\3\'\5\'\u013b\n\'\3\'\3\'\3\'\3(\3(\3(\3(\6(\u0144")
+        buf.write("\n(\r(\16(\u0145\3)\3)\3*\3*\3+\3+\5+\u014e\n+\3,\3,\3")
+        buf.write(",\3,\3,\3,\5,\u0156\n,\3,\3,\6,\u015a\n,\r,\16,\u015b")
+        buf.write("\3-\3-\3.\3.\3/\3/\3\60\3\60\3\60\3\60\7\60\u0168\n\60")
+        buf.write("\f\60\16\60\u016b\13\60\5\60\u016d\n\60\3\60\3\60\3\61")
+        buf.write("\3\61\3\61\3\61\3\61\3\61\3\61\3\61\3\61\7\61\u017a\n")
+        buf.write("\61\f\61\16\61\u017d\13\61\5\61\u017f\n\61\3\61\3\61\3")
         buf.write("\61\2\2\62\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$")
         buf.write("&(*,.\60\62\64\668:<>@BDFHJLNPRTVXZ\\^`\2\6\3\2\27\30")
-        buf.write("\3\2\31\32\3\2#%\3\2\3\4\2\u018a\2b\3\2\2\2\4g\3\2\2\2")
-        buf.write("\6n\3\2\2\2\bu\3\2\2\2\ny\3\2\2\2\f\u0080\3\2\2\2\16\u0082")
-        buf.write("\3\2\2\2\20\u0084\3\2\2\2\22\u0086\3\2\2\2\24\u0088\3")
-        buf.write("\2\2\2\26\u008a\3\2\2\2\30\u008c\3\2\2\2\32\u008e\3\2")
-        buf.write("\2\2\34\u0090\3\2\2\2\36\u0092\3\2\2\2 \u0094\3\2\2\2")
-        buf.write("\"\u0096\3\2\2\2$\u0098\3\2\2\2&\u009a\3\2\2\2(\u009c")
-        buf.write("\3\2\2\2*\u00a0\3\2\2\2,\u00ab\3\2\2\2.\u00bb\3\2\2\2")
-        buf.write("\60\u00c2\3\2\2\2\62\u00c6\3\2\2\2\64\u00d2\3\2\2\2\66")
-        buf.write("\u00e2\3\2\2\28\u00ea\3\2\2\2:\u00ee\3\2\2\2<\u00f9\3")
-        buf.write("\2\2\2>\u0107\3\2\2\2@\u010b\3\2\2\2B\u010f\3\2\2\2D\u011a")
-        buf.write("\3\2\2\2F\u0128\3\2\2\2H\u012d\3\2\2\2J\u012f\3\2\2\2")
-        buf.write("L\u0137\3\2\2\2N\u013c\3\2\2\2P\u0144\3\2\2\2R\u0146\3")
-        buf.write("\2\2\2T\u014a\3\2\2\2V\u014c\3\2\2\2X\u015a\3\2\2\2Z\u015c")
-        buf.write("\3\2\2\2\\\u015e\3\2\2\2^\u0160\3\2\2\2`\u016d\3\2\2\2")
-        buf.write("bc\5\b\5\2cd\7\2\2\3d\3\3\2\2\2eh\5Z.\2fh\5R*\2ge\3\2")
-        buf.write("\2\2gf\3\2\2\2h\5\3\2\2\2io\5\16\b\2jo\5\20\t\2ko\5\22")
-        buf.write("\n\2lo\5\24\13\2mo\5\26\f\2ni\3\2\2\2nj\3\2\2\2nk\3\2")
-        buf.write("\2\2nl\3\2\2\2nm\3\2\2\2o\7\3\2\2\2pv\5H%\2qv\5*\26\2")
-        buf.write("rv\5\62\32\2sv\5:\36\2tv\5B\"\2up\3\2\2\2uq\3\2\2\2ur")
-        buf.write("\3\2\2\2us\3\2\2\2ut\3\2\2\2v\t\3\2\2\2wz\5,\27\2xz\5")
-        buf.write("\64\33\2yw\3\2\2\2yx\3\2\2\2z\13\3\2\2\2{\u0081\5Z.\2")
-        buf.write("|\u0081\5\\/\2}\u0081\5X-\2~\u0081\5^\60\2\177\u0081\5")
-        buf.write("`\61\2\u0080{\3\2\2\2\u0080|\3\2\2\2\u0080}\3\2\2\2\u0080")
-        buf.write("~\3\2\2\2\u0080\177\3\2\2\2\u0081\r\3\2\2\2\u0082\u0083")
-        buf.write("\7\t\2\2\u0083\17\3\2\2\2\u0084\u0085\7\n\2\2\u0085\21")
-        buf.write("\3\2\2\2\u0086\u0087\7\13\2\2\u0087\23\3\2\2\2\u0088\u0089")
-        buf.write("\7\f\2\2\u0089\25\3\2\2\2\u008a\u008b\7\r\2\2\u008b\27")
-        buf.write("\3\2\2\2\u008c\u008d\7\24\2\2\u008d\31\3\2\2\2\u008e\u008f")
-        buf.write("\7\25\2\2\u008f\33\3\2\2\2\u0090\u0091\7\26\2\2\u0091")
-        buf.write("\35\3\2\2\2\u0092\u0093\t\2\2\2\u0093\37\3\2\2\2\u0094")
-        buf.write("\u0095\t\3\2\2\u0095!\3\2\2\2\u0096\u0097\7\33\2\2\u0097")
-        buf.write("#\3\2\2\2\u0098\u0099\7\34\2\2\u0099%\3\2\2\2\u009a\u009b")
-        buf.write("\7\35\2\2\u009b\'\3\2\2\2\u009c\u009d\7\36\2\2\u009d)")
-        buf.write("\3\2\2\2\u009e\u00a1\5\4\3\2\u009f\u00a1\5,\27\2\u00a0")
-        buf.write("\u009e\3\2\2\2\u00a0\u009f\3\2\2\2\u00a1\u00a7\3\2\2\2")
-        buf.write("\u00a2\u00a5\5\6\4\2\u00a3\u00a6\5\4\3\2\u00a4\u00a6\5")
-        buf.write(",\27\2\u00a5\u00a3\3\2\2\2\u00a5\u00a4\3\2\2\2\u00a6\u00a8")
-        buf.write("\3\2\2\2\u00a7\u00a2\3\2\2\2\u00a8\u00a9\3\2\2\2\u00a9")
-        buf.write("\u00a7\3\2\2\2\u00a9\u00aa\3\2\2\2\u00aa+\3\2\2\2\u00ab")
-        buf.write("\u00b5\7\16\2\2\u00ac\u00b0\5\4\3\2\u00ad\u00ae\5\6\4")
-        buf.write("\2\u00ae\u00af\5\4\3\2\u00af\u00b1\3\2\2\2\u00b0\u00ad")
-        buf.write("\3\2\2\2\u00b1\u00b2\3\2\2\2\u00b2\u00b0\3\2\2\2\u00b2")
-        buf.write("\u00b3\3\2\2\2\u00b3\u00b6\3\2\2\2\u00b4\u00b6\5,\27\2")
-        buf.write("\u00b5\u00ac\3\2\2\2\u00b5\u00b4\3\2\2\2\u00b6\u00b7\3")
-        buf.write("\2\2\2\u00b7\u00b8\7\17\2\2\u00b8-\3\2\2\2\u00b9\u00bc")
-        buf.write("\5\f\7\2\u00ba\u00bc\5R*\2\u00bb\u00b9\3\2\2\2\u00bb\u00ba")
-        buf.write("\3\2\2\2\u00bc/\3\2\2\2\u00bd\u00c3\5\30\r\2\u00be\u00c3")
-        buf.write("\5\32\16\2\u00bf\u00c3\5\34\17\2\u00c0\u00c3\5\36\20\2")
-        buf.write("\u00c1\u00c3\5 \21\2\u00c2\u00bd\3\2\2\2\u00c2\u00be\3")
-        buf.write("\2\2\2\u00c2\u00bf\3\2\2\2\u00c2\u00c0\3\2\2\2\u00c2\u00c1")
-        buf.write("\3\2\2\2\u00c3\61\3\2\2\2\u00c4\u00c7\5.\30\2\u00c5\u00c7")
-        buf.write("\5\64\33\2\u00c6\u00c4\3\2\2\2\u00c6\u00c5\3\2\2\2\u00c7")
-        buf.write("\u00cf\3\2\2\2\u00c8\u00cb\5\60\31\2\u00c9\u00cc\5.\30")
-        buf.write("\2\u00ca\u00cc\5\64\33\2\u00cb\u00c9\3\2\2\2\u00cb\u00ca")
-        buf.write("\3\2\2\2\u00cc\u00ce\3\2\2\2\u00cd\u00c8\3\2\2\2\u00ce")
-        buf.write("\u00d1\3\2\2\2\u00cf\u00cd\3\2\2\2\u00cf\u00d0\3\2\2\2")
-        buf.write("\u00d0\63\3\2\2\2\u00d1\u00cf\3\2\2\2\u00d2\u00dc\7\16")
-        buf.write("\2\2\u00d3\u00d7\5.\30\2\u00d4\u00d5\5\60\31\2\u00d5\u00d6")
-        buf.write("\5.\30\2\u00d6\u00d8\3\2\2\2\u00d7\u00d4\3\2\2\2\u00d8")
-        buf.write("\u00d9\3\2\2\2\u00d9\u00d7\3\2\2\2\u00d9\u00da\3\2\2\2")
-        buf.write("\u00da\u00dd\3\2\2\2\u00db\u00dd\5\64\33\2\u00dc\u00d3")
-        buf.write("\3\2\2\2\u00dc\u00db\3\2\2\2\u00dd\u00de\3\2\2\2\u00de")
-        buf.write("\u00df\7\17\2\2\u00df\65\3\2\2\2\u00e0\u00e3\5Z.\2\u00e1")
-        buf.write("\u00e3\5R*\2\u00e2\u00e0\3\2\2\2\u00e2\u00e1\3\2\2\2\u00e3")
-        buf.write("\67\3\2\2\2\u00e4\u00eb\5\36\20\2\u00e5\u00eb\5 \21\2")
-        buf.write("\u00e6\u00eb\5\"\22\2\u00e7\u00eb\5$\23\2\u00e8\u00eb")
-        buf.write("\5&\24\2\u00e9\u00eb\5(\25\2\u00ea\u00e4\3\2\2\2\u00ea")
-        buf.write("\u00e5\3\2\2\2\u00ea\u00e6\3\2\2\2\u00ea\u00e7\3\2\2\2")
-        buf.write("\u00ea\u00e8\3\2\2\2\u00ea\u00e9\3\2\2\2\u00eb9\3\2\2")
-        buf.write("\2\u00ec\u00ef\5\66\34\2\u00ed\u00ef\5<\37\2\u00ee\u00ec")
-        buf.write("\3\2\2\2\u00ee\u00ed\3\2\2\2\u00ef\u00f5\3\2\2\2\u00f0")
-        buf.write("\u00f3\58\35\2\u00f1\u00f4\5\66\34\2\u00f2\u00f4\5<\37")
-        buf.write("\2\u00f3\u00f1\3\2\2\2\u00f3\u00f2\3\2\2\2\u00f4\u00f6")
-        buf.write("\3\2\2\2\u00f5\u00f0\3\2\2\2\u00f6\u00f7\3\2\2\2\u00f7")
-        buf.write("\u00f5\3\2\2\2\u00f7\u00f8\3\2\2\2\u00f8;\3\2\2\2\u00f9")
-        buf.write("\u0103\7\16\2\2\u00fa\u00fe\5\66\34\2\u00fb\u00fc\58\35")
-        buf.write("\2\u00fc\u00fd\5\66\34\2\u00fd\u00ff\3\2\2\2\u00fe\u00fb")
-        buf.write("\3\2\2\2\u00ff\u0100\3\2\2\2\u0100\u00fe\3\2\2\2\u0100")
-        buf.write("\u0101\3\2\2\2\u0101\u0104\3\2\2\2\u0102\u0104\5<\37\2")
-        buf.write("\u0103\u00fa\3\2\2\2\u0103\u0102\3\2\2\2\u0104\u0105\3")
-        buf.write("\2\2\2\u0105\u0106\7\17\2\2\u0106=\3\2\2\2\u0107\u0108")
-        buf.write("\5X-\2\u0108?\3\2\2\2\u0109\u010c\5\36\20\2\u010a\u010c")
-        buf.write("\5 \21\2\u010b\u0109\3\2\2\2\u010b\u010a\3\2\2\2\u010c")
-        buf.write("A\3\2\2\2\u010d\u0110\5> \2\u010e\u0110\5D#\2\u010f\u010d")
-        buf.write("\3\2\2\2\u010f\u010e\3\2\2\2\u0110\u0116\3\2\2\2\u0111")
-        buf.write("\u0114\5@!\2\u0112\u0115\5> \2\u0113\u0115\5D#\2\u0114")
-        buf.write("\u0112\3\2\2\2\u0114\u0113\3\2\2\2\u0115\u0117\3\2\2\2")
-        buf.write("\u0116\u0111\3\2\2\2\u0117\u0118\3\2\2\2\u0118\u0116\3")
-        buf.write("\2\2\2\u0118\u0119\3\2\2\2\u0119C\3\2\2\2\u011a\u0124")
-        buf.write("\7\16\2\2\u011b\u011f\5> \2\u011c\u011d\5@!\2\u011d\u011e")
-        buf.write("\5> \2\u011e\u0120\3\2\2\2\u011f\u011c\3\2\2\2\u0120\u0121")
-        buf.write("\3\2\2\2\u0121\u011f\3\2\2\2\u0121\u0122\3\2\2\2\u0122")
-        buf.write("\u0125\3\2\2\2\u0123\u0125\5D#\2\u0124\u011b\3\2\2\2\u0124")
-        buf.write("\u0123\3\2\2\2\u0125\u0126\3\2\2\2\u0126\u0127\7\17\2")
-        buf.write("\2\u0127E\3\2\2\2\u0128\u0129\5X-\2\u0129G\3\2\2\2\u012a")
-        buf.write("\u012e\5N(\2\u012b\u012e\5J&\2\u012c\u012e\5L\'\2\u012d")
-        buf.write("\u012a\3\2\2\2\u012d\u012b\3\2\2\2\u012d\u012c\3\2\2\2")
-        buf.write("\u012eI\3\2\2\2\u012f\u0130\5X-\2\u0130\u0133\5\16\b\2")
-        buf.write("\u0131\u0134\5\f\7\2\u0132\u0134\5R*\2\u0133\u0131\3\2")
-        buf.write("\2\2\u0133\u0132\3\2\2\2\u0134K\3\2\2\2\u0135\u0138\5")
-        buf.write("\f\7\2\u0136\u0138\5R*\2\u0137\u0135\3\2\2\2\u0137\u0136")
-        buf.write("\3\2\2\2\u0138\u0139\3\2\2\2\u0139\u013a\5\16\b\2\u013a")
-        buf.write("\u013b\5X-\2\u013bM\3\2\2\2\u013c\u0140\5X-\2\u013d\u013e")
-        buf.write("\5\16\b\2\u013e\u013f\5X-\2\u013f\u0141\3\2\2\2\u0140")
-        buf.write("\u013d\3\2\2\2\u0141\u0142\3\2\2\2\u0142\u0140\3\2\2\2")
-        buf.write("\u0142\u0143\3\2\2\2\u0143O\3\2\2\2\u0144\u0145\t\4\2")
-        buf.write("\2\u0145Q\3\2\2\2\u0146\u0147\7\61\2\2\u0147S\3\2\2\2")
-        buf.write("\u0148\u014b\5X-\2\u0149\u014b\5R*\2\u014a\u0148\3\2\2")
-        buf.write("\2\u014a\u0149\3\2\2\2\u014bU\3\2\2\2\u014c\u0156\5T+")
-        buf.write("\2\u014d\u014e\7\5\2\2\u014e\u0157\5R*\2\u014f\u0152\7")
-        buf.write("\22\2\2\u0150\u0153\5Z.\2\u0151\u0153\5X-\2\u0152\u0150")
-        buf.write("\3\2\2\2\u0152\u0151\3\2\2\2\u0153\u0154\3\2\2\2\u0154")
-        buf.write("\u0155\7\23\2\2\u0155\u0157\3\2\2\2\u0156\u014d\3\2\2")
-        buf.write("\2\u0156\u014f\3\2\2\2\u0157\u0158\3\2\2\2\u0158\u0156")
-        buf.write("\3\2\2\2\u0158\u0159\3\2\2\2\u0159W\3\2\2\2\u015a\u015b")
-        buf.write("\7\62\2\2\u015bY\3\2\2\2\u015c\u015d\7\63\2\2\u015d[\3")
-        buf.write("\2\2\2\u015e\u015f\t\5\2\2\u015f]\3\2\2\2\u0160\u0169")
-        buf.write("\7\22\2\2\u0161\u0166\5\f\7\2\u0162\u0163\7\7\2\2\u0163")
-        buf.write("\u0165\5\f\7\2\u0164\u0162\3\2\2\2\u0165\u0168\3\2\2\2")
-        buf.write("\u0166\u0164\3\2\2\2\u0166\u0167\3\2\2\2\u0167\u016a\3")
-        buf.write("\2\2\2\u0168\u0166\3\2\2\2\u0169\u0161\3\2\2\2\u0169\u016a")
-        buf.write("\3\2\2\2\u016a\u016b\3\2\2\2\u016b\u016c\7\23\2\2\u016c")
-        buf.write("_\3\2\2\2\u016d\u017b\7\20\2\2\u016e\u016f\5X-\2\u016f")
-        buf.write("\u0170\7\6\2\2\u0170\u0178\5\f\7\2\u0171\u0172\7\7\2\2")
-        buf.write("\u0172\u0173\5X-\2\u0173\u0174\7\6\2\2\u0174\u0175\5\f")
-        buf.write("\7\2\u0175\u0177\3\2\2\2\u0176\u0171\3\2\2\2\u0177\u017a")
-        buf.write("\3\2\2\2\u0178\u0176\3\2\2\2\u0178\u0179\3\2\2\2\u0179")
-        buf.write("\u017c\3\2\2\2\u017a\u0178\3\2\2\2\u017b\u016e\3\2\2\2")
-        buf.write("\u017b\u017c\3\2\2\2\u017c\u017d\3\2\2\2\u017d\u017e\7")
-        buf.write("\21\2\2\u017ea\3\2\2\2,gnuy\u0080\u00a0\u00a5\u00a9\u00b2")
-        buf.write("\u00b5\u00bb\u00c2\u00c6\u00cb\u00cf\u00d9\u00dc\u00e2")
-        buf.write("\u00ea\u00ee\u00f3\u00f7\u0100\u0103\u010b\u010f\u0114")
-        buf.write("\u0118\u0121\u0124\u012d\u0133\u0137\u0142\u014a\u0152")
-        buf.write("\u0156\u0158\u0166\u0169\u0178\u017b")
+        buf.write("\3\2\31\32\3\2#%\3\2\3\4\2\u0190\2b\3\2\2\2\4h\3\2\2\2")
+        buf.write("\6o\3\2\2\2\bv\3\2\2\2\nz\3\2\2\2\f\u0081\3\2\2\2\16\u0083")
+        buf.write("\3\2\2\2\20\u0085\3\2\2\2\22\u0087\3\2\2\2\24\u0089\3")
+        buf.write("\2\2\2\26\u008b\3\2\2\2\30\u008d\3\2\2\2\32\u008f\3\2")
+        buf.write("\2\2\34\u0091\3\2\2\2\36\u0093\3\2\2\2 \u0095\3\2\2\2")
+        buf.write("\"\u0097\3\2\2\2$\u0099\3\2\2\2&\u009b\3\2\2\2(\u009d")
+        buf.write("\3\2\2\2*\u00a1\3\2\2\2,\u00ac\3\2\2\2.\u00bd\3\2\2\2")
+        buf.write("\60\u00c4\3\2\2\2\62\u00c8\3\2\2\2\64\u00d4\3\2\2\2\66")
+        buf.write("\u00e5\3\2\2\28\u00ed\3\2\2\2:\u00f1\3\2\2\2<\u00fc\3")
+        buf.write("\2\2\2>\u010a\3\2\2\2@\u010e\3\2\2\2B\u0112\3\2\2\2D\u011d")
+        buf.write("\3\2\2\2F\u012b\3\2\2\2H\u0130\3\2\2\2J\u0132\3\2\2\2")
+        buf.write("L\u013a\3\2\2\2N\u013f\3\2\2\2P\u0147\3\2\2\2R\u0149\3")
+        buf.write("\2\2\2T\u014d\3\2\2\2V\u014f\3\2\2\2X\u015d\3\2\2\2Z\u015f")
+        buf.write("\3\2\2\2\\\u0161\3\2\2\2^\u0163\3\2\2\2`\u0170\3\2\2\2")
+        buf.write("bc\5\b\5\2cd\7\2\2\3d\3\3\2\2\2ei\5Z.\2fi\5R*\2gi\5V,")
+        buf.write("\2he\3\2\2\2hf\3\2\2\2hg\3\2\2\2i\5\3\2\2\2jp\5\16\b\2")
+        buf.write("kp\5\20\t\2lp\5\22\n\2mp\5\24\13\2np\5\26\f\2oj\3\2\2")
+        buf.write("\2ok\3\2\2\2ol\3\2\2\2om\3\2\2\2on\3\2\2\2p\7\3\2\2\2")
+        buf.write("qw\5H%\2rw\5*\26\2sw\5\62\32\2tw\5:\36\2uw\5B\"\2vq\3")
+        buf.write("\2\2\2vr\3\2\2\2vs\3\2\2\2vt\3\2\2\2vu\3\2\2\2w\t\3\2")
+        buf.write("\2\2x{\5,\27\2y{\5\64\33\2zx\3\2\2\2zy\3\2\2\2{\13\3\2")
+        buf.write("\2\2|\u0082\5Z.\2}\u0082\5\\/\2~\u0082\5X-\2\177\u0082")
+        buf.write("\5^\60\2\u0080\u0082\5`\61\2\u0081|\3\2\2\2\u0081}\3\2")
+        buf.write("\2\2\u0081~\3\2\2\2\u0081\177\3\2\2\2\u0081\u0080\3\2")
+        buf.write("\2\2\u0082\r\3\2\2\2\u0083\u0084\7\t\2\2\u0084\17\3\2")
+        buf.write("\2\2\u0085\u0086\7\n\2\2\u0086\21\3\2\2\2\u0087\u0088")
+        buf.write("\7\13\2\2\u0088\23\3\2\2\2\u0089\u008a\7\f\2\2\u008a\25")
+        buf.write("\3\2\2\2\u008b\u008c\7\r\2\2\u008c\27\3\2\2\2\u008d\u008e")
+        buf.write("\7\24\2\2\u008e\31\3\2\2\2\u008f\u0090\7\25\2\2\u0090")
+        buf.write("\33\3\2\2\2\u0091\u0092\7\26\2\2\u0092\35\3\2\2\2\u0093")
+        buf.write("\u0094\t\2\2\2\u0094\37\3\2\2\2\u0095\u0096\t\3\2\2\u0096")
+        buf.write("!\3\2\2\2\u0097\u0098\7\33\2\2\u0098#\3\2\2\2\u0099\u009a")
+        buf.write("\7\34\2\2\u009a%\3\2\2\2\u009b\u009c\7\35\2\2\u009c\'")
+        buf.write("\3\2\2\2\u009d\u009e\7\36\2\2\u009e)\3\2\2\2\u009f\u00a2")
+        buf.write("\5\4\3\2\u00a0\u00a2\5,\27\2\u00a1\u009f\3\2\2\2\u00a1")
+        buf.write("\u00a0\3\2\2\2\u00a2\u00a8\3\2\2\2\u00a3\u00a6\5\6\4\2")
+        buf.write("\u00a4\u00a7\5\4\3\2\u00a5\u00a7\5,\27\2\u00a6\u00a4\3")
+        buf.write("\2\2\2\u00a6\u00a5\3\2\2\2\u00a7\u00a9\3\2\2\2\u00a8\u00a3")
+        buf.write("\3\2\2\2\u00a9\u00aa\3\2\2\2\u00aa\u00a8\3\2\2\2\u00aa")
+        buf.write("\u00ab\3\2\2\2\u00ab+\3\2\2\2\u00ac\u00b6\7\16\2\2\u00ad")
+        buf.write("\u00b1\5\4\3\2\u00ae\u00af\5\6\4\2\u00af\u00b0\5\4\3\2")
+        buf.write("\u00b0\u00b2\3\2\2\2\u00b1\u00ae\3\2\2\2\u00b2\u00b3\3")
+        buf.write("\2\2\2\u00b3\u00b1\3\2\2\2\u00b3\u00b4\3\2\2\2\u00b4\u00b7")
+        buf.write("\3\2\2\2\u00b5\u00b7\5,\27\2\u00b6\u00ad\3\2\2\2\u00b6")
+        buf.write("\u00b5\3\2\2\2\u00b7\u00b8\3\2\2\2\u00b8\u00b9\7\17\2")
+        buf.write("\2\u00b9-\3\2\2\2\u00ba\u00be\5\f\7\2\u00bb\u00be\5R*")
+        buf.write("\2\u00bc\u00be\5V,\2\u00bd\u00ba\3\2\2\2\u00bd\u00bb\3")
+        buf.write("\2\2\2\u00bd\u00bc\3\2\2\2\u00be/\3\2\2\2\u00bf\u00c5")
+        buf.write("\5\30\r\2\u00c0\u00c5\5\32\16\2\u00c1\u00c5\5\34\17\2")
+        buf.write("\u00c2\u00c5\5\36\20\2\u00c3\u00c5\5 \21\2\u00c4\u00bf")
+        buf.write("\3\2\2\2\u00c4\u00c0\3\2\2\2\u00c4\u00c1\3\2\2\2\u00c4")
+        buf.write("\u00c2\3\2\2\2\u00c4\u00c3\3\2\2\2\u00c5\61\3\2\2\2\u00c6")
+        buf.write("\u00c9\5.\30\2\u00c7\u00c9\5\64\33\2\u00c8\u00c6\3\2\2")
+        buf.write("\2\u00c8\u00c7\3\2\2\2\u00c9\u00d1\3\2\2\2\u00ca\u00cd")
+        buf.write("\5\60\31\2\u00cb\u00ce\5.\30\2\u00cc\u00ce\5\64\33\2\u00cd")
+        buf.write("\u00cb\3\2\2\2\u00cd\u00cc\3\2\2\2\u00ce\u00d0\3\2\2\2")
+        buf.write("\u00cf\u00ca\3\2\2\2\u00d0\u00d3\3\2\2\2\u00d1\u00cf\3")
+        buf.write("\2\2\2\u00d1\u00d2\3\2\2\2\u00d2\63\3\2\2\2\u00d3\u00d1")
+        buf.write("\3\2\2\2\u00d4\u00de\7\16\2\2\u00d5\u00d9\5.\30\2\u00d6")
+        buf.write("\u00d7\5\60\31\2\u00d7\u00d8\5.\30\2\u00d8\u00da\3\2\2")
+        buf.write("\2\u00d9\u00d6\3\2\2\2\u00da\u00db\3\2\2\2\u00db\u00d9")
+        buf.write("\3\2\2\2\u00db\u00dc\3\2\2\2\u00dc\u00df\3\2\2\2\u00dd")
+        buf.write("\u00df\5\64\33\2\u00de\u00d5\3\2\2\2\u00de\u00dd\3\2\2")
+        buf.write("\2\u00df\u00e0\3\2\2\2\u00e0\u00e1\7\17\2\2\u00e1\65\3")
+        buf.write("\2\2\2\u00e2\u00e6\5Z.\2\u00e3\u00e6\5R*\2\u00e4\u00e6")
+        buf.write("\5V,\2\u00e5\u00e2\3\2\2\2\u00e5\u00e3\3\2\2\2\u00e5\u00e4")
+        buf.write("\3\2\2\2\u00e6\67\3\2\2\2\u00e7\u00ee\5\36\20\2\u00e8")
+        buf.write("\u00ee\5 \21\2\u00e9\u00ee\5\"\22\2\u00ea\u00ee\5$\23")
+        buf.write("\2\u00eb\u00ee\5&\24\2\u00ec\u00ee\5(\25\2\u00ed\u00e7")
+        buf.write("\3\2\2\2\u00ed\u00e8\3\2\2\2\u00ed\u00e9\3\2\2\2\u00ed")
+        buf.write("\u00ea\3\2\2\2\u00ed\u00eb\3\2\2\2\u00ed\u00ec\3\2\2\2")
+        buf.write("\u00ee9\3\2\2\2\u00ef\u00f2\5\66\34\2\u00f0\u00f2\5<\37")
+        buf.write("\2\u00f1\u00ef\3\2\2\2\u00f1\u00f0\3\2\2\2\u00f2\u00f8")
+        buf.write("\3\2\2\2\u00f3\u00f6\58\35\2\u00f4\u00f7\5\66\34\2\u00f5")
+        buf.write("\u00f7\5<\37\2\u00f6\u00f4\3\2\2\2\u00f6\u00f5\3\2\2\2")
+        buf.write("\u00f7\u00f9\3\2\2\2\u00f8\u00f3\3\2\2\2\u00f9\u00fa\3")
+        buf.write("\2\2\2\u00fa\u00f8\3\2\2\2\u00fa\u00fb\3\2\2\2\u00fb;")
+        buf.write("\3\2\2\2\u00fc\u0106\7\16\2\2\u00fd\u0101\5\66\34\2\u00fe")
+        buf.write("\u00ff\58\35\2\u00ff\u0100\5\66\34\2\u0100\u0102\3\2\2")
+        buf.write("\2\u0101\u00fe\3\2\2\2\u0102\u0103\3\2\2\2\u0103\u0101")
+        buf.write("\3\2\2\2\u0103\u0104\3\2\2\2\u0104\u0107\3\2\2\2\u0105")
+        buf.write("\u0107\5<\37\2\u0106\u00fd\3\2\2\2\u0106\u0105\3\2\2\2")
+        buf.write("\u0107\u0108\3\2\2\2\u0108\u0109\7\17\2\2\u0109=\3\2\2")
+        buf.write("\2\u010a\u010b\5X-\2\u010b?\3\2\2\2\u010c\u010f\5\36\20")
+        buf.write("\2\u010d\u010f\5 \21\2\u010e\u010c\3\2\2\2\u010e\u010d")
+        buf.write("\3\2\2\2\u010fA\3\2\2\2\u0110\u0113\5> \2\u0111\u0113")
+        buf.write("\5D#\2\u0112\u0110\3\2\2\2\u0112\u0111\3\2\2\2\u0113\u0119")
+        buf.write("\3\2\2\2\u0114\u0117\5@!\2\u0115\u0118\5> \2\u0116\u0118")
+        buf.write("\5D#\2\u0117\u0115\3\2\2\2\u0117\u0116\3\2\2\2\u0118\u011a")
+        buf.write("\3\2\2\2\u0119\u0114\3\2\2\2\u011a\u011b\3\2\2\2\u011b")
+        buf.write("\u0119\3\2\2\2\u011b\u011c\3\2\2\2\u011cC\3\2\2\2\u011d")
+        buf.write("\u0127\7\16\2\2\u011e\u0122\5> \2\u011f\u0120\5@!\2\u0120")
+        buf.write("\u0121\5> \2\u0121\u0123\3\2\2\2\u0122\u011f\3\2\2\2\u0123")
+        buf.write("\u0124\3\2\2\2\u0124\u0122\3\2\2\2\u0124\u0125\3\2\2\2")
+        buf.write("\u0125\u0128\3\2\2\2\u0126\u0128\5D#\2\u0127\u011e\3\2")
+        buf.write("\2\2\u0127\u0126\3\2\2\2\u0128\u0129\3\2\2\2\u0129\u012a")
+        buf.write("\7\17\2\2\u012aE\3\2\2\2\u012b\u012c\5X-\2\u012cG\3\2")
+        buf.write("\2\2\u012d\u0131\5N(\2\u012e\u0131\5J&\2\u012f\u0131\5")
+        buf.write("L\'\2\u0130\u012d\3\2\2\2\u0130\u012e\3\2\2\2\u0130\u012f")
+        buf.write("\3\2\2\2\u0131I\3\2\2\2\u0132\u0133\5X-\2\u0133\u0136")
+        buf.write("\5\16\b\2\u0134\u0137\5\f\7\2\u0135\u0137\5R*\2\u0136")
+        buf.write("\u0134\3\2\2\2\u0136\u0135\3\2\2\2\u0137K\3\2\2\2\u0138")
+        buf.write("\u013b\5\f\7\2\u0139\u013b\5R*\2\u013a\u0138\3\2\2\2\u013a")
+        buf.write("\u0139\3\2\2\2\u013b\u013c\3\2\2\2\u013c\u013d\5\16\b")
+        buf.write("\2\u013d\u013e\5X-\2\u013eM\3\2\2\2\u013f\u0143\5X-\2")
+        buf.write("\u0140\u0141\5\16\b\2\u0141\u0142\5X-\2\u0142\u0144\3")
+        buf.write("\2\2\2\u0143\u0140\3\2\2\2\u0144\u0145\3\2\2\2\u0145\u0143")
+        buf.write("\3\2\2\2\u0145\u0146\3\2\2\2\u0146O\3\2\2\2\u0147\u0148")
+        buf.write("\t\4\2\2\u0148Q\3\2\2\2\u0149\u014a\7\61\2\2\u014aS\3")
+        buf.write("\2\2\2\u014b\u014e\5X-\2\u014c\u014e\5R*\2\u014d\u014b")
+        buf.write("\3\2\2\2\u014d\u014c\3\2\2\2\u014eU\3\2\2\2\u014f\u0159")
+        buf.write("\5T+\2\u0150\u0151\7\5\2\2\u0151\u015a\5R*\2\u0152\u0155")
+        buf.write("\7\22\2\2\u0153\u0156\5Z.\2\u0154\u0156\5X-\2\u0155\u0153")
+        buf.write("\3\2\2\2\u0155\u0154\3\2\2\2\u0156\u0157\3\2\2\2\u0157")
+        buf.write("\u0158\7\23\2\2\u0158\u015a\3\2\2\2\u0159\u0150\3\2\2")
+        buf.write("\2\u0159\u0152\3\2\2\2\u015a\u015b\3\2\2\2\u015b\u0159")
+        buf.write("\3\2\2\2\u015b\u015c\3\2\2\2\u015cW\3\2\2\2\u015d\u015e")
+        buf.write("\7\62\2\2\u015eY\3\2\2\2\u015f\u0160\7\63\2\2\u0160[\3")
+        buf.write("\2\2\2\u0161\u0162\t\5\2\2\u0162]\3\2\2\2\u0163\u016c")
+        buf.write("\7\22\2\2\u0164\u0169\5\f\7\2\u0165\u0166\7\7\2\2\u0166")
+        buf.write("\u0168\5\f\7\2\u0167\u0165\3\2\2\2\u0168\u016b\3\2\2\2")
+        buf.write("\u0169\u0167\3\2\2\2\u0169\u016a\3\2\2\2\u016a\u016d\3")
+        buf.write("\2\2\2\u016b\u0169\3\2\2\2\u016c\u0164\3\2\2\2\u016c\u016d")
+        buf.write("\3\2\2\2\u016d\u016e\3\2\2\2\u016e\u016f\7\23\2\2\u016f")
+        buf.write("_\3\2\2\2\u0170\u017e\7\20\2\2\u0171\u0172\5X-\2\u0172")
+        buf.write("\u0173\7\6\2\2\u0173\u017b\5\f\7\2\u0174\u0175\7\7\2\2")
+        buf.write("\u0175\u0176\5X-\2\u0176\u0177\7\6\2\2\u0177\u0178\5\f")
+        buf.write("\7\2\u0178\u017a\3\2\2\2\u0179\u0174\3\2\2\2\u017a\u017d")
+        buf.write("\3\2\2\2\u017b\u0179\3\2\2\2\u017b\u017c\3\2\2\2\u017c")
+        buf.write("\u017f\3\2\2\2\u017d\u017b\3\2\2\2\u017e\u0171\3\2\2\2")
+        buf.write("\u017e\u017f\3\2\2\2\u017f\u0180\3\2\2\2\u0180\u0181\7")
+        buf.write("\21\2\2\u0181a\3\2\2\2,hovz\u0081\u00a1\u00a6\u00aa\u00b3")
+        buf.write("\u00b6\u00bd\u00c4\u00c8\u00cd\u00d1\u00db\u00de\u00e5")
+        buf.write("\u00ed\u00f1\u00f6\u00fa\u0103\u0106\u010e\u0112\u0117")
+        buf.write("\u011b\u0124\u0127\u0130\u0136\u013a\u0145\u014d\u0155")
+        buf.write("\u0159\u015b\u0169\u016c\u017b\u017e")
         return buf.getvalue()
 
 
@@ -413,6 +415,10 @@ class HypothesisParser ( Parser ):
             return self.getTypedRuleContext(HypothesisParser.SPropertyContext,0)
 
 
+        def sPropertyAccess(self):
+            return self.getTypedRuleContext(HypothesisParser.SPropertyAccessContext,0)
+
+
         def getRuleIndex(self):
             return HypothesisParser.RULE_sOperand
 
@@ -438,21 +444,27 @@ class HypothesisParser ( Parser ):
         localctx = HypothesisParser.SOperandContext(self, self._ctx, self.state)
         self.enterRule(localctx, 2, self.RULE_sOperand)
         try:
-            self.state = 101
+            self.state = 102
             self._errHandler.sync(self)
-            token = self._input.LA(1)
-            if token in [HypothesisParser.DIGITS]:
+            la_ = self._interp.adaptivePredict(self._input,0,self._ctx)
+            if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 99
                 self.sNumber()
                 pass
-            elif token in [HypothesisParser.IDENTIFIER]:
+
+            elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 100
                 self.sProperty()
                 pass
-            else:
-                raise NoViableAltException(self)
+
+            elif la_ == 3:
+                self.enterOuterAlt(localctx, 3)
+                self.state = 101
+                self.sPropertyAccess()
+                pass
+
 
         except RecognitionException as re:
             localctx.exception = re
@@ -515,32 +527,32 @@ class HypothesisParser ( Parser ):
         localctx = HypothesisParser.SOperatorContext(self, self._ctx, self.state)
         self.enterRule(localctx, 4, self.RULE_sOperator)
         try:
-            self.state = 108
+            self.state = 109
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [HypothesisParser.PLUS]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 103
+                self.state = 104
                 self.sPlus()
                 pass
             elif token in [HypothesisParser.MINUS]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 104
+                self.state = 105
                 self.sMinus()
                 pass
             elif token in [HypothesisParser.MUL]:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 105
+                self.state = 106
                 self.sMul()
                 pass
             elif token in [HypothesisParser.DIV]:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 106
+                self.state = 107
                 self.sDiv()
                 pass
             elif token in [HypothesisParser.POWER]:
                 self.enterOuterAlt(localctx, 5)
-                self.state = 107
+                self.state = 108
                 self.sPower()
                 pass
             else:
@@ -607,36 +619,36 @@ class HypothesisParser ( Parser ):
         localctx = HypothesisParser.SExpressionContext(self, self._ctx, self.state)
         self.enterRule(localctx, 6, self.RULE_sExpression)
         try:
-            self.state = 115
+            self.state = 116
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,2,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 110
+                self.state = 111
                 self.sConcatExpression()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 111
+                self.state = 112
                 self.sArithmeticExpression()
                 pass
 
             elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 112
+                self.state = 113
                 self.sBooleanExpression()
                 pass
 
             elif la_ == 4:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 113
+                self.state = 114
                 self.sNumberExpression()
                 pass
 
             elif la_ == 5:
                 self.enterOuterAlt(localctx, 5)
-                self.state = 114
+                self.state = 115
                 self.sStringExpression()
                 pass
 
@@ -690,18 +702,18 @@ class HypothesisParser ( Parser ):
         localctx = HypothesisParser.STermContext(self, self._ctx, self.state)
         self.enterRule(localctx, 8, self.RULE_sTerm)
         try:
-            self.state = 119
+            self.state = 120
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,3,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 117
+                self.state = 118
                 self.sArithmeticTerm()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 118
+                self.state = 119
                 self.sBooleanTerm()
                 pass
 
@@ -767,32 +779,32 @@ class HypothesisParser ( Parser ):
         localctx = HypothesisParser.SValueContext(self, self._ctx, self.state)
         self.enterRule(localctx, 10, self.RULE_sValue)
         try:
-            self.state = 126
+            self.state = 127
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [HypothesisParser.DIGITS]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 121
+                self.state = 122
                 self.sNumber()
                 pass
             elif token in [HypothesisParser.TRUE, HypothesisParser.FALSE]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 122
+                self.state = 123
                 self.sBoolean()
                 pass
             elif token in [HypothesisParser.CHARS]:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 123
+                self.state = 124
                 self.sString()
                 pass
             elif token in [HypothesisParser.BRACKET_LEFT]:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 124
+                self.state = 125
                 self.sArray()
                 pass
             elif token in [HypothesisParser.CURLY_LEFT]:
                 self.enterOuterAlt(localctx, 5)
-                self.state = 125
+                self.state = 126
                 self.sMap()
                 pass
             else:
@@ -843,7 +855,7 @@ class HypothesisParser ( Parser ):
         self.enterRule(localctx, 12, self.RULE_sPlus)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 128
+            self.state = 129
             self.match(HypothesisParser.PLUS)
         except RecognitionException as re:
             localctx.exception = re
@@ -890,7 +902,7 @@ class HypothesisParser ( Parser ):
         self.enterRule(localctx, 14, self.RULE_sMinus)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 130
+            self.state = 131
             self.match(HypothesisParser.MINUS)
         except RecognitionException as re:
             localctx.exception = re
@@ -937,7 +949,7 @@ class HypothesisParser ( Parser ):
         self.enterRule(localctx, 16, self.RULE_sMul)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 132
+            self.state = 133
             self.match(HypothesisParser.MUL)
         except RecognitionException as re:
             localctx.exception = re
@@ -984,7 +996,7 @@ class HypothesisParser ( Parser ):
         self.enterRule(localctx, 18, self.RULE_sDiv)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 134
+            self.state = 135
             self.match(HypothesisParser.DIV)
         except RecognitionException as re:
             localctx.exception = re
@@ -1031,7 +1043,7 @@ class HypothesisParser ( Parser ):
         self.enterRule(localctx, 20, self.RULE_sPower)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 136
+            self.state = 137
             self.match(HypothesisParser.POWER)
         except RecognitionException as re:
             localctx.exception = re
@@ -1078,7 +1090,7 @@ class HypothesisParser ( Parser ):
         self.enterRule(localctx, 22, self.RULE_sAnd)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 138
+            self.state = 139
             self.match(HypothesisParser.AND)
         except RecognitionException as re:
             localctx.exception = re
@@ -1125,7 +1137,7 @@ class HypothesisParser ( Parser ):
         self.enterRule(localctx, 24, self.RULE_sOr)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 140
+            self.state = 141
             self.match(HypothesisParser.OR)
         except RecognitionException as re:
             localctx.exception = re
@@ -1172,7 +1184,7 @@ class HypothesisParser ( Parser ):
         self.enterRule(localctx, 26, self.RULE_sNot)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 142
+            self.state = 143
             self.match(HypothesisParser.NOT)
         except RecognitionException as re:
             localctx.exception = re
@@ -1223,7 +1235,7 @@ class HypothesisParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 144
+            self.state = 145
             _la = self._input.LA(1)
             if not(_la==HypothesisParser.EQ or _la==HypothesisParser.STRICT_EQ):
                 self._errHandler.recoverInline(self)
@@ -1279,7 +1291,7 @@ class HypothesisParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 146
+            self.state = 147
             _la = self._input.LA(1)
             if not(_la==HypothesisParser.NEQ or _la==HypothesisParser.STRICT_NEQ):
                 self._errHandler.recoverInline(self)
@@ -1331,7 +1343,7 @@ class HypothesisParser ( Parser ):
         self.enterRule(localctx, 32, self.RULE_sLowerThan)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 148
+            self.state = 149
             self.match(HypothesisParser.LT)
         except RecognitionException as re:
             localctx.exception = re
@@ -1378,7 +1390,7 @@ class HypothesisParser ( Parser ):
         self.enterRule(localctx, 34, self.RULE_sLowerEquals)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 150
+            self.state = 151
             self.match(HypothesisParser.LE)
         except RecognitionException as re:
             localctx.exception = re
@@ -1425,7 +1437,7 @@ class HypothesisParser ( Parser ):
         self.enterRule(localctx, 36, self.RULE_sGreaterThan)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 152
+            self.state = 153
             self.match(HypothesisParser.GT)
         except RecognitionException as re:
             localctx.exception = re
@@ -1472,7 +1484,7 @@ class HypothesisParser ( Parser ):
         self.enterRule(localctx, 38, self.RULE_sGreaterEquals)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 154
+            self.state = 155
             self.match(HypothesisParser.GE)
         except RecognitionException as re:
             localctx.exception = re
@@ -1538,41 +1550,41 @@ class HypothesisParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 158
+            self.state = 159
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [HypothesisParser.IDENTIFIER, HypothesisParser.DIGITS]:
-                self.state = 156
+            if token in [HypothesisParser.IDENTIFIER, HypothesisParser.CHARS, HypothesisParser.DIGITS]:
+                self.state = 157
                 self.sOperand()
                 pass
             elif token in [HypothesisParser.ROUND_LEFT]:
-                self.state = 157
+                self.state = 158
                 self.sArithmeticTerm()
                 pass
             else:
                 raise NoViableAltException(self)
 
-            self.state = 165 
+            self.state = 166 
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
-                self.state = 160
+                self.state = 161
                 self.sOperator()
-                self.state = 163
+                self.state = 164
                 self._errHandler.sync(self)
                 token = self._input.LA(1)
-                if token in [HypothesisParser.IDENTIFIER, HypothesisParser.DIGITS]:
-                    self.state = 161
+                if token in [HypothesisParser.IDENTIFIER, HypothesisParser.CHARS, HypothesisParser.DIGITS]:
+                    self.state = 162
                     self.sOperand()
                     pass
                 elif token in [HypothesisParser.ROUND_LEFT]:
-                    self.state = 162
+                    self.state = 163
                     self.sArithmeticTerm()
                     pass
                 else:
                     raise NoViableAltException(self)
 
-                self.state = 167 
+                self.state = 168 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << HypothesisParser.PLUS) | (1 << HypothesisParser.MINUS) | (1 << HypothesisParser.MUL) | (1 << HypothesisParser.DIV) | (1 << HypothesisParser.POWER))) != 0)):
@@ -1645,23 +1657,23 @@ class HypothesisParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 169
+            self.state = 170
             self.match(HypothesisParser.ROUND_LEFT)
-            self.state = 179
+            self.state = 180
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [HypothesisParser.IDENTIFIER, HypothesisParser.DIGITS]:
-                self.state = 170
+            if token in [HypothesisParser.IDENTIFIER, HypothesisParser.CHARS, HypothesisParser.DIGITS]:
+                self.state = 171
                 self.sOperand()
-                self.state = 174 
+                self.state = 175 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while True:
-                    self.state = 171
-                    self.sOperator()
                     self.state = 172
+                    self.sOperator()
+                    self.state = 173
                     self.sOperand()
-                    self.state = 176 
+                    self.state = 177 
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
                     if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << HypothesisParser.PLUS) | (1 << HypothesisParser.MINUS) | (1 << HypothesisParser.MUL) | (1 << HypothesisParser.DIV) | (1 << HypothesisParser.POWER))) != 0)):
@@ -1669,13 +1681,13 @@ class HypothesisParser ( Parser ):
 
                 pass
             elif token in [HypothesisParser.ROUND_LEFT]:
-                self.state = 178
+                self.state = 179
                 self.sArithmeticTerm()
                 pass
             else:
                 raise NoViableAltException(self)
 
-            self.state = 181
+            self.state = 182
             self.match(HypothesisParser.ROUND_RIGHT)
         except RecognitionException as re:
             localctx.exception = re
@@ -1699,6 +1711,10 @@ class HypothesisParser ( Parser ):
 
         def sProperty(self):
             return self.getTypedRuleContext(HypothesisParser.SPropertyContext,0)
+
+
+        def sPropertyAccess(self):
+            return self.getTypedRuleContext(HypothesisParser.SPropertyAccessContext,0)
 
 
         def getRuleIndex(self):
@@ -1726,21 +1742,27 @@ class HypothesisParser ( Parser ):
         localctx = HypothesisParser.SBooleanOperandContext(self, self._ctx, self.state)
         self.enterRule(localctx, 44, self.RULE_sBooleanOperand)
         try:
-            self.state = 185
+            self.state = 187
             self._errHandler.sync(self)
-            token = self._input.LA(1)
-            if token in [HypothesisParser.TRUE, HypothesisParser.FALSE, HypothesisParser.CURLY_LEFT, HypothesisParser.BRACKET_LEFT, HypothesisParser.CHARS, HypothesisParser.DIGITS]:
+            la_ = self._interp.adaptivePredict(self._input,10,self._ctx)
+            if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 183
+                self.state = 184
                 self.sValue()
                 pass
-            elif token in [HypothesisParser.IDENTIFIER]:
+
+            elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 184
+                self.state = 185
                 self.sProperty()
                 pass
-            else:
-                raise NoViableAltException(self)
+
+            elif la_ == 3:
+                self.enterOuterAlt(localctx, 3)
+                self.state = 186
+                self.sPropertyAccess()
+                pass
+
 
         except RecognitionException as re:
             localctx.exception = re
@@ -1803,32 +1825,32 @@ class HypothesisParser ( Parser ):
         localctx = HypothesisParser.SBooleanOperatorContext(self, self._ctx, self.state)
         self.enterRule(localctx, 46, self.RULE_sBooleanOperator)
         try:
-            self.state = 192
+            self.state = 194
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [HypothesisParser.AND]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 187
+                self.state = 189
                 self.sAnd()
                 pass
             elif token in [HypothesisParser.OR]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 188
+                self.state = 190
                 self.sOr()
                 pass
             elif token in [HypothesisParser.NOT]:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 189
+                self.state = 191
                 self.sNot()
                 pass
             elif token in [HypothesisParser.EQ, HypothesisParser.STRICT_EQ]:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 190
+                self.state = 192
                 self.sEquals()
                 pass
             elif token in [HypothesisParser.NEQ, HypothesisParser.STRICT_NEQ]:
                 self.enterOuterAlt(localctx, 5)
-                self.state = 191
+                self.state = 193
                 self.sNotEquals()
                 pass
             else:
@@ -1898,41 +1920,41 @@ class HypothesisParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 196
+            self.state = 198
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [HypothesisParser.TRUE, HypothesisParser.FALSE, HypothesisParser.CURLY_LEFT, HypothesisParser.BRACKET_LEFT, HypothesisParser.IDENTIFIER, HypothesisParser.CHARS, HypothesisParser.DIGITS]:
-                self.state = 194
+                self.state = 196
                 self.sBooleanOperand()
                 pass
             elif token in [HypothesisParser.ROUND_LEFT]:
-                self.state = 195
+                self.state = 197
                 self.sBooleanTerm()
                 pass
             else:
                 raise NoViableAltException(self)
 
-            self.state = 205
+            self.state = 207
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << HypothesisParser.AND) | (1 << HypothesisParser.OR) | (1 << HypothesisParser.NOT) | (1 << HypothesisParser.EQ) | (1 << HypothesisParser.STRICT_EQ) | (1 << HypothesisParser.NEQ) | (1 << HypothesisParser.STRICT_NEQ))) != 0):
-                self.state = 198
+                self.state = 200
                 self.sBooleanOperator()
-                self.state = 201
+                self.state = 203
                 self._errHandler.sync(self)
                 token = self._input.LA(1)
                 if token in [HypothesisParser.TRUE, HypothesisParser.FALSE, HypothesisParser.CURLY_LEFT, HypothesisParser.BRACKET_LEFT, HypothesisParser.IDENTIFIER, HypothesisParser.CHARS, HypothesisParser.DIGITS]:
-                    self.state = 199
+                    self.state = 201
                     self.sBooleanOperand()
                     pass
                 elif token in [HypothesisParser.ROUND_LEFT]:
-                    self.state = 200
+                    self.state = 202
                     self.sBooleanTerm()
                     pass
                 else:
                     raise NoViableAltException(self)
 
-                self.state = 207
+                self.state = 209
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
@@ -2003,23 +2025,23 @@ class HypothesisParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 208
+            self.state = 210
             self.match(HypothesisParser.ROUND_LEFT)
-            self.state = 218
+            self.state = 220
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [HypothesisParser.TRUE, HypothesisParser.FALSE, HypothesisParser.CURLY_LEFT, HypothesisParser.BRACKET_LEFT, HypothesisParser.IDENTIFIER, HypothesisParser.CHARS, HypothesisParser.DIGITS]:
-                self.state = 209
+                self.state = 211
                 self.sBooleanOperand()
-                self.state = 213 
+                self.state = 215 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while True:
-                    self.state = 210
+                    self.state = 212
                     self.sBooleanOperator()
-                    self.state = 211
+                    self.state = 213
                     self.sBooleanOperand()
-                    self.state = 215 
+                    self.state = 217 
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
                     if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << HypothesisParser.AND) | (1 << HypothesisParser.OR) | (1 << HypothesisParser.NOT) | (1 << HypothesisParser.EQ) | (1 << HypothesisParser.STRICT_EQ) | (1 << HypothesisParser.NEQ) | (1 << HypothesisParser.STRICT_NEQ))) != 0)):
@@ -2027,13 +2049,13 @@ class HypothesisParser ( Parser ):
 
                 pass
             elif token in [HypothesisParser.ROUND_LEFT]:
-                self.state = 217
+                self.state = 219
                 self.sBooleanTerm()
                 pass
             else:
                 raise NoViableAltException(self)
 
-            self.state = 220
+            self.state = 222
             self.match(HypothesisParser.ROUND_RIGHT)
         except RecognitionException as re:
             localctx.exception = re
@@ -2057,6 +2079,10 @@ class HypothesisParser ( Parser ):
 
         def sProperty(self):
             return self.getTypedRuleContext(HypothesisParser.SPropertyContext,0)
+
+
+        def sPropertyAccess(self):
+            return self.getTypedRuleContext(HypothesisParser.SPropertyAccessContext,0)
 
 
         def getRuleIndex(self):
@@ -2084,21 +2110,27 @@ class HypothesisParser ( Parser ):
         localctx = HypothesisParser.SNumberOperandContext(self, self._ctx, self.state)
         self.enterRule(localctx, 52, self.RULE_sNumberOperand)
         try:
-            self.state = 224
+            self.state = 227
             self._errHandler.sync(self)
-            token = self._input.LA(1)
-            if token in [HypothesisParser.DIGITS]:
+            la_ = self._interp.adaptivePredict(self._input,17,self._ctx)
+            if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 222
+                self.state = 224
                 self.sNumber()
                 pass
-            elif token in [HypothesisParser.IDENTIFIER]:
+
+            elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 223
+                self.state = 225
                 self.sProperty()
                 pass
-            else:
-                raise NoViableAltException(self)
+
+            elif la_ == 3:
+                self.enterOuterAlt(localctx, 3)
+                self.state = 226
+                self.sPropertyAccess()
+                pass
+
 
         except RecognitionException as re:
             localctx.exception = re
@@ -2165,37 +2197,37 @@ class HypothesisParser ( Parser ):
         localctx = HypothesisParser.SNumberOperatorContext(self, self._ctx, self.state)
         self.enterRule(localctx, 54, self.RULE_sNumberOperator)
         try:
-            self.state = 232
+            self.state = 235
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [HypothesisParser.EQ, HypothesisParser.STRICT_EQ]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 226
+                self.state = 229
                 self.sEquals()
                 pass
             elif token in [HypothesisParser.NEQ, HypothesisParser.STRICT_NEQ]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 227
+                self.state = 230
                 self.sNotEquals()
                 pass
             elif token in [HypothesisParser.LT]:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 228
+                self.state = 231
                 self.sLowerThan()
                 pass
             elif token in [HypothesisParser.LE]:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 229
+                self.state = 232
                 self.sLowerEquals()
                 pass
             elif token in [HypothesisParser.GT]:
                 self.enterOuterAlt(localctx, 5)
-                self.state = 230
+                self.state = 233
                 self.sGreaterThan()
                 pass
             elif token in [HypothesisParser.GE]:
                 self.enterOuterAlt(localctx, 6)
-                self.state = 231
+                self.state = 234
                 self.sGreaterEquals()
                 pass
             else:
@@ -2265,41 +2297,41 @@ class HypothesisParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 236
+            self.state = 239
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [HypothesisParser.IDENTIFIER, HypothesisParser.DIGITS]:
-                self.state = 234
+            if token in [HypothesisParser.IDENTIFIER, HypothesisParser.CHARS, HypothesisParser.DIGITS]:
+                self.state = 237
                 self.sNumberOperand()
                 pass
             elif token in [HypothesisParser.ROUND_LEFT]:
-                self.state = 235
+                self.state = 238
                 self.sNumberTerm()
                 pass
             else:
                 raise NoViableAltException(self)
 
-            self.state = 243 
+            self.state = 246 
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
-                self.state = 238
-                self.sNumberOperator()
                 self.state = 241
+                self.sNumberOperator()
+                self.state = 244
                 self._errHandler.sync(self)
                 token = self._input.LA(1)
-                if token in [HypothesisParser.IDENTIFIER, HypothesisParser.DIGITS]:
-                    self.state = 239
+                if token in [HypothesisParser.IDENTIFIER, HypothesisParser.CHARS, HypothesisParser.DIGITS]:
+                    self.state = 242
                     self.sNumberOperand()
                     pass
                 elif token in [HypothesisParser.ROUND_LEFT]:
-                    self.state = 240
+                    self.state = 243
                     self.sNumberTerm()
                     pass
                 else:
                     raise NoViableAltException(self)
 
-                self.state = 245 
+                self.state = 248 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << HypothesisParser.EQ) | (1 << HypothesisParser.STRICT_EQ) | (1 << HypothesisParser.NEQ) | (1 << HypothesisParser.STRICT_NEQ) | (1 << HypothesisParser.LT) | (1 << HypothesisParser.LE) | (1 << HypothesisParser.GT) | (1 << HypothesisParser.GE))) != 0)):
@@ -2372,23 +2404,23 @@ class HypothesisParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 247
+            self.state = 250
             self.match(HypothesisParser.ROUND_LEFT)
-            self.state = 257
+            self.state = 260
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [HypothesisParser.IDENTIFIER, HypothesisParser.DIGITS]:
-                self.state = 248
+            if token in [HypothesisParser.IDENTIFIER, HypothesisParser.CHARS, HypothesisParser.DIGITS]:
+                self.state = 251
                 self.sNumberOperand()
-                self.state = 252 
+                self.state = 255 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while True:
-                    self.state = 249
+                    self.state = 252
                     self.sNumberOperator()
-                    self.state = 250
+                    self.state = 253
                     self.sNumberOperand()
-                    self.state = 254 
+                    self.state = 257 
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
                     if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << HypothesisParser.EQ) | (1 << HypothesisParser.STRICT_EQ) | (1 << HypothesisParser.NEQ) | (1 << HypothesisParser.STRICT_NEQ) | (1 << HypothesisParser.LT) | (1 << HypothesisParser.LE) | (1 << HypothesisParser.GT) | (1 << HypothesisParser.GE))) != 0)):
@@ -2396,13 +2428,13 @@ class HypothesisParser ( Parser ):
 
                 pass
             elif token in [HypothesisParser.ROUND_LEFT]:
-                self.state = 256
+                self.state = 259
                 self.sNumberTerm()
                 pass
             else:
                 raise NoViableAltException(self)
 
-            self.state = 259
+            self.state = 262
             self.match(HypothesisParser.ROUND_RIGHT)
         except RecognitionException as re:
             localctx.exception = re
@@ -2450,7 +2482,7 @@ class HypothesisParser ( Parser ):
         self.enterRule(localctx, 60, self.RULE_sStringOperand)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 261
+            self.state = 264
             self.sString()
         except RecognitionException as re:
             localctx.exception = re
@@ -2501,17 +2533,17 @@ class HypothesisParser ( Parser ):
         localctx = HypothesisParser.SStringOperatorContext(self, self._ctx, self.state)
         self.enterRule(localctx, 62, self.RULE_sStringOperator)
         try:
-            self.state = 265
+            self.state = 268
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [HypothesisParser.EQ, HypothesisParser.STRICT_EQ]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 263
+                self.state = 266
                 self.sEquals()
                 pass
             elif token in [HypothesisParser.NEQ, HypothesisParser.STRICT_NEQ]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 264
+                self.state = 267
                 self.sNotEquals()
                 pass
             else:
@@ -2581,41 +2613,41 @@ class HypothesisParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 269
+            self.state = 272
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [HypothesisParser.CHARS]:
-                self.state = 267
+                self.state = 270
                 self.sStringOperand()
                 pass
             elif token in [HypothesisParser.ROUND_LEFT]:
-                self.state = 268
+                self.state = 271
                 self.sStringTerm()
                 pass
             else:
                 raise NoViableAltException(self)
 
-            self.state = 276 
+            self.state = 279 
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
-                self.state = 271
-                self.sStringOperator()
                 self.state = 274
+                self.sStringOperator()
+                self.state = 277
                 self._errHandler.sync(self)
                 token = self._input.LA(1)
                 if token in [HypothesisParser.CHARS]:
-                    self.state = 272
+                    self.state = 275
                     self.sStringOperand()
                     pass
                 elif token in [HypothesisParser.ROUND_LEFT]:
-                    self.state = 273
+                    self.state = 276
                     self.sStringTerm()
                     pass
                 else:
                     raise NoViableAltException(self)
 
-                self.state = 278 
+                self.state = 281 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << HypothesisParser.EQ) | (1 << HypothesisParser.STRICT_EQ) | (1 << HypothesisParser.NEQ) | (1 << HypothesisParser.STRICT_NEQ))) != 0)):
@@ -2688,23 +2720,23 @@ class HypothesisParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 280
+            self.state = 283
             self.match(HypothesisParser.ROUND_LEFT)
-            self.state = 290
+            self.state = 293
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [HypothesisParser.CHARS]:
-                self.state = 281
+                self.state = 284
                 self.sStringOperand()
-                self.state = 285 
+                self.state = 288 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while True:
-                    self.state = 282
+                    self.state = 285
                     self.sStringOperator()
-                    self.state = 283
+                    self.state = 286
                     self.sStringOperand()
-                    self.state = 287 
+                    self.state = 290 
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
                     if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << HypothesisParser.EQ) | (1 << HypothesisParser.STRICT_EQ) | (1 << HypothesisParser.NEQ) | (1 << HypothesisParser.STRICT_NEQ))) != 0)):
@@ -2712,13 +2744,13 @@ class HypothesisParser ( Parser ):
 
                 pass
             elif token in [HypothesisParser.ROUND_LEFT]:
-                self.state = 289
+                self.state = 292
                 self.sStringTerm()
                 pass
             else:
                 raise NoViableAltException(self)
 
-            self.state = 292
+            self.state = 295
             self.match(HypothesisParser.ROUND_RIGHT)
         except RecognitionException as re:
             localctx.exception = re
@@ -2766,7 +2798,7 @@ class HypothesisParser ( Parser ):
         self.enterRule(localctx, 68, self.RULE_sConcatOperand)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 294
+            self.state = 297
             self.sString()
         except RecognitionException as re:
             localctx.exception = re
@@ -2821,24 +2853,24 @@ class HypothesisParser ( Parser ):
         localctx = HypothesisParser.SConcatExpressionContext(self, self._ctx, self.state)
         self.enterRule(localctx, 70, self.RULE_sConcatExpression)
         try:
-            self.state = 299
+            self.state = 302
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,30,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 296
+                self.state = 299
                 self.sConcatBoth()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 297
+                self.state = 300
                 self.sConcatLeft()
                 pass
 
             elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 298
+                self.state = 301
                 self.sConcatRight()
                 pass
 
@@ -2901,19 +2933,19 @@ class HypothesisParser ( Parser ):
         self.enterRule(localctx, 72, self.RULE_sConcatLeft)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 301
+            self.state = 304
             self.sString()
-            self.state = 302
-            self.sPlus()
             self.state = 305
+            self.sPlus()
+            self.state = 308
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [HypothesisParser.TRUE, HypothesisParser.FALSE, HypothesisParser.CURLY_LEFT, HypothesisParser.BRACKET_LEFT, HypothesisParser.CHARS, HypothesisParser.DIGITS]:
-                self.state = 303
+                self.state = 306
                 self.sValue()
                 pass
             elif token in [HypothesisParser.IDENTIFIER]:
-                self.state = 304
+                self.state = 307
                 self.sProperty()
                 pass
             else:
@@ -2977,23 +3009,23 @@ class HypothesisParser ( Parser ):
         self.enterRule(localctx, 74, self.RULE_sConcatRight)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 309
+            self.state = 312
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [HypothesisParser.TRUE, HypothesisParser.FALSE, HypothesisParser.CURLY_LEFT, HypothesisParser.BRACKET_LEFT, HypothesisParser.CHARS, HypothesisParser.DIGITS]:
-                self.state = 307
+                self.state = 310
                 self.sValue()
                 pass
             elif token in [HypothesisParser.IDENTIFIER]:
-                self.state = 308
+                self.state = 311
                 self.sProperty()
                 pass
             else:
                 raise NoViableAltException(self)
 
-            self.state = 311
+            self.state = 314
             self.sPlus()
-            self.state = 312
+            self.state = 315
             self.sString()
         except RecognitionException as re:
             localctx.exception = re
@@ -3052,17 +3084,17 @@ class HypothesisParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 314
+            self.state = 317
             self.sString()
-            self.state = 318 
+            self.state = 321 
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
-                self.state = 315
+                self.state = 318
                 self.sPlus()
-                self.state = 316
+                self.state = 319
                 self.sString()
-                self.state = 320 
+                self.state = 323 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if not (_la==HypothesisParser.PLUS):
@@ -3120,7 +3152,7 @@ class HypothesisParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 322
+            self.state = 325
             _la = self._input.LA(1)
             if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << HypothesisParser.STRING) | (1 << HypothesisParser.NUMBER) | (1 << HypothesisParser.BOOLEAN))) != 0)):
                 self._errHandler.recoverInline(self)
@@ -3172,7 +3204,7 @@ class HypothesisParser ( Parser ):
         self.enterRule(localctx, 80, self.RULE_sProperty)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 324
+            self.state = 327
             self.match(HypothesisParser.IDENTIFIER)
         except RecognitionException as re:
             localctx.exception = re
@@ -3223,17 +3255,17 @@ class HypothesisParser ( Parser ):
         localctx = HypothesisParser.SPropertyAwareContext(self, self._ctx, self.state)
         self.enterRule(localctx, 82, self.RULE_sPropertyAware)
         try:
-            self.state = 328
+            self.state = 331
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [HypothesisParser.CHARS]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 326
+                self.state = 329
                 self.sString()
                 pass
             elif token in [HypothesisParser.IDENTIFIER]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 327
+                self.state = 330
                 self.sProperty()
                 pass
             else:
@@ -3325,45 +3357,45 @@ class HypothesisParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 330
+            self.state = 333
             self.sPropertyAware()
-            self.state = 340 
+            self.state = 343 
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
-                self.state = 340
+                self.state = 343
                 self._errHandler.sync(self)
                 token = self._input.LA(1)
                 if token in [HypothesisParser.DOT]:
-                    self.state = 331
+                    self.state = 334
                     self.match(HypothesisParser.DOT)
-                    self.state = 332
+                    self.state = 335
                     self.sProperty()
                     pass
                 elif token in [HypothesisParser.BRACKET_LEFT]:
-                    self.state = 333
-                    self.match(HypothesisParser.BRACKET_LEFT)
                     self.state = 336
+                    self.match(HypothesisParser.BRACKET_LEFT)
+                    self.state = 339
                     self._errHandler.sync(self)
                     token = self._input.LA(1)
                     if token in [HypothesisParser.DIGITS]:
-                        self.state = 334
+                        self.state = 337
                         self.sNumber()
                         pass
                     elif token in [HypothesisParser.CHARS]:
-                        self.state = 335
+                        self.state = 338
                         self.sString()
                         pass
                     else:
                         raise NoViableAltException(self)
 
-                    self.state = 338
+                    self.state = 341
                     self.match(HypothesisParser.BRACKET_RIGHT)
                     pass
                 else:
                     raise NoViableAltException(self)
 
-                self.state = 342 
+                self.state = 345 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if not (_la==HypothesisParser.DOT or _la==HypothesisParser.BRACKET_LEFT):
@@ -3414,7 +3446,7 @@ class HypothesisParser ( Parser ):
         self.enterRule(localctx, 86, self.RULE_sString)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 344
+            self.state = 347
             self.match(HypothesisParser.CHARS)
         except RecognitionException as re:
             localctx.exception = re
@@ -3461,7 +3493,7 @@ class HypothesisParser ( Parser ):
         self.enterRule(localctx, 88, self.RULE_sNumber)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 346
+            self.state = 349
             self.match(HypothesisParser.DIGITS)
         except RecognitionException as re:
             localctx.exception = re
@@ -3512,7 +3544,7 @@ class HypothesisParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 348
+            self.state = 351
             _la = self._input.LA(1)
             if not(_la==HypothesisParser.TRUE or _la==HypothesisParser.FALSE):
                 self._errHandler.recoverInline(self)
@@ -3581,29 +3613,29 @@ class HypothesisParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 350
+            self.state = 353
             self.match(HypothesisParser.BRACKET_LEFT)
-            self.state = 359
+            self.state = 362
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << HypothesisParser.TRUE) | (1 << HypothesisParser.FALSE) | (1 << HypothesisParser.CURLY_LEFT) | (1 << HypothesisParser.BRACKET_LEFT) | (1 << HypothesisParser.CHARS) | (1 << HypothesisParser.DIGITS))) != 0):
-                self.state = 351
+                self.state = 354
                 self.sValue()
-                self.state = 356
+                self.state = 359
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while _la==HypothesisParser.COMMA:
-                    self.state = 352
+                    self.state = 355
                     self.match(HypothesisParser.COMMA)
-                    self.state = 353
+                    self.state = 356
                     self.sValue()
-                    self.state = 358
+                    self.state = 361
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
 
 
-            self.state = 361
+            self.state = 364
             self.match(HypothesisParser.BRACKET_RIGHT)
         except RecognitionException as re:
             localctx.exception = re
@@ -3680,37 +3712,37 @@ class HypothesisParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 363
+            self.state = 366
             self.match(HypothesisParser.CURLY_LEFT)
-            self.state = 377
+            self.state = 380
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==HypothesisParser.CHARS:
-                self.state = 364
+                self.state = 367
                 self.sString()
-                self.state = 365
+                self.state = 368
                 self.match(HypothesisParser.COLON)
-                self.state = 366
+                self.state = 369
                 self.sValue()
-                self.state = 374
+                self.state = 377
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while _la==HypothesisParser.COMMA:
-                    self.state = 367
-                    self.match(HypothesisParser.COMMA)
-                    self.state = 368
-                    self.sString()
-                    self.state = 369
-                    self.match(HypothesisParser.COLON)
                     self.state = 370
+                    self.match(HypothesisParser.COMMA)
+                    self.state = 371
+                    self.sString()
+                    self.state = 372
+                    self.match(HypothesisParser.COLON)
+                    self.state = 373
                     self.sValue()
-                    self.state = 376
+                    self.state = 379
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
 
 
-            self.state = 379
+            self.state = 382
             self.match(HypothesisParser.CURLY_RIGHT)
         except RecognitionException as re:
             localctx.exception = re

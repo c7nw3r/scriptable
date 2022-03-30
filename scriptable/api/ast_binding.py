@@ -2,12 +2,13 @@ from dataclasses import dataclass, field
 from typing import Dict, Callable, List, Any
 
 from scriptable.api.ast_restrictions import ASTRestrictions
+from scriptable.api.property_resolver import PropertySource
 
 
 @dataclass
 class ASTBinding:
     functions: Dict[str, Callable[[List[Any], 'ASTBinding'], Any]] = field(default_factory=lambda: {})
-    properties: Dict[str, Any] = field(default_factory=lambda: {})
+    properties: PropertySource = field(default_factory=lambda: {})
     signatures: Dict[str, int] = field(default_factory=lambda: {})
     restrictions: ASTRestrictions = ASTRestrictions()
 
@@ -30,3 +31,4 @@ class SourceAwareContext(ASTBinding):
         self.source = source
         self.functions = context.functions
         self.properties = context.properties
+        self.restrictions = context.restrictions

@@ -1,5 +1,3 @@
-from typing import Dict, Any
-
 # noinspection PyUnresolvedReferences
 from antlr4 import InputStream, CommonTokenStream
 
@@ -8,8 +6,10 @@ from scriptable.antlr.HypothesisLexer import HypothesisLexer
 from scriptable.antlr.HypothesisParser import HypothesisParser
 from scriptable.api.ast_binding import ASTBinding
 from scriptable.api.ast_restrictions import ASTRestrictions
+from scriptable.api.property_resolver import PropertySource
 from scriptable.hypothesis_visitor import HypothesisVisitorImpl
 from scriptable.listener.error_listener import ScriptableErrorListener
+from scriptable.runtime.buildin.typescript.process import Process
 
 
 class HypothesisEngine(ScriptableEngine):
@@ -34,5 +34,7 @@ class HypothesisEngine(ScriptableEngine):
 
         return HypothesisEngine(tree, restrictions)
 
-    def _create_binding(self, properties: Dict[str, Any], restrictions: ASTRestrictions):
-        return ASTBinding(restrictions=restrictions, properties=properties)
+    def _create_binding(self, properties: PropertySource):
+        binding = ASTBinding(restrictions=self.restrictions, properties=properties)
+        binding.add_property("process", Process(properties))
+        return binding

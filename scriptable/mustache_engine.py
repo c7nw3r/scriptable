@@ -1,4 +1,4 @@
-from typing import Dict, Any, Optional
+from typing import Optional
 
 # noinspection PyUnresolvedReferences
 from antlr4 import InputStream, CommonTokenStream
@@ -8,6 +8,7 @@ from scriptable.antlr.MustacheLexer import MustacheLexer
 from scriptable.antlr.MustacheParser import MustacheParser
 from scriptable.api.ast_binding import ASTBinding
 from scriptable.api.ast_restrictions import ASTRestrictions
+from scriptable.api.property_resolver import PropertySource
 from scriptable.listener.error_listener import ScriptableErrorListener
 from scriptable.mustache_visitor import MustacheVisitorImpl
 
@@ -15,7 +16,8 @@ from scriptable.mustache_visitor import MustacheVisitorImpl
 class MustacheEngine(ScriptableEngine):
 
     @staticmethod
-    def parse(schema, restrictions: ASTRestrictions = ASTRestrictions()) -> 'MustacheEngine':
+    def parse(schema,
+              restrictions: ASTRestrictions = ASTRestrictions()) -> 'MustacheEngine':
         lexer = MustacheLexer(MustacheEngine.stream(schema))
         stream = CommonTokenStream(lexer)
         parser = MustacheParser(stream)
@@ -34,9 +36,9 @@ class MustacheEngine(ScriptableEngine):
 
         return MustacheEngine(tree, restrictions)
 
-    def execute(self, properties: Optional[dict] = None):
+    def execute(self, properties: Optional[PropertySource] = None):
         properties = properties if properties is not None else {}
         return "".join([e.execute(ASTBinding(properties=properties)) for e in self.tree])
 
-    def _create_binding(self, properties: Dict[str, Any], restrictions: ASTRestrictions):
-        return ASTBinding(restrictions=restrictions, properties=properties)
+    def _create_binding(self, properties: PropertySource):
+        return ASTBinding(restrictions=self.restrictions, properties=properties)

@@ -8,7 +8,7 @@ long_description = Path(__file__).with_name("README.md").read_text()
 setup(
     name='scriptable',
     packages=find_packages(exclude=("__tests__",)),
-    version='0.1.4',
+    version='0.1.5',
     license='Apache Software License',
     description='Scriptable is a sand-boxed scripting engine which can be used safely in an embedded environment.',
     long_description=long_description,
@@ -16,7 +16,7 @@ setup(
     author='x-and-y',
     author_email='christian.weber@leftshift.one',
     url='https://github.com/c7nw3r/scriptable',
-    download_url='https://github.com/c7nw3r/scriptable/archive/refs/tags/v0.1.4.tar.gz',
+    download_url='https://github.com/c7nw3r/scriptable/archive/refs/tags/v0.1.5.tar.gz',
     keywords=['scripting-engine'],
     setup_requires=['setuptools_scm'],
     include_package_data=True,
