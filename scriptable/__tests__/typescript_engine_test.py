@@ -48,6 +48,9 @@ class TypescriptEngineTest(unittest.TestCase):
         self.assertEqual(TypescriptEngine.parse("true == false").execute(), False)
         self.assertEqual(TypescriptEngine.parse("true === false").execute(), False)
         self.assertEqual(TypescriptEngine.parse("process.env.x === true").execute({"x": True}), True)
+        self.assertEqual(TypescriptEngine.parse("!true").execute(), False)
+        self.assertEqual(TypescriptEngine.parse("!false").execute(), True)
+        self.assertEqual(TypescriptEngine.parse("!!false").execute(), False)
 
         # number expression
         self.assertEqual(TypescriptEngine.parse("1 == 1").execute(), True)
@@ -90,6 +93,8 @@ class TypescriptEngineTest(unittest.TestCase):
         self.assertEqual(TypescriptEngine.parse("if (false) { return 1 } return 0").execute(), 0)
         self.assertEqual(TypescriptEngine.parse("if (false) {return 0} else if(true) {return 1} return 2").execute(), 1)
         self.assertEqual(TypescriptEngine.parse("if (false) {return 0} else {return 1} return 2").execute(), 1)
+        self.assertEqual(TypescriptEngine.parse("if (process.env?.text) {return 0} return 1").execute({}), 1)
+        self.assertEqual(TypescriptEngine.parse("if (process.env?.text) {return 0} return 1").execute({"text":""}), 0)
 
     def test_console(self):
         TypescriptEngine.parse("console.assert('a')").execute()
@@ -101,6 +106,7 @@ class TypescriptEngineTest(unittest.TestCase):
         self.assertEqual(TypescriptEngine.parse("[[1, 2, 3]]").execute(), [[1, 2, 3]])
         # map
         self.assertEqual(TypescriptEngine.parse("{'a':0, 'b':1, 'c':2}").execute(), {"a": 0, "b": 1, "c": 2})
+        self.assertEqual(TypescriptEngine.parse("{'abc':'123'}").execute(), {"abc": "123"})
         # string
         self.assertEqual(TypescriptEngine.parse("'abc'").execute(), "abc")
 
@@ -235,6 +241,9 @@ a
     def test_process_env(self):
         self.assertEqual(TypescriptEngine.parse("process.env.test").execute({"test": "abc"}), "abc")
         self.assertEqual(TypescriptEngine.parse("process.env['test']").execute({"test": "abc"}), "abc")
+        self.assertEqual(TypescriptEngine.parse("process.env?.test").execute(), None)
+        self.assertEqual(TypescriptEngine.parse("process.env?.test.name").execute({"test": {"name": 1}}), 1)
+        self.assertEqual(TypescriptEngine.parse("process.env?.test?.name").execute({"test": {}}), None)
 
     def test_delete_from_env(self):
         properties = {"name": "abcd"}
@@ -270,3 +279,43 @@ process.env['name']
         """)
         result = engine.execute(CustomPropertyResolver())
         self.assertEqual(result, 123)
+
+    def test_optional_chaining(self):
+        engine = TypescriptEngine.parse("process.env?.ticket?.description !== ''")
+        self.assertEqual(engine.execute({"ticket": {"description": ""}}), False)
+
+        engine = TypescriptEngine.parse("process.env?.ticket?.description !== 'abc'")
+        self.assertEqual(engine.execute({"ticket": {"description": ""}}), True)
+
+        engine = TypescriptEngine.parse("process.env?.ticket?.description !== 'abc'")
+        self.assertEqual(engine.execute({"ticket": {}}), True)
+
+        engine = TypescriptEngine.parse("process.env?.ticket?.description !== 'abc'")
+        self.assertEqual(engine.execute({}), True)
+
+    def test_if_with_env_update(self):
+        engine = TypescriptEngine.parse("""
+if (process.env?.text && process.env?.result !== "cancel")
+    process.env.ticket.description = process.env.text
+        """)
+        context = {"text": "abcd", "ticket": {}}
+        engine.execute(context)
+        self.assertEqual(context["ticket"]["description"], "abcd")
+
+    def test_if_with_env_update2(self):
+        engine = TypescriptEngine.parse("""
+if (!process.env?.ticket)
+   process.env.ticket = {}
+
+delete process.env.text
+delete process.env.result
+        """)
+        context = {"text": "abcd", "result": ""}
+        engine.execute(context)
+        self.assertEqual(context["ticket"], {})
+        self.assertTrue("text" not in context)
+        self.assertTrue("result" not in context)
+
+    def test_process_env_string_concat(self):
+        engine = TypescriptEngine.parse("process.env['connector_baseUrl'] + '/signed/tickets'")
+        print(engine.execute({"connector_baseUrl": "abcd"}))

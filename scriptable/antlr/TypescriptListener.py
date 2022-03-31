@@ -395,6 +395,15 @@ class TypescriptListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by TypescriptParser#sOptional.
+    def enterSOptional(self, ctx:TypescriptParser.SOptionalContext):
+        pass
+
+    # Exit a parse tree produced by TypescriptParser#sOptional.
+    def exitSOptional(self, ctx:TypescriptParser.SOptionalContext):
+        pass
+
+
     # Enter a parse tree produced by TypescriptParser#sPropertyDelete.
     def enterSPropertyDelete(self, ctx:TypescriptParser.SPropertyDeleteContext):
         pass

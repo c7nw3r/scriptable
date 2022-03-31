@@ -64,3 +64,6 @@ class HypothesisEngineTest(unittest.TestCase):
     def test_parenthesizes(self):
         self.assertAlmostEqual(HypothesisEngine.parse("(((true && true)))").execute(), True)
         self.assertAlmostEqual(HypothesisEngine.parse("false && (false || true)").execute(), False)
+
+    def test_abc(self):
+        print(HypothesisEngine.parse("ticket?").execute())

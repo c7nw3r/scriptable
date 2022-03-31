@@ -2,16 +2,23 @@ from typing import List
 
 from scriptable.api import AST
 from scriptable.api.ast_binding import ASTBinding
+from scriptable.ast.expression.operator import Operator
 
 
 class LogicExpression(AST[bool]):
     def __init__(self, branch: List[AST]):
-        self.operand_stack = [branch[x] for x in range(0, len(branch), 2)]
-        self.operator_stack = [branch[x] for x in range(1, len(branch), 2)]
+        self.operand_stack = list(filter(lambda x: not isinstance(x, Operator), branch))
+        self.operator_stack = list(filter(lambda x: isinstance(x, Operator), branch))
 
     def execute(self, binding: ASTBinding) -> bool:
         operand_stack = list(map(lambda ast: ast.execute(binding), self.operand_stack))
         operator_stack = list(map(lambda ast: ast.execute(binding), self.operator_stack))
+
+        if len(operand_stack) == 1:
+            value = operand_stack.pop()
+            for _ in operator_stack:
+                value = not value
+            return value
 
         for i in range(len(operator_stack) - 1, -1, -1):
             value2 = operand_stack.pop(i + 1)

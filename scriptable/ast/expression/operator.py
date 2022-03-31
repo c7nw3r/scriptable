@@ -2,7 +2,12 @@ from scriptable.api import AST
 from scriptable.api.ast_binding import ASTBinding
 
 
-class And(AST[str]):
+class Operator(AST[str]):
+    def execute(self, binding: ASTBinding) -> str:
+        pass
+
+
+class And(Operator):
 
     def execute(self, binding: ASTBinding) -> str:
         return "and"
@@ -11,7 +16,7 @@ class And(AST[str]):
         return "and"
 
 
-class Or(AST[str]):
+class Or(Operator):
 
     def execute(self, binding: ASTBinding) -> str:
         return "or"
@@ -20,7 +25,7 @@ class Or(AST[str]):
         return "or"
 
 
-class Not(AST[str]):
+class Not(Operator):
 
     def execute(self, binding: ASTBinding) -> str:
         return "not"
@@ -29,7 +34,7 @@ class Not(AST[str]):
         return "not"
 
 
-class Plus(AST[str]):
+class Plus(Operator):
 
     def execute(self, binding: ASTBinding) -> str:
         return "+"
@@ -38,7 +43,7 @@ class Plus(AST[str]):
         return "+"
 
 
-class Minus(AST[str]):
+class Minus(Operator):
 
     def execute(self, binding: ASTBinding) -> str:
         return "-"
@@ -47,7 +52,7 @@ class Minus(AST[str]):
         return "-"
 
 
-class Mul(AST[str]):
+class Mul(Operator):
 
     def execute(self, binding: ASTBinding) -> str:
         return "*"
@@ -56,7 +61,7 @@ class Mul(AST[str]):
         return "*"
 
 
-class Div(AST[str]):
+class Div(Operator):
 
     def execute(self, binding: ASTBinding) -> str:
         return "/"
@@ -65,7 +70,7 @@ class Div(AST[str]):
         return "/"
 
 
-class Power(AST[str]):
+class Power(Operator):
 
     def execute(self, binding: ASTBinding) -> str:
         return "**"
@@ -74,7 +79,7 @@ class Power(AST[str]):
         return "**"
 
 
-class Equals(AST[str]):
+class Equals(Operator):
 
     def execute(self, binding: ASTBinding) -> str:
         return "=="
@@ -83,7 +88,7 @@ class Equals(AST[str]):
         return "=="
 
 
-class NotEquals(AST[str]):
+class NotEquals(Operator):
 
     def execute(self, binding: ASTBinding) -> str:
         return "!="
@@ -92,7 +97,7 @@ class NotEquals(AST[str]):
         return "!="
 
 
-class LowerThan(AST[str]):
+class LowerThan(Operator):
 
     def execute(self, binding: ASTBinding) -> str:
         return "<"
@@ -101,7 +106,7 @@ class LowerThan(AST[str]):
         return "<"
 
 
-class LowerEquals(AST[str]):
+class LowerEquals(Operator):
 
     def execute(self, binding: ASTBinding) -> str:
         return "<="
@@ -110,7 +115,7 @@ class LowerEquals(AST[str]):
         return "<="
 
 
-class GreaterThan(AST[str]):
+class GreaterThan(Operator):
 
     def execute(self, binding: ASTBinding) -> str:
         return ">"
@@ -119,7 +124,7 @@ class GreaterThan(AST[str]):
         return ">"
 
 
-class GreaterEquals(AST[str]):
+class GreaterEquals(Operator):
 
     def execute(self, binding: ASTBinding) -> str:
         return ">="

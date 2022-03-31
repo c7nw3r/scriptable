@@ -39,12 +39,8 @@ class LambdaPropertyResolver(DictPropertyResolver):
         self.callback = callback
 
     def __getitem__(self, item) -> Optional[str]:
-        if item in self.properties:
-            return self.properties[item]
-        return self.callback(item)
-
-    def __setitem__(self, key: str, value):
-        self.properties[key] = value
+        result = super().__getitem__(item)
+        return result if result is not None else self.callback(item)
 
     def __contains__(self, item):
         return self.__getitem__(item) is not None

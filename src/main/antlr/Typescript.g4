@@ -24,6 +24,7 @@ BRACKET_RIGHT : ']';
 AND           : '&&';
 OR            : '||';
 NOT           : '!';
+OPTIONAL      : '?';
 EQ            : '==';
 STRICT_EQ     : '===';
 NEQ           : '!=';
@@ -107,9 +108,9 @@ sArithmeticTerm       : ROUND_LEFT ((sOperand (sOperator sOperand)+) | sArithmet
 
 // boolean expression
 // ******************
-sBooleanOperand    : sValue | sProperty | sInvocation;
+sBooleanOperand    : sNot* (sValue | sProperty | sInvocation);
 sBooleanOperator   : sAnd | sOr | sNot | sEquals | sNotEquals;
-sBooleanExpression : (sBooleanOperand | sBooleanTerm) (sBooleanOperator (sBooleanOperand | sBooleanTerm))*;
+sBooleanExpression : ((sBooleanOperand) | sBooleanTerm) (sBooleanOperator (sBooleanOperand | sBooleanTerm))*;
 sBooleanTerm       : ROUND_LEFT ((sBooleanOperand (sBooleanOperator sBooleanOperand)+) | sBooleanTerm) ROUND_RIGHT;
 
 // number expression
@@ -130,10 +131,11 @@ sStringTerm        : ROUND_LEFT ((sStringOperand (sStringOperator sStringOperand
 sConcatOperand     : sString;
 sConcatExpression  : sConcatBoth | sConcatLeft | sConcatRight;
 sConcatLeft        : sString sPlus (sValue | sProperty);
-sConcatRight       : (sValue | sProperty) sPlus sString;
+sConcatRight       : (sInvocation | sProperty) sPlus sString;
 sConcatBoth        : sString (sPlus sString)+;
 
 sType              : STRING | NUMBER | BOOLEAN;
+sOptional          : OPTIONAL;
 
 sPropertyDelete    : DELETE sPropertyAccess;
 
@@ -151,7 +153,7 @@ sFunctionLambda    : ROUND_LEFT sFunctionArgDefs ROUND_RIGHT ARROW (sExpression 
 
 sProperty          : IDENTIFIER;
 sPropertyAware     : sString | sProperty;
-sPropertyAccess    : sPropertyAware ((DOT sProperty) | (BRACKET_LEFT (sNumber | sString) BRACKET_RIGHT))+;
+sPropertyAccess    : sPropertyAware (sOptional? (DOT sProperty) | (BRACKET_LEFT (sNumber | sString) BRACKET_RIGHT))+;
 
 sFunctionAware     : sString | sProperty | sArray;
 sFunctionAccess    : sFunctionAware (DOT sFunctionCall)+;
@@ -189,6 +191,6 @@ sBreak       : BREAK;
 // *******************
 sMutableVar   : (VAR | LET) IDENTIFIER EQUAL (sExpression | sValue | sInvocation) SEMICOLON?;
 sImmutableVar : CONST IDENTIFIER EQUAL (sExpression | sValue | sInvocation) SEMICOLON?;
-sAssignment   : (sProperty | sPropertyAccess) EQUAL (sExpression | sValue | sInvocation | sProperty) SEMICOLON?;
+sAssignment   : (sProperty | sPropertyAccess) EQUAL (sValue | sExpression | sInvocation | sProperty) SEMICOLON?;
 sIncrement    : sProperty PLUS PLUS SEMICOLON?;
 sDecrement    : sProperty MINUS MINUS SEMICOLON?;

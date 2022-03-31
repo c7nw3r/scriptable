@@ -16,3 +16,6 @@ class Process:
 
     def __contains__(self, item):
         return item == "env"
+
+    def __repr__(self):
+        return "process"

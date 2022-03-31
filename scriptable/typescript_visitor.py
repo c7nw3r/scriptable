@@ -27,6 +27,7 @@ from scriptable.ast.function.function_head import FunctionHead
 from scriptable.ast.function.function_lambda import FunctionLambda
 from scriptable.ast.function.function_tail import FunctionTail
 from scriptable.ast.number import Number
+from scriptable.ast.optional import Optional
 from scriptable.ast.property.property import Property
 from scriptable.ast.property.property_access import PropertyAccess
 from scriptable.ast.property.property_delete import PropertyDelete
@@ -217,6 +218,9 @@ class TypescriptVisitorImpl(TypescriptVisitor):
 
     def visitSPropertyDelete(self, ctx: TypescriptParser.SPropertyDeleteContext):
         return PropertyDelete.parse(super().visitSPropertyDelete(ctx))
+
+    def visitSOptional(self, ctx:TypescriptParser.SOptionalContext):
+        return Optional()
 
     def aggregateResult(self, aggregate, next_result):
         array = []

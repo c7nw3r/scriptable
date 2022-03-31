@@ -15,3 +15,6 @@ class String(AST[Accessor[str]]):
     @staticmethod
     def parse(ctx: TypescriptParser.SStringContext) -> 'String':
         return String(TypescriptStringAccessor(ctx.getText()[1:-1]))
+
+    def __repr__(self):
+        return f"'{self.accessor.value}'"

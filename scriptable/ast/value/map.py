@@ -18,5 +18,6 @@ class Map(AST[Accessor[Dict[str, Any]]]):
         branch = list(map(lambda x: x.execute(ASTBinding()), branch))
         _dict = {}
         for i in range(0, len(branch), 2):
-            _dict[branch[i].value] = branch[i + 1]
+            value = branch[i + 1]
+            _dict[branch[i].value] = value.value if isinstance(value, Accessor) else value
         return Map(MapAccessor(_dict))

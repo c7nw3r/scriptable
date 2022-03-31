@@ -21,8 +21,6 @@ class ConcatExpression(AST[str]):
             return result
 
         operand_stack = list(map(lambda ast: execute_branch(ast), self.operand_stack))
-        operator_stack = list(map(lambda ast: execute_branch(ast), self.operator_stack))
-
         return "".join(map(str, operand_stack))
 
     @staticmethod

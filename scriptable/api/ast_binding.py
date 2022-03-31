@@ -15,6 +15,9 @@ class ASTBinding:
     def add_property(self, name: str, value: Any):
         self.properties[name] = value
 
+    def add_properties(self, properties: dict):
+        self.properties.update(properties)
+
     def add_function(self, name: str, value: Callable[[List[Any]], Any]):
         self.functions[name] = value
 
