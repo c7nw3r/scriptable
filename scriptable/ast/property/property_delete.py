@@ -3,6 +3,7 @@ from typing import Any, List
 from scriptable.api import AST
 from scriptable.api.accessor import Accessor
 from scriptable.api.ast_binding import ASTBinding
+from scriptable.ast.optional import Optional
 
 
 class PropertyDelete(AST[Any]):
@@ -17,10 +18,22 @@ class PropertyDelete(AST[Any]):
 
         branch = list(map(lambda ast: ast.execute(binding), self.branch))
         current = branch.pop(0)
-        while len(branch) > 1:
-            current = current[unwrap(branch.pop(0))]
 
-        del current[unwrap(branch.pop(0))]
+        optional = False
+        while len(branch) > 1:
+            key = unwrap(branch.pop(0))
+            if isinstance(key, Optional):
+                optional = True
+                continue
+
+            current = current[key]
+            optional = False
+
+        key = unwrap(branch.pop(0))
+        if key not in current and optional:
+            return False
+
+        del current[key]
         return True
 
     @staticmethod

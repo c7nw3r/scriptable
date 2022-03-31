@@ -252,6 +252,10 @@ a
         engine.execute(properties)
         self.assertEqual(properties, {})
 
+    def test_delete_unknown_from_env(self):
+        engine = TypescriptEngine.parse("delete process.env?.text")
+        engine.execute({})
+
     def test_assign_to_env(self):
         properties = {"name": "abcd"}
 
