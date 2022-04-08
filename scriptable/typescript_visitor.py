@@ -9,6 +9,7 @@ from scriptable.ast.control.For import For
 from scriptable.ast.control.ForIn import ForIn
 from scriptable.ast.control.ForOf import ForOf
 from scriptable.ast.control.While import While
+from scriptable.ast.control.do_while import DoWhile
 from scriptable.ast.control.ifelse import If, Else, ElseIf
 from scriptable.ast.control.loop_tail import LoopTail
 from scriptable.ast.expression.arithmetic_expression import ArithmeticExpression
@@ -178,6 +179,9 @@ class TypescriptVisitorImpl(TypescriptVisitor):
 
     def visitSWhile(self, ctx: TypescriptParser.SWhileContext):
         return While.parse(super().visitSWhile(ctx))
+
+    def visitSDoWhile(self, ctx:TypescriptParser.SDoWhileContext):
+        return DoWhile.parse(super().visitSWhile(ctx))
 
     def visitSMutableVar(self, ctx: TypescriptParser.SMutableVarContext):
         return MutableVar.parse(ctx.getChild(1).getText(), super().visitSMutableVar(ctx)[0])

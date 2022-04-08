@@ -1,4 +1,4 @@
-# Generated from Typescript.g4 by ANTLR 4.9.2
+# Generated from Typescript.g4 by ANTLR 4.9.3
 from antlr4 import *
 if __name__ is not None and "." in __name__:
     from .TypescriptParser import TypescriptParser
@@ -653,6 +653,15 @@ class TypescriptListener(ParseTreeListener):
 
     # Exit a parse tree produced by TypescriptParser#sWhile.
     def exitSWhile(self, ctx:TypescriptParser.SWhileContext):
+        pass
+
+
+    # Enter a parse tree produced by TypescriptParser#sDoWhile.
+    def enterSDoWhile(self, ctx:TypescriptParser.SDoWhileContext):
+        pass
+
+    # Exit a parse tree produced by TypescriptParser#sDoWhile.
+    def exitSDoWhile(self, ctx:TypescriptParser.SDoWhileContext):
         pass
 
 

@@ -14,7 +14,7 @@ class If(AST[Optional[Any]]):
 
     def execute(self, binding: ASTBinding) -> Optional[Any]:
         expression = self.if_branch[0].execute(binding)
-        if expression != False and expression is not None:
+        if expression != False and expression is not None and expression != "":
             for branch in self.if_branch[1:]:
                 result = branch.execute(binding)
                 if isinstance(result, ExitValue):
@@ -54,7 +54,7 @@ class ElseIf(AST[Optional[Any]]):
 
     def execute(self, binding: ASTBinding) -> Optional[Any]:
         expression = self.branch[0].execute(binding)
-        if expression:
+        if expression != False and expression is not None and expression != "":
             for branch in self.branch[1:]:
                 result = branch.execute(binding)
                 if isinstance(result, ExitValue):

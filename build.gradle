@@ -5,12 +5,10 @@ repositories {
 }
 
 dependencies {
-    antlr "org.antlr:antlr4:4.9.2"
+    antlr "org.antlr:antlr4:4.9.3"
 }
 
-task generateGrammarSourcePython(type: AntlrTask) {
-    source = project.sourceSets.main.antlr
+generateGrammarSource {
     outputDirectory = file("${projectDir}/scriptable/antlr")
     arguments += ["-visitor", "-Dlanguage=Python3"]
 }
-generateGrammarSource.dependsOn generateGrammarSourcePython

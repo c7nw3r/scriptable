@@ -52,6 +52,7 @@ EQUAL         : '=';
 BREAK         : 'break';
 CONTINUE      : 'continue';
 DELETE        : 'delete';
+DO            : 'do';
 
 
 IDENTIFIER : Letter LetterOrDigit*;
@@ -81,7 +82,7 @@ sExpression     : sConcatExpression | sArithmeticExpression | sBooleanExpression
 sTerm           : sArithmeticTerm | sBooleanTerm;
 sValue          : sNumber | sBoolean | sString | sArray | sMap;
 sInvocation     : sPropertyAccess | sFunctionAccess | sFunctionCall | sPropertyDelete;
-sControl        : sIf | sWhile | sFor | sForOf | sForIn | sEndlessLoop | sContinue | sBreak;
+sControl        : sIf | sWhile | sDoWhile | sFor | sForOf | sForIn | sEndlessLoop | sContinue | sBreak;
 sStatement       : sMutableVar | sImmutableVar | sAssignment;
 
 // operator definitions
@@ -180,6 +181,7 @@ sMap     : CURLY_LEFT (sString COLON sValue (COMMA sString COLON sValue)*)? CURL
 // ***************
 sEndlessLoop : ((WHILE ROUND_LEFT TRUE ROUND_RIGHT) | (FOR ROUND_LEFT SEMICOLON SEMICOLON ROUND_RIGHT)) sLoopTail;
 sWhile       : WHILE ROUND_LEFT sExpression ROUND_RIGHT sLoopTail;
+sDoWhile     : DO sLoopTail WHILE ROUND_LEFT sExpression ROUND_RIGHT;
 sFor         : FOR ROUND_LEFT sStatement SEMICOLON sNumberExpression SEMICOLON (sIncrement | sDecrement) ROUND_RIGHT sLoopTail;
 sForOf       : FOR ROUND_LEFT (VAR | LET) IDENTIFIER OF (sArray | sString) ROUND_RIGHT sLoopTail;
 sForIn       : FOR ROUND_LEFT (VAR | LET) IDENTIFIER IN sArray ROUND_RIGHT sLoopTail;

@@ -94,7 +94,9 @@ class TypescriptEngineTest(unittest.TestCase):
         self.assertEqual(TypescriptEngine.parse("if (false) {return 0} else if(true) {return 1} return 2").execute(), 1)
         self.assertEqual(TypescriptEngine.parse("if (false) {return 0} else {return 1} return 2").execute(), 1)
         self.assertEqual(TypescriptEngine.parse("if (process.env?.text) {return 0} return 1").execute({}), 1)
-        self.assertEqual(TypescriptEngine.parse("if (process.env?.text) {return 0} return 1").execute({"text":""}), 0)
+        self.assertEqual(TypescriptEngine.parse("if (process.env?.text) {return 0} return 1").execute({"text":""}), 1)
+        self.assertEqual(TypescriptEngine.parse("if (process.env?.text) {return 0} return 1").execute({"text":"a"}), 0)
+        self.assertEqual(TypescriptEngine.parse("if ('') {return 0} return 1").execute(), 1)
 
     def test_console(self):
         TypescriptEngine.parse("console.assert('a')").execute()
@@ -180,6 +182,16 @@ while (n > 0) {
 n
         """)
         self.assertEqual(engine.execute(), 0)
+
+    def test_do_while(self):
+        engine = TypescriptEngine.parse("""
+let n = 0
+do {
+   n = n + 1
+} while (n <= 0)
+n
+        """)
+        self.assertEqual(engine.execute(), 1)
 
     def test_for(self):
         engine = TypescriptEngine.parse("""
@@ -323,3 +335,9 @@ delete process.env.result
     def test_process_env_string_concat(self):
         engine = TypescriptEngine.parse("process.env['connector_baseUrl'] + '/signed/tickets'")
         print(engine.execute({"connector_baseUrl": "abcd"}))
+
+    def test_asdfasdfasdf(self):
+        engine = TypescriptEngine.parse("""
+7
+        """)
+        print(engine.execute({"whatever": "8"}))

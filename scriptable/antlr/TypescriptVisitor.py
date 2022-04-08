@@ -1,4 +1,4 @@
-# Generated from Typescript.g4 by ANTLR 4.9.2
+# Generated from Typescript.g4 by ANTLR 4.9.3
 from antlr4 import *
 if __name__ is not None and "." in __name__:
     from .TypescriptParser import TypescriptParser
@@ -366,6 +366,11 @@ class TypescriptVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by TypescriptParser#sWhile.
     def visitSWhile(self, ctx:TypescriptParser.SWhileContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by TypescriptParser#sDoWhile.
+    def visitSDoWhile(self, ctx:TypescriptParser.SDoWhileContext):
         return self.visitChildren(ctx)
 
 
