@@ -71,7 +71,7 @@ class TypescriptEngineTest(unittest.TestCase):
         self.assertAlmostEqual(TypescriptEngine.parse("false && (false || true)").execute(), False)
 
     def test_property_access(self):
-        # self.assertAlmostEqual(TypescriptEngine.parse("'test'.length").execute(), 4)
+        self.assertAlmostEqual(TypescriptEngine.parse("'test'.length").execute(), 4)
         self.assertEqual(TypescriptEngine.parse("'abcd'[1]").execute(), "b")
 
     def test_function_access(self):

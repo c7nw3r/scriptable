@@ -111,4 +111,6 @@ class TypescriptStringAccessor(Accessor[str]):
     def __contains__(self, item):
         if isinstance(item, int):
             return len(self.value) >= item
+        if item == "length":
+            return True
         return item in self.value
